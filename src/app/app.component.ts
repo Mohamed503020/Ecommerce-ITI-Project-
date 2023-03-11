@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ecommerce';
+  //product , cart , auth , shared (navbar ,footer ), order
+  // componentss , service
+  // main  header ,footer
+  // auth => login , register  
+  // user  => profile , edit profile 
 }
