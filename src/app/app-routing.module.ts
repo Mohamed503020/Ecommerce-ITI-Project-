@@ -11,8 +11,7 @@ const routes: Routes = [
   },
   {path:"",redirectTo:"/main/products",pathMatch:"full"},
   {path:"main",component:MainlayoutComponent,children:[
-    {path:"",component:HomeComponent},
-    {path:"home",component:HomeComponent},
+    {path:"",redirectTo:"products",pathMatch:"full"},
     {
       path: "products",
       loadChildren: () => import("../app/product/product.module").then(m => m.ProductModule)
@@ -25,6 +24,14 @@ const routes: Routes = [
     {
       path: "wishlist",
       loadChildren: () => import("../app/wishlist-list/wishlist-list.module").then(m => m.WishlistListModule)
+    },
+    {
+      path: "checkout",
+      loadChildren: () => import("../app/checkout/checkout.module").then(m => m.CheckoutModule)
+    },
+    {
+      path: "user",
+      loadChildren: () => import("../app/user/user.module").then(m => m.UserModule)
     },
   ]}
 
