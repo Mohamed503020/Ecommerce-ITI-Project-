@@ -8,6 +8,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NgxSkeletonLoaderModule,
     InfiniteScrollModule,
     CarouselModule,
+    NgxImageZoomModule
   ]
 })
 export class ProductModule { }

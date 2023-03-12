@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     FooterComponent,
     CartComponent,
     WishlistComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

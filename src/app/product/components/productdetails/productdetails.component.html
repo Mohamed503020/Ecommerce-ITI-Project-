@@ -1,7 +1,142 @@
-<div>Some tags before</div>
-<owl-carousel-o [options]="customOptions">
-  <ng-template carouselSlide>Slide 1</ng-template>
-  <ng-template carouselSlide>Slide 2</ng-template>
-  <ng-template carouselSlide>Slide 3</ng-template>
-</owl-carousel-o>
-<div>Some tags after</div>
+<section class="bg-warning padding-y-sm rounded">
+  <div class="container">
+
+      <ol class="breadcrumb ondark mb-0">
+          <li class="breadcrumb-item">
+              <a routerLink="/products">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+              <a routerLink="/products">Product</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+              Richtan Hero
+          </li>
+      </ol>
+  </div>
+</section>
+
+<section>
+  <div class="container mb-1 border-end">
+    <div class="card shadow-1-strong">
+      <div class="row g-0">
+        <div class="col-md-6 border-end border-start">
+          <div class="d-flex flex-column justify-content-center">
+            <div class="main_image p-2 me-3">
+              <!-- <img (mousemove)="ZoomImage($event)"
+                src="https://i.imgur.com/TAzli1U.jpg"
+                id="main_product_image"
+                width="300"
+              /> -->
+              <div class="">
+                <lib-ngx-image-zoom
+                thumbImage="https://i.imgur.com/TAzli1U.jpg"
+                [magnification]="2"
+                [enableScrollZoom]="true"
+                [enableLens]="true"
+                [lensWidth]="100"
+            ></lib-ngx-image-zoom>
+              </div>
+
+            </div>
+            <div class="thumbnail_images">
+              <ul id="thumbnail">
+                <li>
+                  <img
+
+                    src="https://i.imgur.com/TAzli1U.jpg"
+                    width="70"
+                  />
+
+                </li>
+                <li>
+                  <img
+
+                    src="https://i.imgur.com/w6kEctd.jpg"
+                    width="70"
+                  />
+                </li>
+                <li>
+                  <img
+
+                    src="https://i.imgur.com/L7hFD8X.jpg"
+                    width="70"
+                  />
+                </li>
+                <li>
+                  <img
+
+                    src="https://i.imgur.com/6ZufmNS.jpg"
+                    width="70"
+                  />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 right-side">
+            <div class="d-flex justify-content-between align-items-center">
+              <h2>Product name </h2>
+              <span class="heart"><i  class="me-1 fa fa-heart text-danger"></i></span>
+            </div>
+            <div class="mt-2 pr-3 content">
+              <p>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, ipsam!
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, ipsam!
+
+              </p>
+            </div>
+            <h3></h3>
+       <div class="ratings d-flex flex-row align-items-center">
+              <div class="d-flex flex-row">
+                <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>
+                <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>
+                <i class="bx bx-star"></i>
+              </div>
+              <span>441 reviews</span>
+            </div>
+            <div class="mt-5">
+              <span class="fw-bold">Color</span>
+              <div class="colors">
+                <ul id="marker">
+                  <li id="marker-1"></li>
+                  <li id="marker-2"></li>
+                  <li id="marker-3"></li>
+                  <li id="marker-4"></li>
+                  <li id="marker-5"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="buttons d-flex flex-row mt-5 gap-3">
+              <button class="btn btn-outline-warning ">Buy Now</button>
+              <button class="btn btn-warning text-white">Add to Basket</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img [src]="product.imageUrl" ngx-img-zoom  />
+      <lib-ngx-image-zoom
+      [thumbImage]="product.imageUrl"
+      [fullImage]="product.imageUrl"
+      [magnification]="2"
+      [enableScrollZoom]="true"
+      [enableLens]="true"
+      [lensWidth]="100"
+  ></lib-ngx-image-zoom>
+    </div>
+    <div class="col-md-6">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+
+      <button class="btn btn-primary">Add to Cart</button>
+    </div>
+  </div>
+</div>

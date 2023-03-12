@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from './shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
     SharedModule,
     FontAwesomeModule,
     HttpClientModule,
-
+    NgxImageZoomModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-api='https://api.escuelajs.co/api/';
+api='https://dummyjson.com';
     constructor(private _HttpClient: HttpClient) { }
 
   getProduct(): Observable<any> {
-    return this._HttpClient.get<any>(`${this.api}v1/products`)
+    return this._HttpClient.get<any>('https://dummyjson.com/products')
   }
 
   getSingleProduct(id: number): Observable<any> {
