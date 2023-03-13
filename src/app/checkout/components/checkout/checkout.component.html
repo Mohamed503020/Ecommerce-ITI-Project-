@@ -1,2 +1,46 @@
-<p>checkout works!</p>
-<h1>checkout2</h1>
+<!-- <p>checkout works!</p>
+<h1>checkout2</h1> -->
+<div class="container-fluid g-0 mt-5 px-5">
+    <div class="row ">
+        <div class="col-12 col-lg-8">
+            <mat-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+
+                    <ng-template matStepLabel>Fill address information</ng-template>
+
+                    <app-address></app-address>
+                    <div>
+                        <button mat-button matStepperNext class="btn next">Next</button>
+                    </div>
+                    <!-- </form> -->
+                </mat-step>
+                <!-- #docregion label -->
+                <mat-step [stepControl]="firstFormGroup">
+                    <ng-template matStepLabel>Confirm the payment method</ng-template>
+                    <app-payment></app-payment>
+                    <div>
+                        <button mat-button matStepperPrevious class="btn back">Back</button>
+                        <button mat-button matStepperNext class="btn next">Next</button>
+
+                    </div>
+                    <!-- </form> -->
+                </mat-step>
+                <mat-step [stepControl]="firstFormGroup">
+                    <ng-template matStepLabel>Confirm order</ng-template>
+                    <app-done-order></app-done-order>
+                    <div>
+                        <button mat-button matStepperPrevious class="btn back">Back</button>
+                        <button mat-button class="btn next">Done</button>
+                        <!-- <button mat-button (click)="stepper.reset()" class="btn next">Reset</button> -->
+                    </div>
+                    <!-- </form> -->
+
+                </mat-step>
+
+            </mat-stepper>
+        </div>
+        <div class="col-12 col-lg-4 ">
+            <app-myOrderSidebar></app-myOrderSidebar>
+        </div>
+    </div>
+</div>
