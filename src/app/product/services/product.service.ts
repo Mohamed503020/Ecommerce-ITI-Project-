@@ -14,7 +14,7 @@ api='https://dummyjson.com';
   }
 
   getSingleProduct(id: number): Observable<any> {
-    return this._HttpClient.get<any>(`${this.api}v1/products/${id}`)
+    return this._HttpClient.get<any>(`${this.api}/products/${id}`)
   }
 
   getProductsByCategory(id: number): Observable<any> {

@@ -3,12 +3,14 @@ import { MainlayoutComponent } from './components/mainlayout/mainlayout.componen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('../app/auth/auth.module').then(m => m.AuthModule)
   },
+
   {path:"",redirectTo:"/main/products",pathMatch:"full"},
   {path:"main",component:MainlayoutComponent,children:[
     {path:"",redirectTo:"products",pathMatch:"full"},
@@ -33,6 +35,7 @@ const routes: Routes = [
       path: "user",
       loadChildren: () => import("../app/user/user.module").then(m => m.UserModule)
     },
+    {path:"contact",component:ContactComponent}
   ]}
 
 ,{

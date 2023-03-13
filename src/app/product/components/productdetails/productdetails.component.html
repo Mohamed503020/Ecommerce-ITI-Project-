@@ -1,17 +1,11 @@
 <section class="bg-warning padding-y-sm rounded">
   <div class="container">
-
-      <ol class="breadcrumb ondark mb-0">
-          <li class="breadcrumb-item">
-              <a routerLink="/products">Home</a>
-          </li>
-          <li class="breadcrumb-item">
-              <a routerLink="/products">Product</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-              Richtan Hero
-          </li>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"> <a routerLink="/main/products">Products /</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> {{product?.title}}</li>
       </ol>
+    </nav>
   </div>
 </section>
 
@@ -29,7 +23,8 @@
               /> -->
               <div class="">
                 <lib-ngx-image-zoom
-                thumbImage="https://i.imgur.com/TAzli1U.jpg"
+                [thumbImage]="ImgUrl"
+                [fullImage]="ImgUrl"
                 [magnification]="2"
                 [enableScrollZoom]="true"
                 [enableLens]="true"
@@ -40,35 +35,14 @@
             </div>
             <div class="thumbnail_images">
               <ul id="thumbnail">
-                <li>
-                  <img
-
-                    src="https://i.imgur.com/TAzli1U.jpg"
-                    width="70"
+                <li *ngFor="let img of product?.images">
+                  <img (click)="changeImg(img)"
+                    [src]="img"
+                    width="70" height="60"
                   />
 
                 </li>
-                <li>
-                  <img
 
-                    src="https://i.imgur.com/w6kEctd.jpg"
-                    width="70"
-                  />
-                </li>
-                <li>
-                  <img
-
-                    src="https://i.imgur.com/L7hFD8X.jpg"
-                    width="70"
-                  />
-                </li>
-                <li>
-                  <img
-
-                    src="https://i.imgur.com/6ZufmNS.jpg"
-                    width="70"
-                  />
-                </li>
               </ul>
             </div>
           </div>
@@ -76,67 +50,65 @@
         <div class="col-md-6">
           <div class="p-3 right-side">
             <div class="d-flex justify-content-between align-items-center">
-              <h2>Product name </h2>
+              <h2>{{product?.title}} </h2>
               <span class="heart"><i  class="me-1 fa fa-heart text-danger"></i></span>
             </div>
+            <h3>{{product?.price|currency}}</h3>
             <div class="mt-2 pr-3 content">
               <p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, ipsam!
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, ipsam!
-
+       {{product?.description}}
               </p>
             </div>
             <h3></h3>
-       <div class="ratings d-flex flex-row align-items-center">
+       <div class="ratings d-flex flex-row align-items-center mb-2">
               <div class="d-flex flex-row">
-                <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>
-                <i class="bx bxs-star"></i> <i class="bx bxs-star"></i>
-                <i class="bx bx-star"></i>
+                <img src="assets/images/stars-active.svg" alt="">
               </div>
-              <span>441 reviews</span>
+              <span>{{product?.rating}}</span>
             </div>
-            <div class="mt-5">
-              <span class="fw-bold">Color</span>
-              <div class="colors">
-                <ul id="marker">
-                  <li id="marker-1"></li>
-                  <li id="marker-2"></li>
-                  <li id="marker-3"></li>
-                  <li id="marker-4"></li>
-                  <li id="marker-5"></li>
-                </ul>
+
+            <div class="row mb-4">
+              <div class="col-md-4 col-6 mb-2">
+                  <label class="form-label">Size</label>
+                  <select class="form-select">
+                      <option>Small</option>
+                      <option>Medium</option>
+                      <option>Large</option>
+                  </select>
               </div>
-            </div>
-            <div class="buttons d-flex flex-row mt-5 gap-3">
-              <button class="btn btn-outline-warning ">Buy Now</button>
-              <button class="btn btn-warning text-white">Add to Basket</button>
+              <div class="col-md-4 col-6 mb-2 " >
+                  <label class="form-label d-block">Quantity</label>
+                  <div class="input-group input-spinner">
+                      <div class="quantity-selector">
+                          <button type="button" class="btn  btn-quantity"
+                              (click)="updateCartItemQuantity(quantity , product  , '-')"
+                              [disabled]=" quantity == 1">
+                              <span>-</span>
+                          </button>
+                          <div class="quantity-number">{{quantity}}</div>
+                          <button type="button" class="btn btn-quantity"
+                              (click)="updateCartItemQuantity(quantity! , product  , '+')">
+                              <span>+</span>
+                          </button>
+                      </div>
+                  </div>
+              </div> 
+          </div>
+            <div class="buttons d-flex flex-row 2 gap-3">
+              <button class="btn  btn-warning me-2 "
+              (click)="$event.preventDefault(); addProductToCart(product)">
+              <i class="me-1 fa fa-shopping-basket"></i>
+              Add to cart
+          </button>
+          <button (click)="$event.preventDefault(); addProductToWishList(product)" class="btn  btn-light me-2">
+              <i class="fa-regular fa-heart text-danger"></i>
+              Save
+          </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 
-<div class="container my-5">
-  <div class="row">
-    <div class="col-md-6">
-      <img [src]="product.imageUrl" ngx-img-zoom  />
-      <lib-ngx-image-zoom
-      [thumbImage]="product.imageUrl"
-      [fullImage]="product.imageUrl"
-      [magnification]="2"
-      [enableScrollZoom]="true"
-      [enableLens]="true"
-      [lensWidth]="100"
-  ></lib-ngx-image-zoom>
-    </div>
-    <div class="col-md-6">
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-
-      <button class="btn btn-primary">Add to Cart</button>
-    </div>
-  </div>
-</div>
