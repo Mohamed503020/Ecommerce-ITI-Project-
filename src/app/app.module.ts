@@ -31,7 +31,7 @@ import { ContactComponent } from './components/contact/contact.component';
     FontAwesomeModule,
     HttpClientModule,
     NgxImageZoomModule,
-    FormsModule
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
