@@ -14,7 +14,7 @@ body{
 }
 
 .form-control:focus {
-    color: #087cf1;
+    color: #ff8100;
     background-color: #fff;
     border-color: #8bbafe;
     outline: 0;
@@ -43,7 +43,7 @@ body{
     top: 13px;
     right: 8px;
     transition: 0.5s;
-    color: #ff8100
+    color: red
 }
 
 input::-webkit-outer-spin-button,
@@ -106,4 +106,8 @@ input::-webkit-inner-spin-button {
 
     text-decoration: none;
     color: 	black; 
+}
+.error{
+    color: red;
+    
 }
