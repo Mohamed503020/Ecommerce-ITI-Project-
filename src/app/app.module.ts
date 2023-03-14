@@ -14,6 +14,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { FormsModule } from '@angular/forms';
 import { ContactComponent } from './components/contact/contact.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +33,8 @@ import { ContactComponent } from './components/contact/contact.component';
     FontAwesomeModule,
     HttpClientModule,
     NgxImageZoomModule,
-    FormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
