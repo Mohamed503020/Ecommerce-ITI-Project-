@@ -3,8 +3,13 @@ import { MainlayoutComponent } from './components/mainlayout/mainlayout.componen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './auth/components/login/login.component';
 
 const routes: Routes = [
+
+
+
+
   {
     path: 'auth',
     loadChildren: () => import('../app/auth/auth.module').then(m => m.AuthModule)

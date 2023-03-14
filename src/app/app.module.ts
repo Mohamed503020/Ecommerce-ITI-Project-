@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,9 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
     SharedModule,
     FontAwesomeModule,
     HttpClientModule,
-    NgxImageZoomModule
+    NgxImageZoomModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
