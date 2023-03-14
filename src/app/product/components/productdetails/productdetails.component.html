@@ -1,4 +1,4 @@
-<section class="bg-warning padding-y-sm rounded">
+<section class="bg-warning padding-y-sm rounded ">
   <div class="container">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -92,7 +92,7 @@
                           </button>
                       </div>
                   </div>
-              </div> 
+              </div>
           </div>
             <div class="buttons d-flex flex-row 2 gap-3">
               <button class="btn  btn-warning me-2 "
@@ -109,6 +109,31 @@
         </div>
       </div>
     </div>
+    <div class="my-5 ">
+
+      <div class="title text-md-center mb-2">
+        <span>best match</span>
+        <h4 class="text-dark">Related products</h4>
+    </div>
+    <div class="row">
+      <div class="col-6 col-sm-8 col-md-6 col-lg-2" style="padding: 15px 7.5px;"
+      *ngFor="let item of productsOfCategory " >
+      <app-products [product]="item"></app-products>
+    </div>
+
+    </div>
+
+     <!-- <owl-carousel-o [options]="slider3Settings" #myCarousel>
+        <ng-container class="col-md-2 col-6" *ngFor="let item of productsOfCategory">
+            <ng-template carouselSlide [id]="item.id">
+              <app-products [product]="item"></app-products>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>  -->
+
+</div>
   </div>
+
+
 </section>
 
