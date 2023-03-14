@@ -6,3 +6,21 @@ body {
   /* overflow-y: hidden; Hide vertical scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
+      .login {
+        width: 456px;
+        border-radius: 10px;
+        box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.5);
+      }
+      body {
+        background: url("../../../../assets/images/99.jpg");
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-origin: border-box;
+        width: 100%;
+      }
+
+      h1 {
+        color: rgb(251, 253, 255);
+        font-size: 40px;
+      }
