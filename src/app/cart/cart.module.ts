@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CartRoutingModule } from './cart-routing.module';
+import { HotToastModule } from '@ngneat/hot-toast';
+
 
 
 @NgModule({
@@ -10,7 +12,8 @@ import { CartRoutingModule } from './cart-routing.module';
   imports: [
     CommonModule,
     CartRoutingModule,
-    FormsModule
+    FormsModule,
+   HotToastModule
   ]
 })
 export class CartModule { }

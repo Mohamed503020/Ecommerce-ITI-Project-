@@ -1,5 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable, OnInit } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ import { Injectable, OnInit } from '@angular/core';
 export class CartService implements OnInit {
 
    cartItems: any[] = [];
-  constructor() {
+  constructor(private _toast:HotToastService) {
     const storedItems = localStorage.getItem('cartItems');
     if (storedItems) {
       this.cartItems = JSON.parse(storedItems);
@@ -24,7 +26,13 @@ export class CartService implements OnInit {
   addProductToCart(product: any) {
     const existingItem = this.cartItems.find(item => item.id === product.id);
     if (existingItem) {
-      alert(`${product.name} is already in your cart!`);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'product existed in Cart',
+        showConfirmButton: false,
+        timer: 2500
+      })
     } else {
       const newItem = {
         id: product.id,
@@ -38,6 +46,13 @@ export class CartService implements OnInit {
       };
       this.cartItems.push(newItem);
       this.saveCartItems();
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Product Add To Cart Succefully ',
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
   }
 
@@ -46,7 +61,15 @@ export class CartService implements OnInit {
     if (index >= 0) {
       this.cartItems.splice(index, 1);
       this.saveCartItems();
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Product remove form Cart Succefully',
+        showConfirmButton: false,
+        timer: 2500
+      })
     }
+
   }
 
   increaseQuantity(item: any) {

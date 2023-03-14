@@ -1,3 +1,4 @@
+import { HotToastService } from '@ngneat/hot-toast';
 
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
@@ -12,7 +13,7 @@ export class CartComponent implements OnInit{
   subTotalPrice:number=0;
   TAX=20;
   TotalPrice:number=0;
-constructor(private _CartService:CartService){}
+constructor(private _CartService:CartService,private _toast:HotToastService){}
   ngOnInit(): void {
     this.getProductFromCart()
     console.log(this.ProductsInCart);
@@ -34,6 +35,8 @@ constructor(private _CartService:CartService){}
   }
   deletProductFromCart(product:any){
     this._CartService.removeProductFromCart(product)
+    this.calcSubTotalPrice()
+    this.calcTotalPrice()
   }
 
   increaseQuantity(product:any){
