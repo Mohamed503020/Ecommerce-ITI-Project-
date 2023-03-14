@@ -35,7 +35,8 @@ body{
     position: absolute;
     top: 7px;
     left: 11px;
-    transition: 0.5s
+    transition: 0.5s;
+    /* margin-bottom: 10px; */
 }
 
 .inputbox i {
@@ -45,23 +46,24 @@ body{
     transition: 0.5s;
     color: red
 }
+.inputbox input:valid:not(:focus)~span {
+    transform: translateY(-15px);
+    font-size: 15px;
+    color: #ff8100;
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0
 }
-
-.inputbox input:focus~span {
-    transform: translateX(-0px) translateY(-15px);
+.inputbox input:valid:focus~span {
+    transform: translateX(-0px) translateY(-15px) ;
+    font-size: 15px;
+}
+.inputbox input:invalid:focus~span {
+    transform: translateX(-0px) translateY(-15px) ;
+    font-size: 15px
+}
+.inputbox input:invalid:not(:focus)~span {
+    transform: translateY(-15px) ;
     font-size: 12px
 }
-
-.inputbox input:valid~span {
-    transform: translateX(-0px) translateY(-15px);
-    font-size: 12px
-}
-
 .card-blue{
 
     background-color: #ff8100;

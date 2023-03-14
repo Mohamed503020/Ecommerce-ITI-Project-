@@ -5,23 +5,54 @@
   <div class="row">
     <div class="col-md-8">
       <div class="card p-3">
-        <div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required">
+        <div class="inputbox mt-3"> 
+          <!-- /////////////////Card Name!!!!//////////////////// -->
+          <input #cardName="ngModel" ngModel name="cardName" type="text" class="form-control" required="required" pattern="^[a-zA-Z]{5,30}$">
           <span>Name on card</span>
+          <div [hidden]="cardName.valid || cardName.pristine" class=" text-danger" role="alert">
+            <p [hidden]="!cardName.errors?.['required']">Card Name Required <i
+                class="fa-solid error fa-circle-exclamation"></i></p>
+            <p [hidden]="!cardName.errors?.['pattern']">Invalid Card Name <i
+                class="fa-solid error fa-circle-exclamation"></i></p>
+          </div>
         </div>
         <div class="row">
+          <!-- ////////////////Card Number//////////////////// -->
           <div class="col-md-6">
-            <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <i
-                class="fa fa-credit-card"></i>
+            <div class="inputbox mt-3 mr-2">
+               <input  #cardNum="ngModel" ngModel name="cardNum" type="text" class="form-control" required="required" pattern="^4[0-9]{12}(?:[0-9]{3})?$" >            
+              <i class="fa fa-credit-card"></i>
               <span>Card Number</span>
+              <div [hidden]="cardNum.valid || cardNum.pristine" class=" text-danger" role="alert">
+                <p [hidden]="!cardNum.errors?.['required']">Card Number Required</p>
+                <p [hidden]="!cardNum.errors?.['pattern']">Card Number remaing 16 digit</p>
+              </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="d-flex flex-row">
-              <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required">
+              
+          <!-- ////////////////Card Expiry (02/2025) //////////////////// -->
+              <div class="inputbox mt-3 mr-2"> 
+                <input #cardExpiry="ngModel" ngModel name="cardExpiry"  type="text"  class="form-control" required="required" pattern="/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/gm">
                 <span>Expiry</span>
+                <div [hidden]="cardExpiry.valid || cardExpiry.pristine" class=" text-danger" role="alert">
+                  <p [hidden]="!cardExpiry.errors?.['required']">Card Expiry Required <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                  <p [hidden]="!cardExpiry.errors?.['pattern']">Card Expiry MM/YY  
+                    <i class="fa-solid error fa-circle-exclamation"></i></p>
+                </div>
               </div>
-              <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required">
+          <!-- ////////////////Card Cvv //////////////////// -->
+              <div class="inputbox mt-3 mr-2"> 
+                <input  #cardCVV="ngModel" ngModel name="cardCVV" type="text" class="form-control" required="required" pattern="^[0-9]{3,4}$">
                 <span>CVV</span>
+                <div [hidden]="cardCVV.valid || cardCVV.pristine" class=" text-danger" role="alert">
+                  <p [hidden]="!cardCVV.errors?.['required']">Card CVV Required <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                  <p [hidden]="!cardCVV.errors?.['pattern']">Card CVV min 3 digit 
+                    <i class="fa-solid error fa-circle-exclamation"></i></p>
+                </div>
               </div>
             </div>
           </div>
