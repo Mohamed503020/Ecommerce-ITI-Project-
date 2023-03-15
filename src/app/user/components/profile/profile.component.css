@@ -1,11 +1,34 @@
+/* sub Header  */
+
+.breadcrumb.ondark .breadcrumb-item {
+  color: #fff;
+}
+
+.breadcrumb.ondark a {
+  color: inherit;
+  opacity: .75;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  float: left;
+  padding-right: 0.7rem;
+  color: rgba(33, 37, 41, 0.3);
+  content: var(--bs-breadcrumb-divider, "❯");
+}
+
+.breadcrumb.ondark .breadcrumb-item::before {
+  color: #fff;
+  opacity: .6;
+}
+
 .container {
     margin-top: 20px;
   }
-  
+
   .form-group {
     margin-bottom: 10px;
   }
-  
+
   .form-control[disabled] {
     background-color: #f8f9fa;
   }
@@ -15,7 +38,7 @@ img{
     height: 220px;
     object-fit: cover;
 }
-  
+
 label {
     font-size: 18px;
     margin-right: 10px;
@@ -26,4 +49,4 @@ label {
   }
  .orange{
     background-color: #ff8100;
- } 
+ }

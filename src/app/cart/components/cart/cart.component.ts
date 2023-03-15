@@ -9,6 +9,7 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit{
+  route="Cart"
   ProductsInCart:any[]=[];
   subTotalPrice:number=0;
   TAX=20;

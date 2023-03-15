@@ -14,6 +14,6 @@ export class CheckoutComponent {
     secondCtrl: ['', Validators.required],
   });
   isLinear = false;
-
+route="Checkoute"
   constructor(private _formBuilder: FormBuilder) {}
 }

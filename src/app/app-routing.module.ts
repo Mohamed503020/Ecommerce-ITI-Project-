@@ -13,7 +13,7 @@ const routes: Routes = [
   },
 
   {path:"",redirectTo:"/main/products",pathMatch:"full"},
-  {path:"about",component:AboutComponent},
+
   {path:"main",component:MainlayoutComponent,children:[
     {path:"",redirectTo:"products",pathMatch:"full"},
     {
@@ -37,7 +37,8 @@ const routes: Routes = [
       path: "user",
       loadChildren: () => import("../app/user/user.module").then(m => m.UserModule)
     },
-    {path:"contact",component:ContactComponent}
+    {path:"contact",component:ContactComponent},
+    {path:"about",component:AboutComponent}
   ]}
 
 ,{

@@ -11,6 +11,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { FilterProductPipe } from './pipes/filter-product.pipe';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './../shared/shared.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     InfiniteScrollModule,
     CarouselModule,
     NgxImageZoomModule,
-    FormsModule
+    FormsModule,
+    SharedModule
 
   ]
 })
