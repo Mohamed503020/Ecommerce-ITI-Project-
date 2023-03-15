@@ -47,7 +47,7 @@
 
               <div class="col-lg-2 col-sm-8 col-8 mt-15 mb-15">
                   <div class="header-logo">
-                      <a routerLink="/products">
+                      <a routerLink="/">
                           Store
                           <i class="fa-solid fa-cart-shopping"></i>
                       </a>
@@ -58,11 +58,11 @@
 
                       <a routerLink="/main/wishlist" class="header-wishlist" >
                           <i class="fa-solid fa-heart text-danger"></i>
-                          <span class="number">0</span>
+                          <span class="number">{{wishlistItem.length}}</span>
                       </a>
                       <a routerLink="/main/cart"  class="header-cart" >
                           <i class="fa-solid fa-bag-shopping"></i>
-                          <span class="number">0</span>
+                          <span class="number">{{cartitem.length}}</span>
                       </a>
 
                   </div>

@@ -7,7 +7,7 @@
               onerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'">
       </a>
       <p class="product-sale" *ngIf="(product?.id)%3==0">Sale</p>
-      <button type="button" class="btn-favourite btn-circle">
+      <button type="button" class="btn-favourite btn-circle" (click)="addProductToWishlist()">
 
           <i class="fa-solid fa-heart"></i>
       </button>
@@ -35,7 +35,7 @@
               <span *ngIf="(product?.id)%3==0">$59.99</span>
           </div>
           <span class="product-atc rounded-circle">
-              <button type="button" class="btn btn-circle text-muted"
+              <button type="button" class="btn btn-circle text-muted "(click)="addProductTocart()"
                   >
                   <i class="fa fa-shopping-cart"></i>
               </button>
