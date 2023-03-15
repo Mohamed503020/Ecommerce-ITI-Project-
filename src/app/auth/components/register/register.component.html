@@ -1,5 +1,6 @@
 <div class="limiter" style="background-color: #666666">
   <div class="container-login100">
+    <div class="col-11 col-md-10 col-lg-12">
     <div class="wrap-login100">
       <form (ngSubmit)="onSubmit()" class="login100-form validate-form ">
         <div class="d-flex align-items-center  "style="margin-top:-50px;">
@@ -11,43 +12,34 @@
          <span class="login p-b-80">Sign up</span>
         </span>
         <br />
-        <div
-          class="wrap-input100 validate-input"
-          data-validate="Valid email is required: ex@abc.xyz"
-        >
-          <input class="input100" type="text" name="username" required [(ngModel)]="username" />
-          <span class="label-input100">Username</span>
+
+        <div class="form-outline mb-4">
+          <label class="form-label" for="form3Example3cg">Username</label>
+          <input type="text" name="username" required [(ngModel)]="username" class="form-control form-control-lg"
+           />
         </div>
 
+
         <br />
-        <div
-          class="wrap-input100 validate-input"
-          data-validate="Valid email is required: ex@abc.xyz"
-        >
-          <input class="input100" type="text" name="email" required
+        <div class="form-outline mb-4">
+          <label class="form-label" for="form3Example3cg">Email</label>
+          <input type="email" id="form3Example3cg" class="form-control form-control-lg"  required
           [(ngModel)]="email" />
-          <span class="focus-input100"></span>
-          <span class="label-input100">Email</span>
         </div>
 
         <br />
-        <div
-          class="wrap-input100 validate-input"
-          data-validate="Password is required"
-        >
-          <input class="input100" type="password" name="password"  required
+        <div class="form-outline mb-4">
+          <label class="form-label" for="form3Example4cg">Password</label>
+          <input type="password" id="form3Example4cg" class="form-control form-control-lg"required
           [(ngModel)]="password" />
-          <span class="focus-input100"></span>
-          <span class="label-input100">Password</span>
         </div>
         <br />
 
-          <div class="d-flex  "> Gender:<input type="radio" id="html" name="fav_language" value="HTML">
-              <label for="html">Male</label><br>
-              <input type="radio" id="css" name="fav_language" value="CSS">
-              <label for="css">Female</label><br></div>
-
-
+       <div class="gender">
+        Gender: <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female
+        </div>
+          <br>
         <div class="form-group">
           <label for="exampleFormControlFile1"></label>
           <input
@@ -76,3 +68,5 @@
     </div>
   </div>
 </div>
+</div>
+
