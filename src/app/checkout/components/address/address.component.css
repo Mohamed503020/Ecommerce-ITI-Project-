@@ -1,0 +1,113 @@
+body{
+
+    background-color: white;
+}
+
+.card{
+    border:none;
+}
+
+.form-control {
+    border-bottom: 2px solid #eee !important;
+    border: none;
+    font-weight: 600
+}
+
+.form-control:focus {
+    color: #ff8100;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    border-bottom: 2px solid #ff8100 !important;
+}
+
+
+
+.inputbox {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%
+}
+
+.inputbox span {
+    position: absolute;
+    top: 7px;
+    left: 11px;
+    transition: 0.5s
+}
+
+.inputbox i {
+    position: absolute;
+    top: 13px;
+    right: 8px;
+    transition: 0.5s;
+    color: red
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.inputbox input:focus~span {
+    transform: translateX(-0px) translateY(-15px);
+    font-size: 12px
+}
+
+.inputbox input:valid~span {
+    transform: translateX(-0px) translateY(-15px);
+    font-size: 12px
+}
+
+.card-blue{
+
+    background-color: #ff8100;
+}
+.hightlight{
+
+    background-color:#FF4500;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.yellow{
+
+    color: 	#483D8B; 
+}
+
+.btn{
+    color: #fff;
+    background-color: #ff8100;
+    border-radius: 999px;
+    border-color:#ff8100;
+}
+
+.btn:hover {
+    color: black;
+    background-color:#ff8100;
+    border-radius: 999px;
+    border-color: #ff8100;
+}
+
+.decoration{
+
+    text-decoration: none;
+    font-size: 14px;
+    color: 	#483D8B; 
+    
+}
+
+.decoration:hover{
+
+    text-decoration: none;
+    color: 	black; 
+}
+.error{
+    color: red;
+    
+}

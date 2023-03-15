@@ -3,42 +3,46 @@ import { MainlayoutComponent } from './components/mainlayout/mainlayout.componen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './auth/components/login/login.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('../app/auth/auth.module').then(m => m.AuthModule)
   },
-  {path:"",redirectTo:"/main/products",pathMatch:"full"},
-  {path:"main",component:MainlayoutComponent,children:[
-    {path:"",redirectTo:"products",pathMatch:"full"},
-    {
-      path: "products",
-      loadChildren: () => import("../app/product/product.module").then(m => m.ProductModule)
-    },
 
-    {
-      path: "cart",
-      loadChildren: () => import("../app/cart/cart.module").then(m => m.CartModule)
-    },
-    {
-      path: "wishlist",
-      loadChildren: () => import("../app/wishlist-list/wishlist-list.module").then(m => m.WishlistListModule)
-    },
-    {
-      path: "checkout",
-      loadChildren: () => import("../app/checkout/checkout.module").then(m => m.CheckoutModule)
-    },
-    {
-      path: "user",
-      loadChildren: () => import("../app/user/user.module").then(m => m.UserModule)
-    },
-  ]}
+  { path: "", redirectTo: "/main/products", pathMatch: "full" },
+  {
+    path: "main", component: MainlayoutComponent, children: [
+      { path: "", redirectTo: "products", pathMatch: "full" },
+      {
+        path: "products",
+        loadChildren: () => import("../app/product/product.module").then(m => m.ProductModule)
+      },
 
-,{
-  path:"**",component:NotFoundComponent
-}
+      {
+        path: "cart",
+        loadChildren: () => import("../app/cart/cart.module").then(m => m.CartModule)
+      },
+      {
+        path: "wishlist",
+        loadChildren: () => import("../app/wishlist-list/wishlist-list.module").then(m => m.WishlistListModule)
+      },
+      {
+        path: "checkout",
+        loadChildren: () => import("../app/checkout/checkout.module").then(m => m.CheckoutModule)
+      },
+      {
+        path: "user",
+        loadChildren: () => import("../app/user/user.module").then(m => m.UserModule)
+      },
+      { path: "contact", component: ContactComponent }
+    ]
+  }
+
+  , {
+    path: "**", component: NotFoundComponent
+  }
 ];
 
 @NgModule({
