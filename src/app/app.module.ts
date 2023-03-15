@@ -17,10 +17,7 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ContactComponent } from './components/contact/contact.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 // import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-<<<<<<< HEAD
 import { AboutComponent } from './components/about/about.component';
-=======
->>>>>>> MohamedIbrahim
 @NgModule({
   declarations: [
     AppComponent,
