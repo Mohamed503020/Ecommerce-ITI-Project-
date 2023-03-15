@@ -85,7 +85,7 @@
             <h4 class="section-title text-muted">Showing 1 Products</h4>
             <div class="filter-container d-flex align-items-center">
                 <p>Sort by: </p>
-                <select class="form-select">
+                <select class="form-select" [(ngModel)]="fliterValue">
                     <option value="Default">Default</option>
                     <option value="Low to High">Price: Low to High</option>
                     <option value="High to Low">Price: High to Low</option>
@@ -96,7 +96,7 @@
         </header>
         <div class="row">
           <div class="col-6 col-sm-8 col-md-6 col-lg-2" style="padding: 15px 7.5px;"
-          *ngFor="let item of products">
+          *ngFor="let item of products | filterProduct : fliterValue" >
           <app-products [product]="item"></app-products>
         </div>
     </div>

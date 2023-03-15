@@ -14,11 +14,11 @@ api='https://dummyjson.com';
   }
 
   getSingleProduct(id: number): Observable<any> {
-    return this._HttpClient.get<any>(`${this.api}v1/products/${id}`)
+    return this._HttpClient.get<any>(`${this.api}/products/${id}`)
   }
 
-  getProductsByCategory(id: number): Observable<any> {
-    return this._HttpClient.get<any>(`${this.api}v1/categories/${id}/products?offset=0&limit=10`)
+  getProductsByCategory(category: string): Observable<any> {
+    return this._HttpClient.get<any>(`https://dummyjson.com/products/category/${category}`)
   }
 
 }

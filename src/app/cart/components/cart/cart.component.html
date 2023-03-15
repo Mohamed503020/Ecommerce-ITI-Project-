@@ -1,0 +1,87 @@
+<section class=" gradient-custom">
+  <div class="container py-5">
+      <div class="row d-flex justify-content-center my-4">
+          <div class="col-lg-8">
+              <div class="card mb-4 ">
+                  <div class="card-body p-5">
+                      <div class="d-flex justify-content-between align-items-center mb-5">
+                          <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                          <h4 class="mb-0 noItem">{{ProductsInCart.length}} items added</h4>
+                      </div>
+                      <hr class="my-4" />
+                      <!-- Single item -->
+                      <div class="row" *ngFor="let item of ProductsInCart">
+                          <div class="row mb-4 d-flex justify-content-between align-items-center">
+                              <div class="col-4 col-md-2 col-lg-2 col-xl-2">
+                                  <img [src]="item.images[0]"
+                                      class="img-fluid rounded-3" alt="Cotton T-shirt">
+                              </div>
+                              <div class="col-6 col-md-3 col-lg-3 col-xl-3">
+                                  <h5 class="text-muted">{{item.category}}</h5>
+                                  <h5 class="text-black mb-0">{{item.title}}</h5>
+                              </div>
+                              <div class="col-4 col-md-3 col-lg-3 col-xl-2 d-flex mt-2 text-center">
+
+                                <div class="input-group input-spinner">
+                                  <div class="quantity-selector">
+                                      <button type="button" class="btn  btn-quantity"(click)="decreaseQuantity(item)"
+                                          >
+                                          <span>-</span>
+                                      </button>
+                                      <div class="quantity-number">{{item.quantity}}</div>
+                                      <button type="button" class="btn btn-quantity" (click)="increaseQuantity(item)"
+                                          >
+                                          <span>+</span>
+                                      </button>
+                                  </div>
+                              </div>
+                              </div>
+                              <div class=" col-6 col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                  <h5 class="mb-0">{{item.totalPrice|currency}}</h5>
+                              </div>
+                              <div class="col-md-1 col-lg-1 col-xl-1 text-end" (click)="deletProductFromCart(item)">
+                                  <a class="text-muted"><i class="fa-solid fa-trash-can"></i></a>
+                              </div>
+                          </div>
+                          <hr class="my-4" />
+                      </div>
+                      <!-- Single item -->
+
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="card mb-4">
+                  <div class="card-body summary p-4">
+                      <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                      <hr class="my-4">
+                      <ul class="list-group list-group-flush">
+                          <li class="d-flex justify-content-between mb-4">
+                              <h5 class="text-uppercase">items </h5>
+                              <h5>{{ProductsInCart.length}}</h5>
+                          </li>
+                          <li class="d-flex justify-content-between mb-4">
+                              <h5 class="text-uppercase">SUBTOTAL</h5>
+                              <h5>{{subTotalPrice|currency}}</h5>
+                          </li>
+                          <li class="d-flex justify-content-between mb-4">
+                              <h5 class="text-uppercase">TAX</h5>
+                              <h5>{{TAX|currency}}</h5>
+                          </li>
+                      <hr class="my-4">
+                      <li class="d-flex justify-content-between mb-4">
+                          <h5 class="text-uppercase">Total price</h5>
+                          <h5>{{TotalPrice|currency}}</h5>
+                      </li>
+                      </ul>
+
+                      <div class="d-grid gap-2 col-12 mx-auto">
+                          <button type="button" class="btn btn-lg checkout " routerLink="/main/checkout"
+                              data-mdb-ripple-color="dark">CHECKOUT</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./productlist.component.css']
 })
 export class ProductlistComponent implements OnInit{
-  products :any[]=[]
+  products :any[]=[];
+  fliterValue:string=''
   constructor(private _ProductService:ProductService){}
   ngOnInit(): void {
   this._ProductService.getProduct().subscribe({
