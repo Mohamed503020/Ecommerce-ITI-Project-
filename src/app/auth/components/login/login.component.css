@@ -554,3 +554,7 @@ input.input100 {
   background: #333333;
   color: #fff;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}

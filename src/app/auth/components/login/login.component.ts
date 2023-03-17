@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string | undefined;
-  password: string | undefined;
+  email?: string;
+  password?: string;
 
-  login() {
+  login(item: any) {
+    console.log(item);
   }
 }
