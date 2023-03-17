@@ -12,7 +12,8 @@ import { SharedModule } from './shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { NgxImageZoomModule } from 'ngx-image-zoom';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { ContactComponent } from './components/contact/contact.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 // import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -35,7 +36,8 @@ import { AboutComponent } from './components/about/about.component';
     FontAwesomeModule,
     HttpClientModule,
     NgxImageZoomModule,
-    FormsModule,
+    // FormsModule,
+    // ReactiveFormsModule,
     HotToastModule.forRoot(),
     // SweetAlert2Module.forRoot()
   ],

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { CartRoutingModule } from './cart-routing.module';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { SharedModule } from './../shared/shared.module';
 
 
 
@@ -13,7 +14,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     CommonModule,
     CartRoutingModule,
     FormsModule,
-   HotToastModule
+   HotToastModule,
+   SharedModule
   ]
 })
 export class CartModule { }

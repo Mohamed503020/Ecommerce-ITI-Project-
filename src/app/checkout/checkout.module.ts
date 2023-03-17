@@ -9,6 +9,7 @@ import { AddressComponent } from './components/address/address.component';
 import { MyOrderSidebarComponent } from './components/myOrderSidebar/myOrderSidebar.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { DoneOrderComponent } from './components/done-order/done-order.component';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { DoneOrderComponent } from './components/done-order/done-order.component
     MatStepperModule,
     ReactiveFormsModule,
     FormsModule,
-    
+    SharedModule
   ]
 })
 export class CheckoutModule { }
