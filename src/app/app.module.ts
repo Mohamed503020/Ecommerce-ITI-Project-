@@ -17,12 +17,14 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ContactComponent } from './components/contact/contact.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 // import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AboutComponent } from './components/about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
     MainlayoutComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

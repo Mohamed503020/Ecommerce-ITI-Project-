@@ -5,7 +5,7 @@
         <form class="login100-form validate-form" 
         #loginForm="ngForm"
         (ngSubmit)="(loginForm.value)">
-          <div class="d-flex align-items-center mb-3 pb-1">
+          <div class="d-flex align-items-center  " style="margin-top: -80px;">
             <i class="fa-solid fa-1x fa-cart-shopping" style="color: orange"
               >&nbsp;<span style="font-size: 15px">Store</span></i
             >
@@ -75,11 +75,11 @@
                 type="checkbox"
                 name="remember-me"
               />
-              <label class="label-checkbox100" for="ckb1"> Remember me </label>
+              <label class="label-checkbox100" for="ckb1" style="margin-top: -30px;"> Remember me </label>
             </div>
             <br />
             <div>
-              <a href="#" class="txt1"> Forgot Password? </a>
+              <a href="#" class="txt1" style="color:blue"> Forgot Password? </a>
             </div>
           </div>
 
@@ -87,7 +87,7 @@
           <div class="container-login100-form-btn">
             <button
             class="login100-form-btn"
-            style="font-size: 20px"
+            style="font-size: 20px;border-radius: 20px;"
             [disabled]="loginForm.invalid"
             routerLink="/main/products"
           >

@@ -9,6 +9,7 @@ import { CartService } from 'src/app/cart/services/cart.service';
 })
 export class WishlistListComponent implements OnInit {
   //
+  route="Wishlist"
   productInWhislis:any;
   constructor(
     private _wishlisService:WishlistService,

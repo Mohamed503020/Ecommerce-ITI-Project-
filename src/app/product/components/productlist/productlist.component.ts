@@ -8,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductlistComponent implements OnInit{
   products :any[]=[];
-  fliterValue:string=''
+  fliterValue:string='';
+  items=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+  Loading: boolean = false;
   constructor(private _ProductService:ProductService){}
   ngOnInit(): void {
   this._ProductService.getProduct().subscribe({
     next:(data)=>{
-      this.products=data.products
+      this.products=data.products;
+      this.Loading=true;
     }
   })
   }
