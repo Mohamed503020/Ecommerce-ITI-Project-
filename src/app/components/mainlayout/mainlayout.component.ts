@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./mainlayout.component.css']
 })
 export class MainlayoutComponent {
-
+  class1="class1"
 }

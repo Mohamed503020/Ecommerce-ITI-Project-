@@ -12,7 +12,7 @@
                           <i class="fa-solid fa-truck-moving"></i>
                           <span>Track your order</span>
                       </a>
-                      <a href="#">
+                      <a routerLink="/main/location">
                           <i class="fa-solid fa-location-dot"></i>
                           <span>Locate Store</span>
                       </a>
@@ -72,14 +72,12 @@
                   <div class="">
                       <form action="#" class="">
                           <div class="input-group">
-                              <input type="search" class="form-control" style="width:55%" placeholder="Search">
+                              <input type="search" name="search" [(ngModel)]="searchQuery" class="form-control" style="width:55%" placeholder="Search">
                               <select class="form-select">
-                                  <option value="">All type</option>
-                                  <option value="codex">Special</option>
-                                  <option value="comments">Only best</option>
-                                  <option value="content">Latest</option>
+                                  <option value="" selected>All type</option>
+                                  <option [value]="category" *ngFor="let category of categories">{{category}}</option>
                               </select>
-                              <button class="btn btn-warning">
+                              <button class="btn btn-warning" >
                                   <i class="fa fa-search"></i>
                               </button>
                           </div>

@@ -26,9 +26,9 @@
             </div>
             <div class="thumbnail_images">
               <ul id="thumbnail">
-                <li *ngFor="let img of product?.images">
-                  <img (click)="changeImg(img)"
-                    [src]="img"
+                <li *ngFor="let src of product.images">
+                  <img (click)="changeImg(src)"
+                    [src]="src" alt="img"
                     width="70" height="60"
                   />
 
@@ -41,13 +41,13 @@
         <div class="col-md-6">
           <div class="p-3 right-side">
             <div class="d-flex justify-content-between align-items-center">
-              <h2>{{product?.title}} </h2>
+              <h2>{{product.name}} </h2>
               <span class="heart"><i  class="me-1 fa fa-heart text-danger"></i></span>
             </div>
-            <h3>{{product?.price|currency}}</h3>
+            <h3>{{product.price|currency}}</h3>
             <div class="mt-2 pr-3 content">
               <p>
-       {{product?.description}}
+       {{product.description}}
               </p>
             </div>
             <h3></h3>
@@ -55,7 +55,7 @@
               <div class="d-flex flex-row">
                 <img src="assets/images/stars-active.svg" alt="">
               </div>
-              <span>{{product?.rating}}</span>
+              <span>{{product.rate}}</span>
             </div>
 
             <div class="row mb-4">
