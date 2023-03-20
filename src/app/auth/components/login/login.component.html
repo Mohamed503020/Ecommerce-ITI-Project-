@@ -2,8 +2,10 @@
   <div class="container-login100">
     <div class="col-11 col-md-10 col-lg-12">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" (ngSubmit)="login()">
-          <div class="d-flex align-items-center mb-3 pb-1">
+        <form class="login100-form validate-form" 
+        #loginForm="ngForm"
+        (ngSubmit)="(loginForm.value)">
+          <div class="d-flex align-items-center  " style="margin-top: -80px;">
             <i class="fa-solid fa-1x fa-cart-shopping" style="color: orange"
               >&nbsp;<span style="font-size: 15px">Store</span></i
             >
@@ -14,16 +16,27 @@
 
           <br />
           <br />
-
           <div class="form-outline mb-4">
             <label class="form-label" for="form3Example3cg">Email</label>
             <input
               type="email"
-              id="form3Example3cg"
+              name="email"
+              ngModel
               class="form-control form-control-lg"
+              #email="ngModel"
+              placeholder="Enter Email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               required
-              [(ngModel)]="email"
             />
+
+            <div *ngIf="email.touched">
+              <p *ngIf="email.errors?.['required']" style="color: red">
+                Email is a required field!
+              </p>
+              <p *ngIf="email.errors?.['pattern']" style="color: red">
+                This is not a valid Email !
+              </p>
+            </div>
           </div>
 
           <br />
@@ -31,12 +44,26 @@
           <div class="form-outline mb-4">
             <label class="form-label" for="form3Example4cg">Password</label>
             <input
+              name="password"
               type="password"
               id="form3Example4cg"
               class="form-control form-control-lg"
               required
               [(ngModel)]="password"
+              minlength="8"
+              #p="ngModel"
+              ngModel
+              pattern=".{8,}"
+              placeholder="Enter Password"
             />
+            <div *ngIf="p.touched">
+              <p *ngIf="p.errors?.['required']" style="color: red">
+                Password is a required field!
+              </p>
+              <p *ngIf="p.errors?.['pattern']" style="color: red">
+                This is not a valid Password !
+              </p>
+            </div>
           </div>
           <br />
           <div class="flex-sb-m w-full p-t-3 p-b-32">
@@ -48,23 +75,24 @@
                 type="checkbox"
                 name="remember-me"
               />
-              <label class="label-checkbox100" for="ckb1"> Remember me </label>
+              <label class="label-checkbox100" for="ckb1" style="margin-top: -30px;"> Remember me </label>
             </div>
             <br />
             <div>
-              <a href="#" class="txt1"> Forgot Password? </a>
+              <a href="#" class="txt1" style="color:blue"> Forgot Password? </a>
             </div>
           </div>
 
           <br />
           <div class="container-login100-form-btn">
             <button
-              class="login100-form-btn"
-              style="font-size: 20px"
-              routerLink="/main/products"
-            >
-              Login
-            </button>
+            class="login100-form-btn"
+            style="font-size: 20px;border-radius: 20px;"
+            [disabled]="loginForm.invalid"
+            routerLink="/main/products"
+          >
+            Login
+          </button>
           </div>
           <br />
           <div class="text-center p-t-46 p-b-20">
