@@ -7,12 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  email: string | undefined;
-  password: string | undefined;
-  username: string | undefined;
+  email?: string;
+  password?: string;
+  Fullname?: string;
 
-  onSubmit() {
 
+  onSubmit(item: any) {
+    console.log(item);
 
   }
 }

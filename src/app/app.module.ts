@@ -18,6 +18,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 // import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AboutComponent } from './components/about/about.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import { AboutComponent } from './components/about/about.component';
     FontAwesomeModule,
     HttpClientModule,
     NgxImageZoomModule,
-    // FormsModule,
+    FormsModule,
     // ReactiveFormsModule,
     HotToastModule.forRoot(),
     // SweetAlert2Module.forRoot()

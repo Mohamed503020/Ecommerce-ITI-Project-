@@ -5,4 +5,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  ufname?:string;
+  LaName?:string;
+  EEmail?:string;
+
+
+
+
+
+
+  onSubmit(item: any): void {
+    console.log(item);
+
+  }
 }

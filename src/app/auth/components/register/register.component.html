@@ -1,72 +1,153 @@
 <div class="limiter" style="background-color: #666666">
   <div class="container-login100">
     <div class="col-11 col-md-10 col-lg-12">
-    <div class="wrap-login100">
-      <form (ngSubmit)="onSubmit()" class="login100-form validate-form ">
-        <div class="d-flex align-items-center  "style="margin-top:-50px;">
-          <i class="fa-solid fa-1x fa-cart-shopping" style="color: orange"
-            >&nbsp;<span style="font-size: 15px">Store</span></i
-          >
-        </div>
-        <span class="login100-form-title p-b-43">
-         <span class="login p-b-80">Sign up</span>
-        </span>
-        <br />
-
-        <div class="form-outline mb-4">
-          <label class="form-label" for="form3Example3cg">Username</label>
-          <input type="text" name="username" required [(ngModel)]="username" class="form-control form-control-lg"
-           />
-        </div>
-
-
-        <br />
-        <div class="form-outline mb-4">
-          <label class="form-label" for="form3Example3cg">Email</label>
-          <input type="email" id="form3Example3cg" class="form-control form-control-lg"  required
-          [(ngModel)]="email" />
-        </div>
-
-        <br />
-        <div class="form-outline mb-4">
-          <label class="form-label" for="form3Example4cg">Password</label>
-          <input type="password" id="form3Example4cg" class="form-control form-control-lg"required
-          [(ngModel)]="password" />
-        </div>
-        <br />
-
-       <div class="gender">
-        Gender: <input type="radio" name="gender" value="male"> Male
-        <input type="radio" name="gender" value="female"> Female
-        </div>
-          <br>
-        <div class="form-group">
-          <label for="exampleFormControlFile1"></label>
-          <input
-            type="file"
-            class="form-control-file"
-            id="exampleFormControlFile1"
-          />
-        </div>
-
-        <br />
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn" style="font-size: 20px" routerLink="/main/products">
-            Register
-          </button>
-        </div>
-        <br />
-        <div class="text-center p-t-46 p-b-20">
-          <span class="txt2" style="font-size: 15px">
-            Already have an account?
-            <a href="" style="font-size: 20px" routerLink="/auth/login"> Login now </a>
+      <div class="wrap-login100">
+        <form
+          (ngSubmit)="onSubmit(registerForm.value)"
+          #registerForm="ngForm"
+          class="login100-form validate-form"
+        >
+          <div class="d-flex align-items-center" style="margin-top: -130px">
+            <i class="fa-solid fa-1x fa-cart-shopping" style="color: orange"
+              >&nbsp;<span style="font-size: 15px">Store</span></i
+            >
+          </div>
+          <span class="login100-form-title p-b-43">
+            <span class="login p-b-80">Sign up</span>
           </span>
-        </div>
-      </form>
+          <br />
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3cg">Fullname</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter Name"
+              required
+              ngModel
+              #user="ngModel"
+              [(ngModel)]="Fullname"
+              class="form-control form-control-lg"
+              pattern="^[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$"
+            />
+            <div *ngIf="user.touched">
+              <p *ngIf="user.errors?.['required']" style="color: red">
+                Fullname is a required field!
+              </p>
+              <p *ngIf="user.errors?.['pattern']" style="color: red">
+                Enter a name with at least three letters !
+              </p>
+            </div>
+          </div>
 
-      <div class="login100-more" style="background-image: url('../../../../assets/images/0.jpg')"></div>
+          <br />
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3cg">Email</label>
+            <input
+              type="email"
+              name="email"
+              ngModel
+              class="form-control form-control-lg"
+              #email="ngModel"
+              placeholder="Enter Email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              required
+            />
+
+            <div *ngIf="email.touched">
+              <p *ngIf="email.errors?.['required']" style="color: red">
+                Email is a required field!
+              </p>
+              <p *ngIf="email.errors?.['pattern']" style="color: red">
+                This is not a valid Email !
+              </p>
+            </div>
+          </div>
+
+          <br />
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example4cg">Password</label>
+            <input
+              name="password"
+              type="password"
+              id="form3Example4cg"
+              class="form-control form-control-lg"
+              required
+              [(ngModel)]="password"
+              minlength="8"
+              #p="ngModel"
+              ngModel
+              pattern=".{8,}"
+              placeholder="Enter Password"
+            />
+            <div *ngIf="p.touched">
+              <p *ngIf="p.errors?.['required']" style="color: red">
+                Password is a required field!
+              </p>
+              <p *ngIf="p.errors?.['pattern']" style="color: red">
+                This is not a valid Password !
+              </p>
+            </div>
+          </div>
+          <br />
+
+          <div class="gender" style="margin-top: -20px;">
+            Gender:
+            <input
+              name="gender"
+              type="radio"
+              required
+              ngModel
+              #g="ngModel"
+              name="gender"
+              value="male"
+            />
+            Male <input type="radio" name="gender" value="female" /> Female
+
+            <div *ngIf="g.touched">
+              <p *ngIf="g.errors?.['required']" style="color: red">
+                Gender is a required field!
+              </p>
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="exampleFormControlFile1"></label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="exampleFormControlFile1"
+            />
+          </div>
+
+          <br />
+          <div class="container-login100-form-btn">
+            <button
+              class="login100-form-btn"
+              style="font-size: 20px ; border-radius: 20px;"
+              [disabled]="registerForm.invalid"
+              routerLink="/main/products"
+            >
+              Register
+            </button>
+          </div>
+          <br />
+          <div class="text-center p-t-46 p-b-20">
+            <span class="txt2" style="font-size: 15px">
+              Already have an account?
+              <a href="" style="font-size: 20px" routerLink="/auth/login">
+                Login now
+              </a>
+            </span>
+          </div>
+        </form>
+
+        <div
+          class="login100-more"
+          style="background-image: url('../../../../assets/images/0.jpg')"
+        ></div>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
