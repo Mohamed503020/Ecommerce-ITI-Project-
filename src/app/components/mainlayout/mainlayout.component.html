@@ -1,3 +1,20 @@
 <app-header></app-header>
+<li class="nav-item dropdown"><a
+  class="nav-link dropdown-toggle " id="navbarDropdownMenuLink"
+  data-toggle="dropdown" style="color: white; cursor: pointer;"
+  [routerLinkActive]="['class1']">Parent</a>
+  <div class="dropdown-menu dropdown-menu-left"
+      aria-labelledby="navbarDropdownMenuLink">
+      <a class="dropdown-item"
+          [routerLink]="['app-child1']"
+          [routerLinkActive]="['class1']"
+          >Child 1</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item"
+          [routerLink]="['app-child2']"
+          [routerLinkActive]="['class1']"
+          >Child 2</a>
+  </div>
+</li>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

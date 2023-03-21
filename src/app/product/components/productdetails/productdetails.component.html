@@ -5,33 +5,35 @@
       <div class="row g-0">
         <div class="col-md-6 border-end border-start">
           <div class="d-flex flex-column justify-content-center">
-            <div class="main_image p-2 me-3">
+            <div class="main_image p-2 me-3 ">
               <!-- <img (mousemove)="ZoomImage($event)"
                 src="https://i.imgur.com/TAzli1U.jpg"
                 id="main_product_image"
                 width="300"
               /> -->
+
               <div class="">
                 <lib-ngx-image-zoom
-                  [thumbImage]="ImgUrl"
-                  [fullImage]="ImgUrl"
-                  [magnification]="2"
-                  [enableScrollZoom]="true"
-                  [enableLens]="true"
-                  [lensWidth]="200"
-                ></lib-ngx-image-zoom>
+                [thumbImage]="ImgUrl"
+                [fullImage]="ImgUrl"
+                [magnification]="2"
+                [enableScrollZoom]="true"
+                [enableLens]="true"
+                [lensWidth]="200"
+            ></lib-ngx-image-zoom>
               </div>
+
             </div>
             <div class="thumbnail_images">
               <ul id="thumbnail">
-                <li *ngFor="let img of product?.images">
-                  <img
-                    (click)="changeImg(img)"
-                    [src]="img"
-                    width="70"
-                    height="60"
+                <li *ngFor="let src of product!.images">
+                  <img (click)="changeImg(src)"
+                    [src]="src"
+                    width="70" height="60"
                   />
+
                 </li>
+
               </ul>
             </div>
           </div>
@@ -39,100 +41,90 @@
         <div class="col-md-6">
           <div class="p-3 right-side">
             <div class="d-flex justify-content-between align-items-center">
-              <h2>{{ product?.title }}</h2>
-              <span class="heart"
-                ><i class="me-1 fa fa-heart text-danger"></i
-              ></span>
+              <h2>{{product.name}} </h2>
+              <span class="heart"><i  class="me-1 fa fa-heart text-danger"></i></span>
             </div>
-            <h3>{{ product?.price | currency }}</h3>
+            <h3>{{product.price|currency}}</h3>
             <div class="mt-2 pr-3 content">
               <p>
-                {{ product?.description }}
+       {{product.description}}
               </p>
             </div>
             <h3></h3>
-            <div class="ratings d-flex flex-row align-items-center mb-2">
+       <div class="ratings d-flex flex-row align-items-center mb-2">
               <div class="d-flex flex-row">
-                <img src="assets/images/stars-active.svg" alt="" />
+                <img src="assets/images/stars-active.svg" alt="">
               </div>
-              <span>{{ product?.rating }}</span>
+              <span>{{product.rate}}</span>
             </div>
 
             <div class="row mb-4">
               <div class="col-md-4 col-6 mb-2">
-                <label class="form-label">Size</label>
-                <select class="form-select">
-                  <option>Small</option>
-                  <option>Medium</option>
-                  <option>Large</option>
-                </select>
+                  <label class="form-label">Size</label>
+                  <select class="form-select">
+                      <option>Small</option>
+                      <option>Medium</option>
+                      <option>Large</option>
+                  </select>
               </div>
-              <div class="col-md-4 col-6 mb-2">
-                <label class="form-label d-block">Quantity</label>
-                <div class="input-group input-spinner">
-                  <div class="quantity-selector">
-                    <button
-                      type="button"
-                      class="btn btn-quantity"
-                      (click)="updateCartItemQuantity(quantity, product, '-')"
-                      [disabled]="quantity == 1"
-                    >
-                      <span>-</span>
-                    </button>
-                    <div class="quantity-number">{{ quantity }}</div>
-                    <button
-                      type="button"
-                      class="btn btn-quantity"
-                      (click)="updateCartItemQuantity(quantity!, product, '+')"
-                    >
-                      <span>+</span>
-                    </button>
+              <div class="col-md-4 col-6 mb-2 " >
+                  <label class="form-label d-block">Quantity</label>
+                  <div class="input-group input-spinner">
+                      <div class="quantity-selector">
+                          <button type="button" class="btn  btn-quantity"
+                              (click)="updateCartItemQuantity(quantity , product  , '-')"
+                              [disabled]=" quantity == 1">
+                              <span>-</span>
+                          </button>
+                          <div class="quantity-number">{{quantity}}</div>
+                          <button type="button" class="btn btn-quantity"
+                              (click)="updateCartItemQuantity(quantity! , product  , '+')">
+                              <span>+</span>
+                          </button>
+                      </div>
                   </div>
-                </div>
               </div>
-            </div>
+          </div>
             <div class="buttons d-flex flex-row 2 gap-3">
-              <button
-                class="btn btn-warning me-2"
-                (click)="$event.preventDefault(); addProductToCart(product)"
-              >
-                <i class="me-1 fa fa-shopping-basket"></i>
-                Add to cart
-              </button>
-              <button
-                (click)="$event.preventDefault(); addProductToWishList(product)"
-                class="btn btn-light me-2"
-              >
-                <i class="fa-regular fa-heart text-danger"></i>
-                Save
-              </button>
+              <button class="btn  btn-warning me-2 "
+              (click)="$event.preventDefault(); addProductToCart(product)">
+              <i class="me-1 fa fa-shopping-basket"></i>
+              Add to cart
+          </button>
+          <button (click)="$event.preventDefault(); addProductToWishList(product)" class="btn  btn-light me-2">
+              <i class="fa-regular fa-heart text-danger"></i>
+              Save
+          </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="my-5">
+    <div class="my-5 ">
+
       <div class="title text-md-center mb-2">
         <span>best match</span>
         <h4 class="text-dark">Related products</h4>
-      </div>
-      <div class="row">
-        <div
-          class="col-6 col-sm-8 col-md-6 col-lg-2"
-          style="padding: 15px 7.5px"
-          *ngFor="let item of productsOfCategory"
-        >
-          <app-products [product]="item"></app-products>
-        </div>
-      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 col-sm-8 col-md-6 col-lg-2" style="padding: 15px 7.5px;"
+      *ngFor="let item of productsOfCategory " >
+      <app-products [product]="item"></app-products>
+    </div>
 
-      <!-- <owl-carousel-o [options]="slider3Settings" #myCarousel>
+    </div>
+
+     <!-- <owl-carousel-o [options]="slider3Settings" #myCarousel>
         <ng-container class="col-md-2 col-6" *ngFor="let item of productsOfCategory">
             <ng-template carouselSlide [id]="item.id">
               <app-products [product]="item"></app-products>
             </ng-template>
         </ng-container>
     </owl-carousel-o>  -->
-    </div>
+
+</div>
   </div>
+
+
 </section>
+

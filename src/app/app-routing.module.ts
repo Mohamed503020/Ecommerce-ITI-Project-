@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
+import { LocationComponent } from './components/location/location.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,8 @@ const routes: Routes = [
       loadChildren: () => import("../app/user/user.module").then(m => m.UserModule)
     },
     {path:"contact",component:ContactComponent},
-    {path:"about",component:AboutComponent}
+    {path:"about",component:AboutComponent},
+     {path:"location",component:LocationComponent}
   ]}
 
   , {
