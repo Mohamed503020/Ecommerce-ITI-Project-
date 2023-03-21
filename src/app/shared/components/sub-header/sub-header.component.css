@@ -1,0 +1,24 @@
+/* sub Header  */
+
+.breadcrumb.ondark .breadcrumb-item {
+    color: #fff;
+  }
+  
+  .breadcrumb.ondark a {
+    color: inherit;
+    opacity: .75;
+  }
+  
+  .breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: 0.7rem;
+    color: rgba(33, 37, 41, 0.3);
+    content: var(--bs-breadcrumb-divider, "❯");
+  }
+  
+  .breadcrumb.ondark .breadcrumb-item::before {
+    color: #fff;
+    opacity: .6;
+  }
+  
+  /* end  sub Header  */

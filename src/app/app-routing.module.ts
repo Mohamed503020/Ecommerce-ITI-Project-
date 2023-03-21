@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
   },
 
   {path:"",redirectTo:"/main/products",pathMatch:"full"},
+
   {path:"main",component:MainlayoutComponent,children:[
     {path:"",redirectTo:"products",pathMatch:"full"},
     {
@@ -35,12 +37,13 @@ const routes: Routes = [
       path: "user",
       loadChildren: () => import("../app/user/user.module").then(m => m.UserModule)
     },
-    {path:"contact",component:ContactComponent}
+    {path:"contact",component:ContactComponent},
+    {path:"about",component:AboutComponent}
   ]}
 
-,{
-  path:"**",component:NotFoundComponent
-}
+  , {
+    path: "**", component: NotFoundComponent
+  }
 ];
 
 @NgModule({

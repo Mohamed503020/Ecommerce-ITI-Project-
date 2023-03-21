@@ -1,14 +1,4 @@
-<section class="bg-warning padding-y-sm rounded ">
-  <div class="container">
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"> <a routerLink="/main/products">Products /</a></li>
-        <li class="breadcrumb-item active" aria-current="page"> {{product?.title}}</li>
-      </ol>
-    </nav>
-  </div>
-</section>
-
+<app-sub-header [route]="route"></app-sub-header>
 <section>
   <div class="container mb-1 border-end">
     <div class="card shadow-1-strong">
@@ -21,6 +11,7 @@
                 id="main_product_image"
                 width="300"
               /> -->
+
               <div class="">
                 <lib-ngx-image-zoom
                 [thumbImage]="ImgUrl"

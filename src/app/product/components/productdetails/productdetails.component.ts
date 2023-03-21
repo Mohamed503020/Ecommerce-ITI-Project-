@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit,OnDestroy {
+  route="Product"
   backgroundPos: string = 'center center';
   @ViewChild("myCarousel") myCarousel!: ElementRef;
   slider3Settings: OwlOptions = {

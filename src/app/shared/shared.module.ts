@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CartComponent } from '../cart/components/cart/cart.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SubHeaderComponent } from './components/sub-header/sub-header.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     CartComponent,
     WishlistComponent,
     NotFoundComponent,
+    SubHeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   ],
   exports:[
      HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SubHeaderComponent
   ]
 })
 export class SharedModule { }

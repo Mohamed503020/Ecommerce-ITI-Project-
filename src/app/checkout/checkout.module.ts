@@ -11,6 +11,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { DoneOrderComponent } from './components/done-order/done-order.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,8 @@ import {MatInputModule} from '@angular/material/input';
     ReactiveFormsModule,
     FormsModule,
     MatAutocompleteModule,
-    MatInputModule
-    
+    MatInputModule,
+    SharedModule
   ]
 })
 export class CheckoutModule { }
