@@ -3,7 +3,7 @@
     <div class="col-11 col-md-10 col-lg-12">
       <div class="wrap-login100">
         <form
-          (ngSubmit)="onSubmit(registerForm.value)"
+          (ngSubmit)="saveUser()"
           #registerForm="ngForm"
           class="login100-form validate-form"
         >
@@ -20,12 +20,12 @@
             <label class="form-label" for="form3Example3cg">Fullname</label>
             <input
               type="text"
-              name="username"
+              name="name"
               placeholder="Enter Name"
               required
               ngModel
               #user="ngModel"
-              [(ngModel)]="Fullname"
+              [(ngModel)]="userData.name"
               class="form-control form-control-lg"
               pattern="^[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$"
             />
@@ -46,7 +46,7 @@
             <input
               type="email"
               name="email"
-              ngModel
+              [(ngModel)]="userData.email"
               class="form-control form-control-lg"
               #email="ngModel"
               placeholder="Enter Email"
@@ -74,10 +74,9 @@
               id="form3Example4cg"
               class="form-control form-control-lg"
               required
-              [(ngModel)]="password"
+              [(ngModel)]="userData.password"
               minlength="8"
               #p="ngModel"
-              ngModel
               pattern=".{8,}"
               placeholder="Enter Password"
             />
@@ -98,7 +97,7 @@
               name="gender"
               type="radio"
               required
-              ngModel
+              [(ngModel)]="userData.gender"
               #g="ngModel"
               name="gender"
               value="male"
@@ -116,8 +115,10 @@
             <label for="exampleFormControlFile1"></label>
             <input
               type="file"
+              name="'image"
               class="form-control-file"
               id="exampleFormControlFile1"
+              [(ngModel)]="userData.image"
             />
           </div>
 
