@@ -1,5 +1,5 @@
 export interface User {
-  image:string,
+  image:any,
   name:string,
   email:string,
   password:string,

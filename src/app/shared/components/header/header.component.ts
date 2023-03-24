@@ -2,7 +2,8 @@ import { ProductService } from './../../../product/services/product.service';
 import { WishlistService } from './../../../wishlist-list/services/wishlist.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/services/cart.service';
-import { NavigationExtras, Router } from '@angular/router';
+import {  Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit {
     private _cartService:CartService,
     private _wishlistService:WishlistService,
     private _productService:ProductService,
-    private router:Router
+    private router:Router,
+    private _authsrv:AuthService
     ){}
    cartitem:any;
    wishlistItem:any;
@@ -23,6 +25,7 @@ export class HeaderComponent implements OnInit {
    searchQuery='';
    searchResults:any;
    categories:any;
+   logged:boolean=false;
    //header stiky
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
@@ -37,8 +40,18 @@ export class HeaderComponent implements OnInit {
  this.wishlistItem=   this._wishlistService.getwishlistItems()
    this.cartitem= this._cartService.getCartItems()
   //  this.getCategires()
-  }
+if(localStorage.getItem('user')){
+  this.logged=true
+}
+else{this.logged=false}
+}
 
+
+
+logout(){
+this._authsrv.islogin.next(false);
+
+}
   // searchProducts() {
   //   if (this.searchQuery.length > 0) {
   //     this._productService.getProduct().subscribe((data) => {
@@ -58,5 +71,7 @@ export class HeaderComponent implements OnInit {
   //   this._productService.getAllCategory().subscribe({
   //     next:data=>{this.categories=data}
   //   })
-  // }
+  // }s
+
+
 }

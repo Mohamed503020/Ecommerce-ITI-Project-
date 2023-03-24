@@ -26,7 +26,7 @@
             </div>
             <div class="thumbnail_images">
               <ul id="thumbnail">
-                <li *ngFor="let src of product!.images">
+                <li *ngFor="let src of product.images">
                   <img (click)="changeImg(src)"
                     [src]="src"
                     width="70" height="60"

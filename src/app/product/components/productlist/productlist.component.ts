@@ -17,6 +17,7 @@ export class ProductlistComponent implements OnInit{
     next:(data)=>{
       this.products=data;
       this.Loading=true;
+      console.log(data)
     }
   })
   }

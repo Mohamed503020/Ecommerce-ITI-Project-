@@ -18,37 +18,17 @@
                       </a>
                   </div>
               </div>
-
-              <div class="col order-2 order-xs-2 order-lg-12 mt-10 mb-10">
-                  <div class="header-account-links">
-                      <a href="#">
-                          <i class="fa-solid fa-circle-question"></i>
-                          <span>Help</span>
-                      </a>
-                      <a routerLink="/auth" >
-                          <i class="fa-solid fa-right-to-bracket"></i>
-                          <span>Login</span>
-                      </a>
-                      <a routerLink="/user" class="d-flex userProfile-Link">
-                          <img src="assets/images/avatar.jpg"
-                              class="d-inline rounded-circle" width="32" height="32" alt="avater" srcset="">
-                          <span class="d-lg-none d-sm-inline">My Profile</span>
-                      </a>
-
-                  </div>
-              </div>
-
         <div class="col order-2 order-xs-2 order-lg-12 mt-10 mb-10">
           <div class="header-account-links">
             <a routerLink="/main/contact">
               <i class="fa-solid fa-circle-question"></i>
               <span>Help</span>
             </a>
-            <a routerLink="/auth">
+            <a routerLink="/auth" *ngIf="!logged">
               <i class="fa-solid fa-right-to-bracket"></i>
               <span>Login</span>
             </a>
-            <a routerLink="/user" class="d-flex userProfile-Link">
+            <a routerLink="/main/user" class="d-flex userProfile-Link" *ngIf="logged">
               <img
                 src="assets/images/avatar.jpg"
                 class="d-inline rounded-circle"
