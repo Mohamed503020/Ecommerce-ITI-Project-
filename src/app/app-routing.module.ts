@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { MainlayoutComponent } from './components/mainlayout/mainlayout.component';
 import { NgModule } from '@angular/core';
@@ -5,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
+import { LocationComponent } from './components/location/location.component';
 
 const routes: Routes = [
   {
@@ -23,22 +25,23 @@ const routes: Routes = [
 
     {
       path: "cart",
-      loadChildren: () => import("../app/cart/cart.module").then(m => m.CartModule)
+      loadChildren: () => import("../app/cart/cart.module").then(m => m.CartModule),canActivate:[AuthGuard]
     },
     {
       path: "wishlist",
-      loadChildren: () => import("../app/wishlist-list/wishlist-list.module").then(m => m.WishlistListModule)
+      loadChildren: () => import("../app/wishlist-list/wishlist-list.module").then(m => m.WishlistListModule),canActivate:[AuthGuard]
     },
     {
       path: "checkout",
-      loadChildren: () => import("../app/checkout/checkout.module").then(m => m.CheckoutModule)
+      loadChildren: () => import("../app/checkout/checkout.module").then(m => m.CheckoutModule),canActivate:[AuthGuard]
     },
     {
       path: "user",
-      loadChildren: () => import("../app/user/user.module").then(m => m.UserModule)
+      loadChildren: () => import("../app/user/user.module").then(m => m.UserModule),canActivate:[AuthGuard]
     },
-    {path:"contact",component:ContactComponent},
-    {path:"about",component:AboutComponent}
+    {path:"contact",component:ContactComponent,canActivate:[AuthGuard]},
+    {path:"about",component:AboutComponent},
+     {path:"location",component:LocationComponent}
   ]}
 
   , {
