@@ -12,6 +12,8 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { FilterProductPipe } from './pipes/filter-product.pipe';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
+import { SearchProductsComponent } from './components/search-products/search-products.component';
+import { ProductsOfCategoryComponent } from './components/products-of-category/products-of-category.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { SharedModule } from './../shared/shared.module';
     ProductlistComponent,
     ProductsComponent,
     ProductdetailsComponent,
-    FilterProductPipe
+    FilterProductPipe,
+    SearchProductsComponent,
+    ProductsOfCategoryComponent
   ],
   imports: [
     CommonModule,

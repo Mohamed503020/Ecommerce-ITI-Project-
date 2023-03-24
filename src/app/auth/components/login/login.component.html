@@ -2,9 +2,10 @@
   <div class="container-login100">
     <div class="col-11 col-md-10 col-lg-12">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" 
+        <form class="login100-form validate-form"
         #loginForm="ngForm"
-        (ngSubmit)="(loginForm.value)">
+        (ngSubmit)="Userlogin()">
+        <h1 *ngIf="errorAuthLogin" class="text-center  text-danger">{{errorAuthLogin}}</h1>
           <div class="d-flex align-items-center  " style="margin-top: -80px;">
             <i class="fa-solid fa-1x fa-cart-shopping" style="color: orange"
               >&nbsp;<span style="font-size: 15px">Store</span></i
@@ -21,20 +22,20 @@
             <input
               type="email"
               name="email"
-              ngModel
+              [(ngModel)]="email"
               class="form-control form-control-lg"
-              #email="ngModel"
-              placeholder="Enter Email"
+              #emaill="ngModel"
+              placeholder="Enter Emaill"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               required
             />
 
-            <div *ngIf="email.touched">
-              <p *ngIf="email.errors?.['required']" style="color: red">
-                Email is a required field!
+            <div *ngIf="emaill.touched">
+              <p *ngIf="emaill.errors?.['required']" style="color: red">
+                Emaill is a required field!
               </p>
-              <p *ngIf="email.errors?.['pattern']" style="color: red">
-                This is not a valid Email !
+              <p *ngIf="emaill.errors?.['pattern']" style="color: red">
+                This is not a valid Emaill !
               </p>
             </div>
           </div>
@@ -89,7 +90,6 @@
             class="login100-form-btn"
             style="font-size: 20px;border-radius: 20px;"
             [disabled]="loginForm.invalid"
-            routerLink="/main/products"
           >
             Login
           </button>

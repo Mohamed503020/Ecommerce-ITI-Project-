@@ -96,7 +96,7 @@
         </header>
         <div class="row" *ngIf="Loading==true">
           <div class="col-6 col-sm-8 col-md-6 col-lg-2" style="padding: 15px 7.5px;"
-          *ngFor="let item of products | filterProduct : fliterValue" >
+          *ngFor="let item of products " >
           <app-products [product]="item"></app-products>
         </div>
     </div>

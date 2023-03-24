@@ -7,7 +7,7 @@
         <div class="row dark rounded">
             <!-- img -->
             <div class="col-3 p-2">
-              <img src="https://previews.123rf.com/images/gmast3r/gmast3r1411/gmast3r141100276/33645456-profile-icon-male-avatar-portrait-casual-person.jpg" class="img-fluid rounded-circle bg-warning p-1 sideimg" alt="">          
+              <img [src]="user.image" class="img-fluid rounded-circle bg-warning p-1 sideimg" alt="">
             </div>
             <!-- name -->
             <div class="col-9 mt-4">
@@ -19,7 +19,7 @@
             <a href="" class="alink p-1 m-3" routerLink="/main/cart"  >My Orders</a><br>
             <a href="" class="alink p-1 m-3" routerLink="/main/wishlist">wishlist</a>
             <hr>
-            <a href="" class="alog p-1 m-3">Log Out</a>
+            <a href="" class="alog p-1 m-3" (click)="logout()">Log Out</a>
           </div>
         </div>
     </div>
@@ -31,27 +31,23 @@
           <!-- itemds -->
           <div class="border-top border-bottom border-end col-8">
             <div class="row">
-              <h3 class="col-4 m-3 mr-0 var">Frist Name</h3>
-              <h3 class="col-lg-5 col-sm-12 m-3  m-3 value">Jonathan</h3>
-            </div>
-            <div class="row">
-              <h3 class="col-4 m-3 mr-0 var">Last Name</h3>
-              <h3 class="col-lg-5 col-sm-12 m-3  m-3 value">Parsons</h3>
+              <h3 class="col-4 m-3 mr-0 var"> Name</h3>
+              <h3 class="col-lg-5 col-sm-12 m-3  m-3 value">{{user.name}}</h3>
             </div>
             <div class="row">
               <h3 class="col-4 m-3 mr-0 var">Email</h3>
-              <h3 class="col-lg-5 col-sm-12 m-3 value">JonathanParsons@gmail.com</h3>
+              <h3 class="col-lg-5 col-sm-12 m-3 value">{{user.email}}</h3>
 
             </div>
             <div class="row">
-              <h3 class="col-4 m-3 mr-0 var">Birthday</h3>
-              <h3 class="col-lg-5 col-sm-12 m-3  m-3 value">20-10-2023</h3>
+              <h3 class="col-4 m-3 mr-0 var">Gender</h3>
+              <h3 class="col-lg-5 col-sm-12 m-3  m-3 value">{{user.gender}}</h3>
             </div>
         </div>
         <!-- img -->
         <div class="col-4 d-flex justify-content-center align-items-center flex-column border-bottom border-top  ">
           <h2 class="m-3">Profile Image</h2>
-          <img src="https://previews.123rf.com/images/gmast3r/gmast3r1411/gmast3r141100276/33645456-profile-icon-male-avatar-portrait-casual-person.jpg" class=" img-fluid m-3 mt-0 szfix rounded" alt=""> 
+          <img [src]="user.image" class=" img-fluid m-3 mt-0 szfix" alt="">
         </div>
         <!-- button -->
         <div class=" d-flex justify-content-end">
