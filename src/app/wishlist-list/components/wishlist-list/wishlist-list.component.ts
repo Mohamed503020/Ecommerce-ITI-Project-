@@ -8,7 +8,7 @@ import { CartService } from 'src/app/cart/services/cart.service';
   styleUrls: ['./wishlist-list.component.css']
 })
 export class WishlistListComponent implements OnInit {
-  //
+  
   route="Wishlist"
   productInWhislis:any;
   constructor(
@@ -20,19 +20,44 @@ export class WishlistListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getProductFromWishlist()
+    this.getProductFromWishlist();
+    console.log(this.productInWhislis);
   }
 
   getProductFromWishlist(){
-    this.productInWhislis=this._wishlisService.getwishlistItems()
+    this.productInWhislis=this._wishlisService.getAllWishlist().subscribe({
+      next:(res)=>{
+        this.productInWhislis=res;
+        console.log(this.productInWhislis)
+        console.log("result done")
+      },
+      error:(err)=>{
+        console.log(err)
+        console.log("errorrrrrrrrrrrr")
+      }
+
+    });
   }
 
   addProductToCart(product:any){
-this._cartService.addProductToCart(product)
+    // this._cartService.addProductToCart(product.id)
   }
 
-  removeProductFromWishlist(product:any){
-this._wishlisService.removeProduct(product);
-this.getProductFromWishlist()
+  removeProductFromWishlist(productId: any){
+    this._wishlisService.DeleteItemWishlist(productId).subscribe({
+      next:(res)=>{
+        console.log(res);
+        console.log("done");
+        this.getProductFromWishlist();
+        
+      },
+      error:(err)=>{
+        console.log(err);
+        console.log("errrrrrrrrrrrrrrrreoroo");
+        this.getProductFromWishlist();        
+      }
+      
+    })
   }
+
 }

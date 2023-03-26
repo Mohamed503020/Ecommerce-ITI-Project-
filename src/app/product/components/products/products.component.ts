@@ -21,11 +21,11 @@ export class ProductsComponent {
   }
 
   addProductTocart(){
-    this._cartService.addProductToCart(this.product)
+    // this._cartService.addProductToCart(this.product)
 
   }
   addProductToWishlist(){
-this._wishListService.addProduct(this.product)
+// this._wishListService.saddProduct(this.product)
 
   }
 }

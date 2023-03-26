@@ -4,6 +4,8 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
+import { CartService } from 'src/app/cart/services/cart.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -25,6 +27,8 @@ export class ProductdetailsComponent implements OnInit,OnDestroy ,AfterViewInit{
 constructor (
   private _ProductService:ProductService,
   private _ActivatedRoute:ActivatedRoute,
+  private _WishlistService:WishlistService,
+  private _CartService:CartService
 
   ){
 
@@ -61,8 +65,31 @@ this._ProductService.getProductsByCategory(this.product.category).subscribe({
   changeImg(src:string){
 this.ImgUrl=src
   }
-  addProductToCart(item:any){}
-  addProductToWishList(item:any){}
+  addProductToCart(id:any){
+    this._CartService.AddItemCart(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+        console.log("Done");
+      },
+      error:(err)=>{
+        console.log(err);
+        console.log("errrrrrrrrrror");
+      }
+    })
+  }
+  addProductToWishList(id:any){
+    this._WishlistService.AddItemWishlist(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+        console.log("Done");
+      },
+      error:(err)=>{
+        console.log(err);
+        console.log("errrrrrrrrrror");
+      }
+    })
+
+  }
 
   updateCartItemQuantity(value: number, product: any, operation: string) {
     if (operation == "+") {
