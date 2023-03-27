@@ -1,135 +1,43 @@
-<div class="container mt-5 px-5">
-  <div class="mb-4">
-    <h2> Shipping address</h2>
-    <!-- first
-    {{firstName.valid |json}}
-    {{firstName.errors |json}}
-    second
-    {{secondName.valid |json}}
-    {{secondName.errors |json}} -->
+<form [formGroup]="step">
+  <ng-template matStepLabel>Fill address information</ng-template>
+  <mat-form-field>
+    <input matInput placeholder="First name" formControlName="firstName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Last name" formControlName="lastName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Country" formControlName="country" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Street" formControlName="street" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Shopping Address" formControlName="shoppingAddress" required>
+  </mat-form-field>
+  <app-text-input (outputText)="change($event)"></app-text-input>
+  <!-- " -->
+  <div>
+    <button mat-button matStepperNext>Next</button>
   </div>
-  <div class="row">
-    <div class="col-md-8">
-      <div class="card p-3">
-        <form #Form="ngForm">
-          <div class="row mt-3">
-            <!-- /////////////////first Name////////////////////// -->
-            <div class="col-md-6">
-              <div class="inputbox mt-3 mr-2">
-                <input #firstName="ngModel" ngModel name="firstName" type="text" class="form-control "
-                  required="required" pattern="^[a-zA-Z]{4,15}$">
-                <span>First Name</span>
-                <div [hidden]="firstName.valid || firstName.pristine" class=" text-danger" role="alert">
-                  <p [hidden]="!firstName.errors?.['required']">First Name Required <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                  <p [hidden]="!firstName.errors?.['pattern']">Invalid First Name <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                </div>
-              </div>
-            </div>
-            <!-- /////////////////second Name////////////////////// -->
-            <div class="col-md-6">
-              <div class="inputbox mt-3 mr-2">
-                <input #secondName="ngModel" ngModel name="secondName" type="text" class="form-control"
-                  required="required" pattern="^[a-zA-Z]{4,15}$">
-                <span>Last Name</span>
-                <div [hidden]="secondName.valid || secondName.pristine" class=" text-danger" role="alert">
-                  <p [hidden]="!secondName.errors?.['required']">second Name Required <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                  <p [hidden]="!secondName.errors?.['pattern']">Invalid second Name <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <!-- /////////////////Phone Number!!!!!!!!!!////////////////////// -->
-            <div class="col-md-6">
-              <div class="inputbox mt-3 mr-2"> 
-                <input #phoneNumber="ngModel" ngModel name="phoneNumber" type="text" class="form-control" required="required"
-                  pattern="^010[0-9]{11}">
-                <span>Phone Number</span>
-                <div [hidden]="phoneNumber.valid || phoneNumber.pristine" class=" text-danger" role="alert">
-                  <p [hidden]="!phoneNumber.errors?.['required']">Phone Number Required <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                  <p [hidden]="!phoneNumber.errors?.['pattern']">Phone number remaing 11 digit 
-                    <i class="fa-solid error fa-circle-exclamation"></i></p>
-                </div>
-              </div>
-            </div>
-            <!-- /////////////////Country!!!////////////////////// -->
-            <div class="col-md-6">
-              <div class="inputbox mt-3 mr-2">
-                <select class="form-select" aria-label="Default select example" >
-                  <option selected>Country</option>
-                  <option value="1">Australia</option>
-                  <option value="2">Brazil</option>
-                  <option value="3">Canada</option>
-                  <option value="4">Egypt</option>
-                  <option value="5">Germany</option>
-                  <option value="6">Italy</option>
-                  <option value="7">Jordan</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <!-- /////////////////City////////////////////// -->
-            <div class="col-md-6">
-              <div class="inputbox mt-3 mr-2"> 
-                <input #city="ngModel" ngModel name="city" type="text" class="form-control" required="required" pattern="^[a-zA-Z]{3,15}$">
-                <span>City</span>
-                <div [hidden]="city.valid || city.pristine" class=" text-danger" role="alert">
-                  <p [hidden]="!city.errors?.['required']">City Required <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                  <p [hidden]="!city.errors?.['pattern']">Invalid City Name <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                </div>
-              </div>
-            </div>
-            <!-- /////////////////Adress////////////////////// -->
-            <div class="col-md-6">
-              <div class="inputbox mt-3 mr-2"> 
-                <input #adress="ngModel" ngModel name="adress" type="text" class="form-control" required="required" pattern="^([a-zA-z0-9/\\''(),-\s]{5,255})$">
-                <span>Street Address</span>
-                <div [hidden]="adress.valid || adress.pristine" class=" text-danger" role="alert">
-                  <p [hidden]="!adress.errors?.['required']">Adress Required <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                  <p [hidden]="!adress.errors?.['pattern']">Invalid Adress <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-2">
-            <div class="col-md-6">
-              <div class="inputbox mt-3 mr-2"> 
-                <input #state="ngModel" ngModel name="state" type="text" class="form-control" required="required" pattern="^[a-zA-Z]{3,15}$">
-                <span>State/Province</span>
-                <div [hidden]="state.valid || state.pristine" class=" text-danger" role="alert">
-                  <p [hidden]="!state.errors?.['required']">State/Province Required <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                  <p [hidden]="!state.errors?.['pattern']">Invalid State/Province <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="inputbox mt-3 mr-2"> 
-                <input #zipcode="ngModel" ngModel name="#zipcode" type="text" class="form-control" required="required" pattern="[0-9]{5}">
-                <span>Zip code</span>
-                <div [hidden]="zipcode.valid || zipcode.pristine" class=" text-danger" role="alert">
-                  <p [hidden]="!zipcode.errors?.['required']">Zip code Required <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                  <p [hidden]="!zipcode.errors?.['pattern']"> Zip code remaing 5 digit  <i
-                      class="fa-solid error fa-circle-exclamation"></i></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+</form>
+
+
+  <!-- <mat-form-field> -->
+    <!-- <input matInput placeholder="Country" formControlName="country" required> -->
+    <!-- <div class="inputbox mt-3 mr-2">
+      <select class="form-select" aria-label="Default select example"  formControlName="country" required>
+        <option selected>Country</option>
+        <option value="Australia">Australia</option>
+        <option value="Brazil">Brazil</option>
+        <option value="Canada">Canada</option>
+        <option value="Egypt">Egypt</option>
+        <option value="Germany">Germany</option>
+        <option value="Italy">Italy</option>
+        <option value="Jordan">Jordan</option>
+      </select>
     </div>
-  </div>
-</div>
-<!-- </div> -->
+  </mat-form-field> -->

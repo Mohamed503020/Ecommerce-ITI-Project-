@@ -12,8 +12,15 @@ import { DoneOrderComponent } from './components/done-order/done-order.component
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { SharedModule } from './../shared/shared.module';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 @NgModule({
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  
   declarations: [
     CheckoutComponent,
     AddressComponent,
@@ -30,7 +37,8 @@ import { SharedModule } from './../shared/shared.module';
     FormsModule,
     MatAutocompleteModule,
     MatInputModule,
-    SharedModule
+    SharedModule,
+    MatFormFieldModule
   ]
 })
 export class CheckoutModule { }

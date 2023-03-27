@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { FormServiceService } from '../../service/formService.service';
+
+
 
 @Component({
   selector: 'app-checkout',
@@ -7,13 +10,22 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent {
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
+stepper: any;
+stepTwo: any;
+stepOne: any;
+  ngOnInit() {
+  }
   isLinear = false;
-route="Checkoute"
-  constructor(private _formBuilder: FormBuilder) {}
+  myForm: Array<string>
+
+  constructor(
+    public formService: FormServiceService,
+    private fb: FormBuilder
+  ) {
+    this.myForm = this.formService.mainForm.value
+  }
+
+  keys() : Array<string> {
+    return Object.keys(this.myForm);
+  }
 }
