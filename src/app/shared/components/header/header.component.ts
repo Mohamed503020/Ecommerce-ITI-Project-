@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
     private _authsrv:AuthService
     ){}
    cartitem:any;
+   cartLength:any;
    wishlistItem:any;
    allproducts:any;
    searchQuery='';
@@ -37,8 +38,14 @@ export class HeaderComponent implements OnInit {
     }
   }
   ngOnInit(): void {
- this.wishlistItem=   this._wishlistService.getwishlistItems()
-   this.cartitem= this._cartService.getCartItems()
+    this.cartLength=localStorage.getItem('cartItemlength')
+    this.getAllProductFromCart();
+   this._wishlistService.getAllWishlist().subscribe({
+  next:(data)=>{
+    this.wishlistItem= data
+  }
+ });
+  //  this.cartitem= this._cartService.getCartItems()
   //  this.getCategires()
 if(localStorage.getItem('user')){
   this.logged=true
@@ -46,7 +53,14 @@ if(localStorage.getItem('user')){
 else{this.logged=false}
 }
 
-
+getAllProductFromCart(){
+  this._cartService.getAllCartPrd().subscribe({
+    next:(res)=>{
+      this.cartitem=res;
+     
+    }
+  })
+}
 
 logout(){
 this._authsrv.islogin.next(false);

@@ -10,11 +10,11 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartComponent implements OnInit{
   route="Cart"
-  ProductsInCart:any[]=[];
+  ProductsInCart:any;
   subTotalPrice:number=0;
   TAX=20;
   TotalPrice:number=0;
-constructor(private _CartService:CartService,private _toast:HotToastService){}
+constructor(private _CartService:CartService){}
   ngOnInit(): void {
     this.getProductFromCart()
     console.log(this.ProductsInCart);
@@ -25,30 +25,48 @@ constructor(private _CartService:CartService,private _toast:HotToastService){}
 
   }
   calcSubTotalPrice(){
-    this.subTotalPrice=this._CartService.getTotalPrice()
+    // this.subTotalPrice=this._CartService.getTotalPrice()
   }
   calcTotalPrice(){
     this.TotalPrice= this.subTotalPrice + this.TAX
   }
   getProductFromCart(){
-    this.ProductsInCart=this._CartService.getCartItems()
+    this._CartService.getAllCartPrd().subscribe({
+      next:(res)=>{
+        this.ProductsInCart=res;
+        console.log(this.ProductsInCart)
+        console.log("result done")
+        localStorage.setItem('cartItemlength',this.ProductsInCart.length)
+      }
+    })
 
   }
   deletProductFromCart(product:any){
-    this._CartService.removeProductFromCart(product)
+    this._CartService.DeleteItemCart(product.id).subscribe({
+      next:(res)=>{
+        console.log(res);
+        console.log("done deleted");
+        this.getProductFromCart();
+      },
+      error:(err)=>{
+              console.log(err);
+              console.log("errrrrrrrrrrrrrrrreoroo");
+              this.getProductFromCart();        
+            }
+    });
     this.calcSubTotalPrice()
     this.calcTotalPrice()
   }
 
   increaseQuantity(product:any){
-    this._CartService.increaseQuantity(product)
+    // this._CartService.increaseQuantity(product)
     this.calcSubTotalPrice()
     this.calcTotalPrice()
 
   }
 
   decreaseQuantity(product:any){
-    this._CartService.decreaseQuantity(product)
+    // this._CartService.decreaseQuantity(product)
     this.calcSubTotalPrice()
     this.calcTotalPrice()
   }

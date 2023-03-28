@@ -1,5 +1,5 @@
 import { Product } from './../model/product';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,12 @@ api='http://localhost:8000/api';
     constructor(private _HttpClient: HttpClient) { }
 
   getProduct(): Observable<Product[]> {
-    return this._HttpClient.get<Product[]>(`${this.api}/products`)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this._HttpClient.get<Product[]>(`${this.api}/products`,httpOptions)
   }
 
   getSingleProduct(id: number): Observable<Product> {
