@@ -68,7 +68,7 @@
             </a>
             <a routerLink="/main/cart" class="header-cart">
               <i class="fa-solid fa-bag-shopping"></i>
-              <span class="number">{{ cartitem.length }}</span>
+              <span class="number">{{ cartLength}}</span>
             </a>
           </div>
         </div>
@@ -83,10 +83,8 @@
                   placeholder="Search"
                 />
                 <select class="form-select">
-                  <option value="">All type</option>
-                  <option value="codex">Special</option>
-                  <option value="comments">Only best</option>
-                  <option value="content">Latest</option>
+                  <option selected value="">All type</option>
+                  <option *ngFor="let cat of categories"  [value]="cat.name">{{cat.name}}</option>
                 </select>
               </div>
               </form>

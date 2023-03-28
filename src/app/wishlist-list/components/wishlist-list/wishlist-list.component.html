@@ -1,58 +1,140 @@
 <app-sub-header [route]="route"></app-sub-header>
-<section class=" h-custom">
-  <div class="container py-5 ">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12">
-              <div class="card card-registration card-registration-2" style="border-radius: 15px;">
-                  <div class="card-body p-0">
-                      <div class="row g-0">
-                          <div class="col-lg-12">
-                              <div class="p-5">
-                                  <div class="d-flex justify-content-between align-items-center mb-5">
-                                      <h1 class="fw-bold mb-0 text-black">Wishlist</h1>
-                                      <h4 class="mb-0 noItem">3 items added</h4>
-                                  </div>
-                                  <hr class="my-4">
-                                  <!-- ///////////// -->
-                                  <div class="row mb-4 d-flex justify-content-between align-items-center" *ngFor="let item of productInWhislis">
-                                      <div class="col-4 col-md-3 col-lg-2 col-xl-2 ">
-                                          <img [src]="item.images[1]"
-                                              class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                      </div>
-                                      <div class=" col-6 col-md-2 col-lg-2 col-xl-2">
-                                          <h4 class="text-muted">{{item.category}}</h4>
-                                          <h4 class="text-black mb-0">{{item.title}}</h4>
-                                      </div>
-                                      <div class=" col-6  col-md-2 col-lg-2 col-xl-2 offset-lg-1 pt-2">
-                                          <h4 class="mb-0">{{item.price}}</h4>
-                                      </div>
-                                      <div class=" col-6  col-md-2 col-lg-2 col-xl-2 d-flex">
-                                          <h4 class="mb-0">In Stock</h4>
-                                      </div>
-                                      <div class=" col-6  col-md-6 col-lg-6 col-xl-2 d-flex pt-3">
-
-                                          <button type="button" class="btn checkout " (click)="addProductToCart(item)"
-                                              data-mdb-ripple-color="dark">Add To Cart</button>
-                                      </div>
-                                      <div class="col-6  col-md-1 col-lg-1 col-xl-1 text-end" >
-                                          <a  class="text-muted" (click)="removeProductFromWishlist(item)"><i
-                                                  class="fa-solid fa-trash-can"></i></a>
-                                      </div>
-                                      <hr class="my-4">
-                                  </div>
-                                  <!-- //////////// -->
-                                  <div class="pt-5">
-                                      <h4 class="mb-0"><a routerLink="/" class="  btn btn-warning text-weight"><i
-                                                  class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a>
-                                      </h4>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+<section class="h-custom">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div
+          class="card card-registration card-registration-2"
+          style="border-radius: 15px"
+        >
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-12">
+                <div class="p-5">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-5"
+                  >
+                    <h1 class="fw-bold mb-0 text-black">Wishlist</h1>
+                    <h4 class="mb-0 noItem">
+                      {{ productInWhislis.length }} items added
+                    </h4>
                   </div>
+                  <hr class="my-4" />
+                  <!-- ///////////// -->
+                  <div
+                    class="row mb-4 d-flex justify-content-between align-items-center"
+                    *ngFor="let item of productInWhislis"
+                  >
+                    <div class="col-4 col-md-3 col-lg-2 col-xl-2">
+                      <img
+                        [src]="item.imagePaths[0]"
+                        class="img-fluid rounded-3"
+                        alt="{{ item.name }}"
+                      />
+                    </div>
+                    <div class="col-6 col-md-2 col-lg-2 col-xl-2">
+                      <h4 class="text-muted">{{ item.name }}</h4>
+                      <h4 class="text-black mb-0">{{ item.description }}</h4>
+                    </div>
+                    <div
+                      class="col-6 col-md-2 col-lg-2 col-xl-2 offset-lg-1 pt-2"
+                    >
+                      <h4 class="mb-0">{{ item.price }}</h4>
+                    </div>
+                    <div class="col-6 col-md-2 col-lg-2 col-xl-2 d-flex">
+                      <h4 class="mb-0">{{ item.quantity }}</h4>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-6 col-xl-2 d-flex pt-3">
+                      <button
+                        type="button"
+                        class="btn checkout"
+                        data-mdb-ripple-color="dark"
+                      >
+                        Add To Cart
+                      </button>
+                    </div>
+                    <div class="col-6 col-md-1 col-lg-1 col-xl-1 text-end">
+                      <a
+                        class="text-muted"
+                        (click)="removeProductFromWishlist(item.id)"
+                        ><i class="fa-solid fa-trash-can"></i
+                      ></a>
+                    </div>
+
+                    <hr class="my-4" />
+                  </div>
+                  <!-- //////////// -->
+                  <div class="pt-5">
+                    <h4 class="mb-0">
+                      <a routerLink="/" class="btn btn-warning text-weight"
+                        ><i class="fas fa-long-arrow-alt-left me-2"></i>Back to
+                        shop</a
+                      >
+                    </h4>
+                  </div>
+                </div>
               </div>
+            </div>
           </div>
+          <hr class="my-4" />
+          <!-- ///////////// -->
+          <div
+            class="row mb-4 d-flex justify-content-between align-items-center"
+            *ngFor="let item of productInWhislis"
+          >
+            <div class="col-4 col-md-3 col-lg-2 col-xl-2">
+              <img
+                [src]="item.images[1]"
+                class="img-fluid rounded-3"
+                alt="Cotton T-shirt"
+              />
+            </div>
+            <div class="col-6 col-md-2 col-lg-2 col-xl-2">
+              <h4 class="text-muted">{{ item.category }}</h4>
+              <h4 class="text-black mb-0">{{ item.title }}</h4>
+            </div>
+            <div class="col-6 col-md-2 col-lg-2 col-xl-2 offset-lg-1 pt-2">
+              <h4 class="mb-0">{{ item.price }}</h4>
+            </div>
+            <div class="col-6 col-md-2 col-lg-2 col-xl-2 d-flex">
+              <h4 class="mb-0">In Stock</h4>
+            </div>
+            <!-- <div class="col-6 col-md-6 col-lg-6 col-xl-2 d-flex pt-3">
+                      <button
+                        type="button"
+                        class="btn checkout"
+                        (click)="addProductToCart(item)"
+                        data-mdb-ripple-color="dark"
+                      >
+                        Add To Cart
+                      </button>
+                    </div> -->
+            <div class="col-6 col-md-6 col-lg-6 col-xl-2 d-flex pt-3">
+              <button
+                type="button"
+                class="btn checkout"
+                data-mdb-ripple-color="dark"
+              >
+                Add To Cart
+              </button>
+            </div>
+            <div class="col-6 col-md-1 col-lg-1 col-xl-1 text-end">
+              <a class="text-muted" (click)="removeProductFromWishlist(item)"
+                ><i class="fa-solid fa-trash-can"></i
+              ></a>
+            </div>
+            <hr class="my-4" />
+          </div>
+          <!-- //////////// -->
+          <div class="pt-5">
+            <h4 class="mb-0">
+              <a routerLink="/" class="btn btn-warning text-weight"
+                ><i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a
+              >
+            </h4>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </section>
-

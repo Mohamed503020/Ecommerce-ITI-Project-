@@ -3,11 +3,13 @@ import { ProductlistComponent } from './components/productlist/productlist.compo
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
+import { ProductcategoryComponent } from './components/productcategory/productcategory.component';
 
 const routes: Routes = [
   {path:"",component:ProductlistComponent},
   {path:"productlist",component:ProductlistComponent},
   {path:"search",component:SearchProductsComponent},
+  {path:"productcategory/:cat", component:ProductcategoryComponent},
   {path:":id",component:ProductdetailsComponent}
 ];
 
