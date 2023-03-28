@@ -4,8 +4,13 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, O
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+<<<<<<< HEAD
 import { CartService } from 'src/app/cart/services/cart.service';
 import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
+=======
+import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
+import { CartService } from 'src/app/cart/services/cart.service';
+>>>>>>> efecd899d275ff8d67082dab6f41703345621b68
 
 @Component({
   selector: 'app-productdetails',
@@ -32,7 +37,22 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     private _cartService: CartService,
     private _wishListService: WishlistService,
 
+<<<<<<< HEAD
   ) {
+=======
+  quantity=1;
+  product! :Product;
+  cat!:string;
+  productsOfCategory!:any
+  product_id!:number;
+  subsucription!:Subscription;
+  ImgUrl:string=''
+constructor (
+  private _ProductService:ProductService,
+  private _ActivatedRoute:ActivatedRoute,
+  private _WishlistService:WishlistService,
+  private _CartService:CartService
+>>>>>>> efecd899d275ff8d67082dab6f41703345621b68
 
   }
   ngAfterViewInit(): void {
@@ -75,6 +95,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   changeImg(src: string) {
     this.ImgUrl = src
   }
+<<<<<<< HEAD
 
   addProductToCart() {
     this._cartService.addProductfromcart(this.product_id).subscribe({
@@ -83,6 +104,33 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   addProductToWishList(item: any) { }
+=======
+  addProductToCart(id:any){
+    this._CartService.AddItemCart(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+        console.log("Done");
+      },
+      error:(err)=>{
+        console.log(err);
+        console.log("errrrrrrrrrror");
+      }
+    })
+  }
+  addProductToWishList(id:any){
+    this._WishlistService.AddItemWishlist(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+        console.log("Done");
+      },
+      error:(err)=>{
+        console.log(err);
+        console.log("errrrrrrrrrror");
+      }
+    })
+
+  }
+>>>>>>> efecd899d275ff8d67082dab6f41703345621b68
 
   updateCartItemQuantity(value: number, product: any, operation: string) {
     if (operation == "+") {
