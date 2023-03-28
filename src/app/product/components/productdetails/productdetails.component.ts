@@ -4,13 +4,8 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, O
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-<<<<<<< HEAD
-import { CartService } from 'src/app/cart/services/cart.service';
-import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
-=======
 import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
 import { CartService } from 'src/app/cart/services/cart.service';
->>>>>>> efecd899d275ff8d67082dab6f41703345621b68
 
 @Component({
   selector: 'app-productdetails',
@@ -23,23 +18,20 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   @ViewChild("myCarousel") myCarousel!: ElementRef;
   // @Input() data:any=[]
   // @Output() item = new EventEmitter()
-  quantity = 1;
-  product!: Product;
-  cat!: string;
-  productsOfCategory!: any
-  product_id!: number;
-  subsucription!: Subscription;
-  ImgUrl: string = ''
-  // public cartadd = [];
-  constructor(
-    private _ProductService: ProductService,
-    private _ActivatedRoute: ActivatedRoute,
-    private _cartService: CartService,
-    private _wishListService: WishlistService,
+  // quantity = 1;
+  // product!: Product;
+  // cat!: string;
+  // productsOfCategory!: any
+  // product_id!: number;
+  // subsucription!: Subscription;
+  // ImgUrl: string = ''
+  // // public cartadd = [];
+  // constructor(
+  //   private _ProductService: ProductService,
+  //   private _ActivatedRoute: ActivatedRoute,
+  //   private _cartService: CartService,
+  //   private _wishListService: WishlistService,
 
-<<<<<<< HEAD
-  ) {
-=======
   quantity=1;
   product! :Product;
   cat!:string;
@@ -51,10 +43,9 @@ constructor (
   private _ProductService:ProductService,
   private _ActivatedRoute:ActivatedRoute,
   private _WishlistService:WishlistService,
-  private _CartService:CartService
->>>>>>> efecd899d275ff8d67082dab6f41703345621b68
+  private _CartService:CartService){}
 
-  }
+  
   ngAfterViewInit(): void {
     this.getProductsCategory()
   }
@@ -95,18 +86,8 @@ constructor (
   changeImg(src: string) {
     this.ImgUrl = src
   }
-<<<<<<< HEAD
-
-  addProductToCart() {
-    this._cartService.addProductfromcart(this.product_id).subscribe({
-      next: (data) => console.log(data)
-    })
-  }
-
-  addProductToWishList(item: any) { }
-=======
-  addProductToCart(id:any){
-    this._CartService.AddItemCart(id).subscribe({
+  addProductToCart(){
+    this._CartService.AddItemCart(this.product_id).subscribe({
       next:(res)=>{
         console.log(res);
         console.log("Done");
@@ -130,7 +111,6 @@ constructor (
     })
 
   }
->>>>>>> efecd899d275ff8d67082dab6f41703345621b68
 
   updateCartItemQuantity(value: number, product: any, operation: string) {
     if (operation == "+") {

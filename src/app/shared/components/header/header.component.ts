@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
     private _productService:ProductService,
     private router:Router,
     private _authsrv:AuthService
+
     ){}
    cartitem:any;
    cartLength:any;
@@ -40,6 +41,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.cartLength=localStorage.getItem('cartItemlength')
     this.getAllProductFromCart();
+    this.getallcategory();
    this._wishlistService.getAllWishlist().subscribe({
   next:(data)=>{
     this.wishlistItem= data
@@ -60,6 +62,14 @@ getAllProductFromCart(){
      
     }
   })
+}
+
+getallcategory(){
+this._productService.getAllCategory().subscribe({
+   next:(res)=>{
+    this.categories=res;
+   }
+})
 }
 
 logout(){

@@ -39,15 +39,9 @@ export class WishlistListComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
-//   addProductToCart(product:any){
-// this._cartService.addProductToCart(product)
-//   }
-=======
   addProductToCart(product:any){
     // this._cartService.addProductToCart(product.id)
   }
->>>>>>> efecd899d275ff8d67082dab6f41703345621b68
 
   removeProductFromWishlist(productId: any){
     this._wishlisService.DeleteItemWishlist(productId).subscribe({

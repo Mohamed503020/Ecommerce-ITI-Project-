@@ -20,14 +20,9 @@ export class ProductsComponent {
 
   }
 
-<<<<<<< HEAD
-  // addProductTocart(){
-  //   this._cartService.addProductToCart(this.product)
-=======
   addProductTocart(){
     // this._cartService.addProductToCart(this.product)
->>>>>>> efecd899d275ff8d67082dab6f41703345621b68
-
+  }
   // }
   addProductToWishlist(){
 // this._wishListService.saddProduct(this.product)
