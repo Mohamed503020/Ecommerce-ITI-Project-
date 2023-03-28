@@ -1,22 +1,22 @@
 <form [formGroup]="step">
   <ng-template matStepLabel>Fill address information</ng-template>
   <mat-form-field>
-    <input matInput placeholder="First name" formControlName="firstName" required>
+    <input matInput placeholder="city" formControlName="city" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Last name" formControlName="lastName" required>
+    <input matInput placeholder="governate" formControlName="governate" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>
+    <input matInput placeholder="street" formControlName="street" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Country" formControlName="country" required>
+    <input matInput placeholder="mobile" formControlName="mobile" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Street" formControlName="street" required>
+    <input matInput placeholder="Shapping address" formControlName="shaping_address" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Shopping Address" formControlName="shoppingAddress" required>
+    <input matInput placeholder="pinCode" formControlName="pinCode" required>
   </mat-form-field>
   <app-text-input (outputText)="change($event)"></app-text-input>
   <!-- " -->

@@ -21,12 +21,12 @@ export class AddressComponent implements OnInit {
     private formService: FormServiceService
   ) {
     this.step = this._formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      country: ['', Validators.required],
+      city: ['', Validators.required],
+      governate: ['', Validators.required],
       street: ['', Validators.required],
-      shoppingAddress: ['', Validators.required],
+      mobile: ['', Validators.required],
+      shaping_address: ['', Validators.required],
+      pinCode: ['', Validators.required],
       // shoppingAddress: ''
       // extraName: ''
     });

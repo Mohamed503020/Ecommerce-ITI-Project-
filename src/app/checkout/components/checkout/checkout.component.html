@@ -10,16 +10,16 @@
   
     <mat-step>
       <ng-template matStepLabel>Review and Confirm Details</ng-template>
-      You are now done.
+      <input type="number" [value]="totalPrice" readonly  form>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="stepper.reset()">Done</button>
       </div>
     </mat-step>
   </mat-stepper>
 
 
-
+<h1>{{totalPrice}}</h1>
 
   <div class="diagnostics">
     {{this.formService.mainForm.value | json}}

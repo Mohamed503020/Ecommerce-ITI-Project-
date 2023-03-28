@@ -14,16 +14,18 @@ export class FormServiceService {
   stepTwo: Observable<FormGroup> = this.stepTwoSource.asObservable();
 
   mainForm: FormGroup = this._formBuilder.group({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    country: '',
+    city: '',
+    governate: '',
     street:'',
-    shoppingAddress:'',
-    cardNum: '',
-    expyear: '',
-    expmonth: '',
+    mobile:'',
+    shaping_address: '',
+    pinCode: '',
+    number: '',
+    exp_month: '',
+    exp_year: '',
     cvc: '',
+    amount:'',
+    description:''
 
   })
 
@@ -32,22 +34,23 @@ export class FormServiceService {
   ) {
     this.stepOne.subscribe(form =>
       form.valueChanges.subscribe(val => {
-        this.mainForm.value.firstName = val.firstName
-        this.mainForm.value.lastName = val.lastName
-        this.mainForm.value.phoneNumber = val.phoneNumber
-        this.mainForm.value.country = val.country 
+        this.mainForm.value.city = val.city
+        this.mainForm.value.governate = val.governate
         this.mainForm.value.street = val.street
-        this.mainForm.value.shoppingAddress = val.shoppingAddress
+        this.mainForm.value.mobile = val.mobile 
+        this.mainForm.value.shaping_address = val.shaping_address
         // this.mainForm.value.extraName = val.extraName
       })
     )
     this.stepTwo.subscribe(form =>
       form.valueChanges.subscribe(val => {
         // console.log(val)
-        this.mainForm.value.cardNum = val.cardNum
-        this.mainForm.value.expyear = val.expyear
-        this.mainForm.value.expmonth = val.expmonth
-        this.mainForm.value.cvc = val.cvc
+        this.mainForm.value.number = val.number
+        this.mainForm.value.exp_month = val.exp_month
+        this.mainForm.value.exp_year = val.exp_year
+        this.mainForm.value.cvc = val.cvc 
+        this.mainForm.value.amount = val.amount  
+        this.mainForm.value.description = val.description  
       })
     )
   }

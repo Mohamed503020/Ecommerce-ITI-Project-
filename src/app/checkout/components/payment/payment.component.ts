@@ -17,10 +17,12 @@ export class PaymentComponent implements OnInit {
     private formService: FormServiceService
   ) {
     this.step = this._formBuilder.group({
-      cardNum: ['', Validators.required],
-      expyear: ['', Validators.required],
-      expmonth: ['', Validators.required],
-      cvc: ['', Validators.required]
+      number: ['', Validators.required],
+      exp_month: ['', Validators.required],
+      exp_year: ['', Validators.required],
+      cvc: ['', Validators.required],
+      amount: ['', Validators.required],
+      description: ['', Validators.required],
     });
     this.formService.stepReady(this.step, 'two')
   }

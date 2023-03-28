@@ -1,16 +1,22 @@
 <form [formGroup]="step">
   <ng-template matStepLabel>Fill out your address</ng-template>
   <mat-form-field>
-    <input matInput placeholder="Card Number" formControlName="cardNum" required>
+    <input matInput placeholder="Card Number" formControlName="number" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Expir year" formControlName="expyear" required>
+    <input matInput placeholder="Expir month" formControlName="exp_month" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Expir month" formControlName="expmonth" required>
+    <input matInput placeholder="Expir year" formControlName="exp_year" required>
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="CVC" formControlName="cvc" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="totalPrice" formControlName="amount" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="comment" formControlName="description" required>
   </mat-form-field>
   <!-- {{stepTwo.value.address}} -->
   <div>
