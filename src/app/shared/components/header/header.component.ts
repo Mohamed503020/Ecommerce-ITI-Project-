@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
     ){}
    cartitem:any;
    cartLength:any;
-   wishlistItem:any;
+   wishlistItem:any=[];
    allproducts:any;
    searchQuery='';
    searchResults:any;
