@@ -86,8 +86,12 @@
               </div>
           </div>
             <div class="buttons d-flex flex-row 2 gap-3">
-              <button class="btn  btn-warning me-2 "
-              (click)="$event.preventDefault(); addProductToCart(product)">
+              <!-- <button class="btn  btn-warning me-2 "
+              (click)="$event.preventDefault(); addProductToCart(product_id)">
+              <i class="me-1 fa fa-shopping-basket"></i>
+              Add to cart
+          </button> -->
+              <button class="btn  btn-warning me-2 "(click)="addProductToCart()">
               <i class="me-1 fa fa-shopping-basket"></i>
               Add to cart
           </button>
