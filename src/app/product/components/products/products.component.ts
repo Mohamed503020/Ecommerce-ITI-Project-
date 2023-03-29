@@ -22,8 +22,8 @@ export class ProductsComponent {
 
   addProductTocart(){
     // this._cartService.addProductToCart(this.product)
-
   }
+  // }
   addProductToWishlist(){
 // this._wishListService.saddProduct(this.product)
 
