@@ -2,11 +2,15 @@
   <div class="container-login100">
     <div class="col-11 col-md-10 col-lg-12">
       <div class="wrap-login100">
-        <form class="login100-form validate-form"
-        #loginForm="ngForm"
-        (ngSubmit)="Userlogin()">
-        <h1 *ngIf="errorAuthLogin" class="text-center  text-danger">{{errorAuthLogin}}</h1>
-          <div class="d-flex align-items-center  " style="margin-top: -80px;">
+        <form
+          class="login100-form validate-form"
+          #loginForm="ngForm"
+          (ngSubmit)="Userlogin()"
+        >
+          <h1 *ngIf="errorAuthLogin" class="text-center text-danger">
+            {{ errorAuthLogin }}
+          </h1>
+          <div class="d-flex align-items-center" style="margin-top: -80px">
             <i class="fa-solid fa-1x fa-cart-shopping" style="color: orange"
               >&nbsp;<span style="font-size: 15px">Store</span></i
             >
@@ -31,10 +35,13 @@
             />
 
             <div *ngIf="emaill.touched">
-              <p *ngIf="emaill.errors?.['required']" style="color: red">
+              <p class="alert alert-danger" *ngIf="emaill.errors?.['required']">
                 Emaill is a required field!
               </p>
-              <p *ngIf="emaill.errors?.['pattern']" style="color: red">
+              <p
+                class="alert alert-danger"
+                *ngIf="emaill.errors?.['pattern']"
+              >
                 This is not a valid Emaill !
               </p>
             </div>
@@ -57,11 +64,11 @@
               pattern=".{8,}"
               placeholder="Enter Password"
             />
-            <div *ngIf="p.touched">
-              <p *ngIf="p.errors?.['required']" style="color: red">
+            <div class="alert alert-danger" *ngIf="p.touched">
+              <p *ngIf="p.errors?.['required']" >
                 Password is a required field!
               </p>
-              <p *ngIf="p.errors?.['pattern']" style="color: red">
+              <p *ngIf="p.errors?.['pattern']" >
                 This is not a valid Password !
               </p>
             </div>
@@ -76,25 +83,36 @@
                 type="checkbox"
                 name="remember-me"
               />
-              <label class="label-checkbox100" for="ckb1" style="margin-top: -30px;"> Remember me </label>
+              <label
+                class="label-checkbox100"
+                for="ckb1"
+                style="margin-top: -30px"
+              >
+                Remember me
+              </label>
             </div>
             <br />
             <div>
-              <a href="#" class="txt1" style="color:blue" 
-              routerLink="/auth/forgetpassword"
-              > Forgot Password? </a>
+              <a
+                href="#"
+                class="txt1"
+                style="color: blue"
+                routerLink="/auth/forgetpassword"
+              >
+                Forgot Password?
+              </a>
             </div>
           </div>
 
           <br />
           <div class="container-login100-form-btn">
             <button
-            class="login100-form-btn"
-            style="font-size: 20px;border-radius: 20px;"
-            [disabled]="loginForm.invalid"
-          >
-            Login
-          </button>
+              class="login100-form-btn"
+              style="font-size: 20px; border-radius: 20px"
+              [disabled]="loginForm.invalid"
+            >
+              Login
+            </button>
           </div>
           <br />
           <div class="text-center p-t-46 p-b-20">
