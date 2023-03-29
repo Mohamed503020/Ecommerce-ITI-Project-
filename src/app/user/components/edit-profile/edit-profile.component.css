@@ -1,0 +1,29 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-control[disabled] {
+    background-color: #f8f9fa;
+  }
+img{
+    border: 2px solid black;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+  
+label {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  input,select {
+    font-size: 18px;
+    width: 75%;
+  }
+ .orange{
+    background-color: #ff8100;
+ } 
