@@ -20,10 +20,12 @@ label {
     font-size: 18px;
     margin-right: 10px;
   }
-  input,select {
+  input,select,.alert  {
     font-size: 18px;
     width: 75%;
   }
  .orange{
     background-color: #ff8100;
+    border: none;
+    margin: 10px;
  } 
