@@ -5,7 +5,6 @@
   <div class="header-top header-top-border pt-10 pb-10">
       <div class="container">
           <div class="row align-items-center justify-content-between">
-
               <div class="col mt-10 mb-10">
                   <div class="header-links">
                       <a href="#">
@@ -82,9 +81,12 @@
                   style="width: 55%"
                   placeholder="Search"
                 />
-                <select class="form-select">
+                <!-- <select class="form-select">
                   <option selected value="">All type</option>
-                  <option *ngFor="let cat of categories"  [value]="cat.name">{{cat.name}}</option>
+                  <option (click)="selectcategory(cat.name)" *ngFor="let cat of categories"  [value]="cat.name">{{cat.name}}</option>
+                </select> -->
+                <select [(ngModel)]="cat" (change)="selectCategory()">
+                  <option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</option>
                 </select>
               </div>
               </form>

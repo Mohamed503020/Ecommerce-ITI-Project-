@@ -32,20 +32,20 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   //   private _cartService: CartService,
   //   private _wishListService: WishlistService,
 
-  quantity=1;
-  product! :Product;
-  cat!:string;
-  productsOfCategory!:any
-  product_id!:number;
-  subsucription!:Subscription;
-  ImgUrl:string=''
-constructor (
-  private _ProductService:ProductService,
-  private _ActivatedRoute:ActivatedRoute,
-  private _WishlistService:WishlistService,
-  private _CartService:CartService){}
+  quantity = 1;
+  product!: Product;
+  cat!: string;
+  productsOfCategory!: any
+  product_id!: number;
+  subsucription!: Subscription;
+  ImgUrl: string = ''
+  constructor(
+    private _ProductService: ProductService,
+    private _ActivatedRoute: ActivatedRoute,
+    private _WishlistService: WishlistService,
+    private _CartService: CartService) { }
 
-  
+
   ngAfterViewInit(): void {
     this.getProductsCategory()
   }
@@ -57,6 +57,11 @@ constructor (
       this.getProduct();
       this.addProductToCart();
 
+    })
+    this._ActivatedRoute.params.subscribe(params => {
+      this.product_id = params['cat'];
+      this.getProduct();
+      this.addProductToCart();
     })
 
 
@@ -86,25 +91,25 @@ constructor (
   changeImg(src: string) {
     this.ImgUrl = src
   }
-  addProductToCart(){
+  addProductToCart() {
     this._CartService.AddItemCart(this.product_id).subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
         console.log("Done");
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
         console.log("errrrrrrrrrror");
       }
     })
   }
-  addProductToWishList(id:any){
+  addProductToWishList(id: any) {
     this._WishlistService.AddItemWishlist(id).subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
         console.log("Done");
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
         console.log("errrrrrrrrrror");
       }

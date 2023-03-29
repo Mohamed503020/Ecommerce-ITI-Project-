@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { LocationComponent } from './components/location/location.component';
+import { OrderComponent } from './checkout/components/order/order.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,9 @@ const routes: Routes = [
     },
     {path:"contact",component:ContactComponent,canActivate:[AuthGuard]},
     {path:"about",component:AboutComponent},
-     {path:"location",component:LocationComponent}
+     {path:"location",component:LocationComponent},
+     { path: "ordertrack", component: OrderComponent },
+
   ]}
 
   , {
