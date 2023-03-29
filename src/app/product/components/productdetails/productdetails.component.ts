@@ -56,13 +56,14 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
       this.product_id = params['id'];
       this.getProduct();
       this.addProductToCart();
+      this.getProductsCategory()
 
     })
-    this._ActivatedRoute.params.subscribe(params => {
-      this.product_id = params['cat'];
-      this.getProduct();
-      this.addProductToCart();
-    })
+    // this._ActivatedRoute.params.subscribe(params => {
+    //   this.product_id = params['cat'];
+    //   this.getProduct();
+    //   this.addProductToCart();
+    // })
 
 
   }
@@ -83,7 +84,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   }
   getProductsCategory() {
     this._ProductService.getProductsByCategory(this.product.category).subscribe({
-      next: (item) => { this.productsOfCategory = item.data },
+      next: (item) => { this.productsOfCategory = item },
       error: error => alert(error.message)
     })
   }

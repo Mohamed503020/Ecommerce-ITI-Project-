@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 
@@ -7,12 +7,26 @@ import { ProductService } from '../../services/product.service';
   templateUrl: './productcategory.component.html',
   styleUrls: ['./productcategory.component.css']
 })
-export class ProductcategoryComponent {
-  products :any[]=[];
+export class ProductcategoryComponent implements OnInit {
+  productsOfCategory :any[]=[];
+  cat!:any;
+
   constructor(
     private _ProductService:ProductService,
     private _ActivatedRoute:ActivatedRoute,
 
   ){}
+  ngOnInit(): void {
+        this._ActivatedRoute.params.subscribe(params => {
+      this.cat= params['cat'];
+
+    })
+  }
+  getProductsCategory() {
+    this._ProductService.getProductsByCategory(this.cat).subscribe({
+      next: (item) => { this.productsOfCategory = item },
+      error: error => alert(error.message)
+    })
+  }
 
 }

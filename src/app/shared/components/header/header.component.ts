@@ -21,12 +21,13 @@ export class HeaderComponent implements OnInit {
     private _authsrv: AuthService
   ) { }
   cartitem: any;
-  cartLength: any;
+  cartLength = 0;
   wishlistItem: any;
   allproducts: any;
   searchQuery = '';
   searchResults: any;
   categories: any;
+  category:any
   logged: boolean = false;
   cat!: string;
   //header stiky
@@ -40,7 +41,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.cartLength = localStorage.getItem('cartItemlength')
+    // this.cartLength = localStorage.getItem('cartItemlength')
     this.getAllProductFromCart();
     this.getallcategory();
     this._wishlistService.getAllWishlist().subscribe({
@@ -55,24 +56,26 @@ export class HeaderComponent implements OnInit {
     }
     else { this.logged = false }
   }
-  selectCategory() {
-    if (this.searchQuery) {
-      const query = this.searchQuery.toLowerCase();
-      this.categories = this.categories.
-        filter((cat: { name: string; }) => cat.name.toLowerCase().includes(query));
-    }
+  // selectCategory() {
+  //   if (this.searchQuery) {
+  //     const query = this.searchQuery.toLowerCase();
+  //     this.categories = this.categories.
+  //       filter((cat: { name: string; }) => cat.name.toLowerCase().includes(query));
+  //   }
+  // }
+
+
+
+  selectCategory(cat:any){
+    this.router.navigate(['/main/products/productcategory',this.category])
   }
-
-
-
-
 
   getAllProductFromCart() {
     this._cartService.getAllCartPrd().subscribe({
       next: (res) => {
         this.cartitem = res;
 
-      }
+      },error:error=>{alert(error.message)}
     })
   }
 
@@ -80,7 +83,7 @@ export class HeaderComponent implements OnInit {
     this._productService.getAllCategory().subscribe({
       next: (res) => {
         this.categories = res;
-      }
+      },error:error=>{alert(error.message)}
     })
   }
 
