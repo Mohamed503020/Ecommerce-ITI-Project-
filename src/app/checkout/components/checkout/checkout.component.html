@@ -29,6 +29,7 @@
                 <mat-step [stepControl]="firstFormGroup">
                     <ng-template matStepLabel>Confirm order</ng-template>
                     <app-done-order></app-done-order>
+                    
                     <div>
                         <button mat-button matStepperPrevious class="btn back">Back</button>
                         <button mat-button class="btn next" [routerLink]="['']">Done</button>
@@ -39,6 +40,7 @@
                 </mat-step>
 
             </mat-stepper>
+            <app-order></app-order>
         </div>
         <div class="col-12 col-lg-4 ">
             <app-myOrderSidebar></app-myOrderSidebar>
