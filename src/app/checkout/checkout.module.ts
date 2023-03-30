@@ -12,9 +12,16 @@ import { DoneOrderComponent } from './components/done-order/done-order.component
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { SharedModule } from './../shared/shared.module';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { OrderComponent } from './components/order/order.component';
 
+
 @NgModule({
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  
   declarations: [
     CheckoutComponent,
     AddressComponent,
@@ -32,7 +39,8 @@ import { OrderComponent } from './components/order/order.component';
     FormsModule,
     MatAutocompleteModule,
     MatInputModule,
-    SharedModule
+    SharedModule,
+    MatFormFieldModule
   ]
 })
 export class CheckoutModule { }

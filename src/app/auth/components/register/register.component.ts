@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     this._authSeevice.register(formData).subscribe({
       next: (data) => {
         console.log(data);
-        this._router.navigateByUrl("/auth/login")
+        this._router.navigateByUrl("login")
       },
       error: error => alert(error.message)
     })
