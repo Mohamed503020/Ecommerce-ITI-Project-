@@ -12,7 +12,7 @@
                   <td>
                     <div class="py-2">
                       <span class="d-block text-muted">Order Date</span>
-                      <span>12 Jan,2018</span>
+                      <span>{{ twoDaysAfter | date:'MMM d, y'}}</span>
                     </div>
                   </td>
                   <td>
@@ -24,7 +24,7 @@
                   <td>
                     <div class="py-2">
                       <span class="d-block text-muted">Shiping Address</span>
-                      <span>414 Advert Avenue, NY,USA</span>
+                      <span>{{adress}}</span>
                     </div>
                   </td>
                 </tr>
@@ -34,51 +34,19 @@
           <div class="product border-bottom table-responsive">
             <table class="table table-borderless">
               <tbody>
-                <tr>
+                <tr   *ngFor="let cart of cartProduct "  >
                   <td width="20%">
-                    <img src="https://i.imgur.com/qSnCFIS.png" width="90">
+                    <img [src]="cart.imagePaths[0]" width="90">
                   </td>
                   <td width="60%">
-                    <span class="font-weight-bold">Men's Sports cap</span>
+                    <span class="font-weight-bold">{{cart.name}}</span>
                     <div class="product-qty">
-                      <span class="d-block">Quantity:1</span>
+                      <span class="d-block">Quantity:{{cart.quantityCart}}</span>
                     </div>
                   </td>
                   <td width="20%">
                     <div class="text-right">
-                      <span class="font-weight-bold">$67.50</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td width="20%">
-                    <img src="https://i.imgur.com/WuJwAJD.jpg" width="90">
-                  </td>
-                  <td width="60%">
-                    <span class="font-weight-bold">Men's Sports cap</span>
-                    <div class="product-qty">
-                      <span class="d-block">Quantity:1</span>
-                    </div>
-                  </td>
-                  <td width="20%">
-                    <div class="text-right">
-                      <span class="font-weight-bold">$67.50</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td width="20%">
-                    <img src="https://i.imgur.com/SmBOua9.jpg" width="70">
-                  </td>
-                  <td width="60%">
-                    <span class="font-weight-bold">Men's Collar T-shirt</span>
-                    <div class="product-qty">
-                      <span class="d-block">Quantity:1</span>
-                    </div>
-                  </td>
-                  <td width="20%">
-                    <div class="text-right">
-                      <span class="font-weight-bold">$77.50</span>
+                      <span class="font-weight-bold">{{cart.price|currency}}</span>
                     </div>
                   </td>
                 </tr>
@@ -86,7 +54,7 @@
             </table>
           </div>
           <div class="row d-flex justify-content-end">
-            <div class="col-md-5">
+            <div class="col-md-6">
               <table class="table table-borderless">
                 <tbody class="totals">
                   <tr>
@@ -97,7 +65,7 @@
                     </td>
                     <td>
                       <div class="text-right">
-                        <span>$168.50</span>
+                        <span>{{totalPriceCart|currency}}</span>
                       </div>
                     </td>
                   </tr>
@@ -109,19 +77,7 @@
                     </td>
                     <td>
                       <div class="text-right">
-                        <span>$22</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="text-left">
-                        <span class="text-muted">Tax Fee</span>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="text-right">
-                        <span>$7.65</span>
+                        <span>Free Shipping</span>
                       </div>
                     </td>
                   </tr>
@@ -133,19 +89,19 @@
                     </td>
                     <td>
                       <div class="text-right">
-                        <span class="text-success">$168.50</span>
+                        <span class="text-success">{{totalPriceCartDiscount|currency}}</span>
                       </div>
                     </td>
                   </tr>
                   <tr class="border-top border-bottom">
                     <td>
                       <div class="text-left">
-                        <span class="font-weight-bold">Subtotal</span>
+                        <span class="font-weight-bold">Total Price</span>
                       </div>
                     </td>
                     <td>
                       <div class="text-right">
-                        <span class="font-weight-bold">$238.50</span>
+                        <span class="font-weight-bold">{{totalPriceAfterDiscount|currency}}</span>
                       </div>
                     </td>
                   </tr>
