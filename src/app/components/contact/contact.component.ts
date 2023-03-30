@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ContactService } from './contact.service';
 @Component({
   selector: 'app-contact',
@@ -11,7 +13,9 @@ export class ContactComponent {
  em!:string;
  m!:string;
 
-constructor(private _contactSevice:ContactService){}
+constructor(private _contactSevice:ContactService,
+
+            private _route:Router){}
 
 
 
@@ -24,6 +28,14 @@ constructor(private _contactSevice:ContactService){}
     console.log(m);
     this._contactSevice.sendMessage(fn,ln,email,m).subscribe({
       next:(res)=>{
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: 'Massege send successfully ',
+          showConfirmButton: false,
+          timer: 2500
+        })
+        this._route.navigateByUrl("/")
         console.log(res);
         console.log("send Done");
       },
@@ -32,6 +44,7 @@ constructor(private _contactSevice:ContactService){}
         console.log("errror need fix");
       }
     })
+
   }
   // addProductToWishList(id:any){
   //   this._WishlistService.AddItemWishlist(id).subscribe({

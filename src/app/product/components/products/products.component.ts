@@ -11,7 +11,10 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+ 
+
+
 })
 export class ProductsComponent {
   @Input() product: Product = {} as Product;
@@ -45,16 +48,18 @@ export class ProductsComponent {
         console.log(res);
         console.log("Done");
         Swal.fire({
-          position: 'top-end',
+          position: 'top',
           icon: 'success',
           title: 'Product Added Succefully ',
+          customClass: 'styleTitle',
           showConfirmButton: false,
           timer: 2500
+
         })
       },
       error: (err) => {
         Swal.fire({
-          position: 'top-end',
+          position: 'top',
           icon: 'error',
           title: 'product already existed',
           showConfirmButton: false,
@@ -72,16 +77,17 @@ export class ProductsComponent {
           console.log(res);
           console.log("Done");
           Swal.fire({
-            position: 'top-end',
+            position: 'top',
             icon: 'success',
             title: 'Product added Succefully ',
+           
             showConfirmButton: false,
             timer: 2500
           })
         },
         error: (err) => {
           Swal.fire({
-            position: 'top-end',
+            position: 'top',
             icon: 'error',
             title: 'product already existed',
             showConfirmButton: false,

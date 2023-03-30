@@ -130,7 +130,7 @@
             <span>Card Number</span>
             <div *ngIf="number?.invalid && (number?.dirty || number?.touched)" class=" text-danger" role="alert">
               <p *ngIf="number?.errors?.['required']">Number is required.</p>
-              <p *ngIf="number?.errors?.['pattern']">Please enter a valid card number (14 digits).</p>
+              <p *ngIf="number?.errors?.['pattern']">Please enter a valid card number (16 digits).</p>
             </div>
           </div>
           <div class="row">

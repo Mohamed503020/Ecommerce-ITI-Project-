@@ -81,6 +81,17 @@
   cursor: default;
 }
 
+.my-popup-class {
+  width: 250px;
+  height: 200px;
+  font-size: 14px;
+}
+.swal2-popup {
+  background-color: #000000;
+  position: top;
+  color:red;
+}
+
 
 
 

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { FormServiceService } from '../../service/formService.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -27,7 +28,8 @@ export class CheckoutComponent {
   constructor(
     public formService: FormServiceService,
     private fb: FormBuilder,
-    private _CartService: CartService
+    private _CartService: CartService,
+    private _router:Router 
   ) {
     this.myForm = this.formService.mainForm.value;
   }
@@ -67,6 +69,8 @@ export class CheckoutComponent {
           showConfirmButton: false,
           timer: 1500
         })
+        this._router.navigateByUrl("/main/ordertrack")
+
       },
       error: (error) => {
         console.log(error);

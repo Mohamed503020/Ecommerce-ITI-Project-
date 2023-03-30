@@ -101,7 +101,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
           console.log(res);
           console.log("Done");
           Swal.fire({
-            position: 'top-end',
+            position: 'top',
             icon: 'success',
             title: 'Product Added Succefully ',
             showConfirmButton: false,
@@ -110,7 +110,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
         },
         error: (err) => {
           Swal.fire({
-            position: 'top-end',
+            position: 'top',
             icon: 'error',
             title: 'product already existed',
             showConfirmButton: false,
@@ -133,7 +133,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
           console.log(res);
           console.log("Done");
           Swal.fire({
-            position: 'top-end',
+            position: 'top',
             icon: 'success',
             title: 'Product Added Succefully ',
             showConfirmButton: false,
@@ -142,7 +142,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
         },
         error: (err) => {
           Swal.fire({
-            position: 'top-end',
+            position: 'top',
             icon: 'error',
             title: 'product already existed',
             showConfirmButton: false,

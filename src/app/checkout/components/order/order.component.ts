@@ -54,6 +54,10 @@ export class OrderComponent implements OnInit{
       
 
     }
+    ,error(err) {
+      console.log(err);
+      
+    },
    })
 
   

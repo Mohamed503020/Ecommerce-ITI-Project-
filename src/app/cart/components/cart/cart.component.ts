@@ -29,7 +29,21 @@ export class CartComponent implements OnInit {
     // this.TotalPrice= this.subTotalPrice + this.TAX
 
   }
-
+  // Swal.fire({
+  //   title: 'Are you sure?',
+  //   text: 'You will not be able to recover this data!',
+  //   icon: 'warning',
+  //   showCancelButton: true,
+  //   confirmButtonText: 'Yes, delete it!',
+  //   cancelButtonText: 'No, cancel!',
+  //   reverseButtons: true
+  // }).then((result) => {
+  //   if (result.isConfirmed) {
+  //     // Delete the data
+  //   } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //     // Cancel the operation
+  //   }
+  // });
     ///////////////////////////////////////////////////////
     getProductFromCart() {
       this._CartService.getAllCartPrd().subscribe({
@@ -47,15 +61,27 @@ export class CartComponent implements OnInit {
     }
     
     deletProductFromCart(product: any) {
+       Swal.fire({
+    title: 'Are you sure?',
+    text: 'You will not be able to recover this data!',
+    icon: 'warning',
+    position: 'top-start',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel!',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Delete the data
       this._CartService.DeleteItemCart(product.id).subscribe({
         next: (res) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Product deleted Succefully ',
-            showConfirmButton: false,
-            timer: 2500
-          })
+          // Swal.fire({
+          //   position: 'top-end',
+          //   icon: 'success',
+          //   title: 'Product deleted Succefully ',
+          //   showConfirmButton: false,
+          //   timer: 2500
+          // })
           console.log(res);
           console.log("done deleted");
           this.getProductFromCart();
@@ -74,6 +100,38 @@ export class CartComponent implements OnInit {
           this.getProductFromCart();
         }
       });
+    
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      // Cancel the operation
+    }
+  });
+      // this._CartService.DeleteItemCart(product.id).subscribe({
+      //   next: (res) => {
+          // Swal.fire({
+          //   position: 'top-end',
+          //   icon: 'success',
+          //   title: 'Product deleted Succefully ',
+          //   showConfirmButton: false,
+          //   timer: 2500
+          // })
+          // console.log(res);
+          // console.log("done deleted");
+          // this.getProductFromCart();
+         
+        // },
+        // error: (err) => {
+          // Swal.fire({
+          //   position: 'top-end',
+          //   icon: 'success',
+          //   title: 'Product deleted Succefully ',
+          //   showConfirmButton: false,
+          //   timer: 2500
+          // })
+          // console.log(err);
+          // console.log("errrrrrrrrrrrrrrrreoroo");
+          // this.getProductFromCart();
+    //     }
+    //   });
     }
   
     increaseQuantitiy(id: number) {
