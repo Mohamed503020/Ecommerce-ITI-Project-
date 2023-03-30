@@ -58,7 +58,7 @@ constructor (
   getProductsCategory(){
 this._ProductService.getProductsByCategory(this.product.category).subscribe({
   next:(item)=>{this.productsOfCategory=item.data},
-  error:error=>alert(error.message)
+  // error:error=>alert(error.message)
 })
   }
 

@@ -1,4 +1,4 @@
-<form [formGroup]="step">
+<!-- <form [formGroup]="step">
   <ng-template matStepLabel>Fill address information</ng-template>
   <mat-form-field>
     <input matInput placeholder="city" formControlName="city" required>
@@ -19,25 +19,188 @@
     <input matInput placeholder="pinCode" formControlName="pinCode" required>
   </mat-form-field>
   <app-text-input (outputText)="change($event)"></app-text-input>
-  <!-- " -->
-  <div>
+   " -->
+  <!-- <div>
     <button mat-button matStepperNext>Next</button>
   </div>
-</form>
+</form>  -->
 
 
-  <!-- <mat-form-field> -->
-    <!-- <input matInput placeholder="Country" formControlName="country" required> -->
-    <!-- <div class="inputbox mt-3 mr-2">
-      <select class="form-select" aria-label="Default select example"  formControlName="country" required>
-        <option selected>Country</option>
-        <option value="Australia">Australia</option>
-        <option value="Brazil">Brazil</option>
-        <option value="Canada">Canada</option>
-        <option value="Egypt">Egypt</option>
-        <option value="Germany">Germany</option>
-        <option value="Italy">Italy</option>
-        <option value="Jordan">Jordan</option>
-      </select>
-    </div>
+<!-- <form [formGroup]="step">
+  <ng-template matStepLabel>Fill address information</ng-template>
+  <mat-form-field>
+    <input matInput placeholder="city" formControlName="city" required>
+    <mat-error *ngIf="city?.invalid && (city?.dirty || city?.touched)">
+      City must be between 3 and 15 characters.
+    </mat-error>
   </mat-form-field> -->
+
+
+  <!-- <div class="inputbox mt-3">
+    /////////////////Card Number!!!!////////////////////
+    <input matInput  formControlName="city" type="text" class="form-control">
+    <i class="fa fa-credit-card"></i>
+    <span>city</span>
+    <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class=" text-danger" role="alert">
+      <p *ngIf="city?.errors?.['required']">City is required.</p>
+      <p *ngIf="city?.errors?.['pattern']">City must be between 3 and 15 characters.</p>
+    </div>
+  </div> -->
+
+
+
+
+
+
+  <!-- <mat-form-field>
+    <input matInput placeholder="governate" formControlName="governate" required>
+    <mat-error *ngIf="step.get('governate').invalid">
+      Governate must be between 3 and 15 characters.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="street" formControlName="street" required>
+    <mat-error *ngIf="step.get('street').invalid">
+      Street must be between 3 and 50 characters.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="mobile" formControlName="mobile" required>
+    <mat-error *ngIf="step.get('mobile').invalid">
+      Mobile must be 11 digits.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Shapping address" formControlName="shaping_address" required>
+    <mat-error *ngIf="step.get('shaping_address').invalid">
+      Shapping address must be between 5 and 100 characters.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="pinCode" formControlName="pinCode" required>
+    <mat-error *ngIf="step.get('pinCode').invalid">
+      Pin code must be 4 digits.
+    </mat-error>
+  </mat-form-field> -->
+  <!-- <app-text-input (outputText)="change($event)"></app-text-input> -->
+  <!-- " -->
+  <!-- <div>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form> -->
+
+
+<div class="container mt-5 px-5">
+  <div class="mb-4">
+    <h2> Shipping address</h2>
+    <!-- first
+    {{firstName.valid |json}}
+    {{firstName.errors |json}}
+    second
+    {{secondName.valid |json}}
+    {{secondName.errors |json}} -->
+  </div>
+  
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card p-3">
+        <form [formGroup]="step">
+          <ng-template matStepLabel>Fill address information</ng-template>
+          <div class="row mt-3">
+            <!-- /////////////////Phone Number!!!!!!!!!!////////////////////// -->
+            <div class="col-md-6">
+              <div class="inputbox mt-3 mr-2"> 
+                <input matInput formControlName="mobile" type="text" class="form-control">
+                <span>Phone Number</span>
+                <div *ngIf="mobile?.invalid && (mobile?.dirty || mobile?.touched)" class=" text-danger" role="alert">
+                  <p *ngIf="mobile?.errors?.['required']">Phone Number Required <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                  <p *ngIf="mobile?.errors?.['pattern']">Phone number must be 11 digits 
+                    <i class="fa-solid error fa-circle-exclamation"></i></p>
+                </div>
+              </div>
+            </div>
+            <!-- /////////////////Country!!!////////////////////// -->
+            <div class="col-md-6">
+              <p>Country</p>
+              <div class="inputbox mt-3 mr-2">
+                <select  matInput formControlName="governate" class="form-select" aria-label="Default select example" >
+                  <option value="Australia">Australia</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Egypt">Egypt</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Jordan">Jordan</option>
+                  <option value="UAE">UAE</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <!-- /////////////////City////////////////////// -->
+            <div class="col-md-6">
+              <div class="inputbox mt-3 mr-2"> 
+                <input matInput  formControlName="city" type="text" class="form-control">
+                <span>City</span>
+                <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class=" text-danger" role="alert">
+                  <p *ngIf="city?.errors?.['required']">City Required <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                  <p *ngIf="city?.errors?.['pattern']">Invalid City Name must be between 3 and 15 characters <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                </div>
+              </div>
+            </div>
+            <!-- /////////////////Street Adress////////////////////// -->
+            <div class="col-md-6">
+              <div class="inputbox mt-3 mr-2"> 
+                <input matInput formControlName="street" type="text" class="form-control">
+                <span>Street Address</span>
+                <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class=" text-danger" role="alert">
+                  <p *ngIf="street?.errors?.['required']">Street Address Required <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                  <p *ngIf="street?.errors?.['pattern']">Invalid Street Adress must be between 3 and 50 characters <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <!-- /////////////////Shopping Adress////////////////////// -->
+            <div class="col-md-6">
+              <div class="inputbox mt-3 mr-2"> 
+                <input matInput formControlName="shaping_address" type="text" (change)="storeAdress()" class="form-control" >
+                <span>Shapping address</span>
+                <div *ngIf="shaping_address?.invalid && (shaping_address?.dirty || shaping_address?.touched)" class=" text-danger" role="alert">
+                  <p *ngIf="shaping_address?.errors?.['required']">Shapping address Required <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                  <p *ngIf="shaping_address?.errors?.['pattern']">Shapping address must be between 5 and 100 characters<i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                </div>
+              </div>
+            </div>
+            <!-- /////////////////pinCode////////////////////// -->
+            <div class="col-md-6">
+              <div class="inputbox mt-3 mr-2"> 
+                <input  matInput formControlName="pinCode" type="text" class="form-control">
+                <span>Pin Code</span>
+                <div *ngIf="pinCode?.invalid && (pinCode?.dirty || pinCode?.touched)"  class=" text-danger" role="alert">
+                  <p *ngIf="pinCode?.errors?.['required']">Zip code Required <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                  <p *ngIf="pinCode?.errors?.['pattern']"> Pin code must be 4 digits  <i
+                      class="fa-solid error fa-circle-exclamation"></i></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperNext class="btn next">Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

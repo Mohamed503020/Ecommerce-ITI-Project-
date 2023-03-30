@@ -113,3 +113,40 @@ body{
     color: red;
     
 }
+.next{
+    color: #fff;
+    background-color: #ff8100;
+    border-radius: 999px;
+    border-color:#ff8100;
+    margin: 10px;
+}
+
+.next:hover {
+    color: black;
+    background-color:#ff8100;
+    border-radius: 999px;
+    border-color: #ff8100;
+}
+
+.back{
+  color: black;
+  background-color:  #d7d7d7;
+  border-radius: 999px;
+  border-color: #d7d7d7;
+  margin: 10px;
+}
+
+.back:hover {
+  color: #ff8100;
+  background-color: #d7d7d7;
+  border-radius: 999px;
+  border-color:  #d7d7d7;
+}
+
+.total{
+    color: #fff;
+    background-color: #ff8100;
+    border-radius: 999px;
+    border-color:#ff8100;
+    margin: 10px; 
+}

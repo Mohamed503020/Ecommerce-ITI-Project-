@@ -21,12 +21,27 @@ export class AddressComponent implements OnInit {
     private formService: FormServiceService
   ) {
     this.step = this._formBuilder.group({
-      city: ['', Validators.required],
-      governate: ['', Validators.required],
-      street: ['', Validators.required],
-      mobile: ['', Validators.required],
-      shaping_address: ['', Validators.required],
-      pinCode: ['', Validators.required],
+      // city: ['', Validators.required],
+      // governate: ['', Validators.required],
+      // street: ['', Validators.required],
+      // mobile: ['', Validators.required],
+      // shaping_address: ['', Validators.required],
+      // pinCode: ['', Validators.required],
+
+
+      city: ['', [Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
+      governate: ['', [Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
+      street: ['', [Validators.required, Validators.pattern("^[a-zA-Z]{3,50}$")]],
+      mobile: ['', [Validators.required, Validators.pattern("^[0-9]{11}$")]],
+      shaping_address: ['', [Validators.required,Validators.pattern("^[a-zA-Z]{5,100}$")]],
+      pinCode: ['', [Validators.required, Validators.pattern("^[0-9]{4}$")]]
+
+
+
+
+
+
+
       // shoppingAddress: ''
       // extraName: ''
     });
@@ -38,5 +53,30 @@ export class AddressComponent implements OnInit {
 
   change(title: any) {
     this.step.patchValue({ extraName: title });
+  }
+
+
+  get city() {
+    return this.step.get('city');
+  }
+  get governate() {
+    return this.step.get('governate');
+  }
+  get street() {
+    return this.step.get('street');
+  }
+  get mobile() {
+    return this.step.get('mobile');
+  } 
+  get shaping_address() {
+    return this.step.get('shaping_address');
+  }
+  get pinCode() {
+    return this.step.get('pinCode');
+  }
+
+  storeAdress(){
+    localStorage.setItem('shoppingAdress', this.shaping_address?.value)
+
   }
 }

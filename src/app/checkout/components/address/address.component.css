@@ -113,3 +113,18 @@ body{
     color: red;
     
 }
+
+.next{
+    color: #fff;
+    background-color: #ff8100;
+    border-radius: 999px;
+    border-color:#ff8100;
+    margin: 10px;
+}
+
+.next:hover {
+    color: black;
+    background-color:#ff8100;
+    border-radius: 999px;
+    border-color: #ff8100;
+}

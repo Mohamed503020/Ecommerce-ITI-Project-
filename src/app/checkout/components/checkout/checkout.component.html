@@ -5,15 +5,16 @@
     </mat-step>
   <mat-step [stepControl]="stepTwo">
   <ng-template matStepLabel>Provide Payment Information</ng-template>
-  <app-payment></app-payment>
+  <app-payment [totalPrice]="totalPrice"></app-payment>
   </mat-step>
   
     <mat-step>
-      <ng-template matStepLabel>Review and Confirm Details</ng-template>
+      <ng-template matStepLabel>Review and Confirm Order</ng-template>
+      <app-done-order [shoppingAdress]="shoppingAdress"></app-done-order>
       <input type="number" [value]="totalPrice" readonly  form>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Done</button>
+        <button mat-button matStepperPrevious class="btn back">Back</button>
+        <button mat-button (click)="createUserOrder()" class="btn next">Done</button>
       </div>
     </mat-step>
   </mat-stepper>
@@ -23,6 +24,7 @@
 
   <div class="diagnostics">
     {{this.formService.mainForm.value | json}}
+    {{this.formService.mainForm.value.shaping_address}}
     <!-- <div *ngFor="let key of keys()">
       <span *ngIf="myForm[key]">
         <b>{{key}}</b>: {{myForm[key]}}

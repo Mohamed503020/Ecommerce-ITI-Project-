@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CheckoutRoutingModule } from './checkout-routing.module';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddressComponent } from './components/address/address.component';
@@ -14,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import { SharedModule } from './../shared/shared.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 @NgModule({
@@ -22,11 +22,11 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   ],
   
   declarations: [
-    CheckoutComponent,
     AddressComponent,
     MyOrderSidebarComponent,
     PaymentComponent,
-    DoneOrderComponent
+    DoneOrderComponent,
+    CheckoutComponent
     
   ],
   imports: [
