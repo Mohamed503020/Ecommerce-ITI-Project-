@@ -15,6 +15,8 @@ import Swal from 'sweetalert2';
 export class HeaderComponent implements OnInit {
   sticky: boolean = false;
   params: any;
+  category:string='all'
+  searchText=''
   constructor(
     private _cartService:CartService,
     private _wishlistService:WishlistService,
@@ -31,6 +33,7 @@ export class HeaderComponent implements OnInit {
    categories:any;
    logged:boolean=false;
    cat!: string;
+
    //header stiky
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
@@ -84,7 +87,18 @@ this._productService.getAllCategory().subscribe({
    }
 })
 }
+selectCategory(cate: string) {
+  console.log(cate)
+  if (cate === 'all') {
+    this.router.navigateByUrl('/main/products');
+  } else {
+    this.router.navigateByUrl(`/main/products/productcategory/${cate}`);
+  }
+}
+searchProduct(seerchTxt:string){
+  this.router.navigateByUrl(`/main/products/search/${seerchTxt}`);
 
+}
 logout(){
 this._authsrv.islogin.next(false);
 

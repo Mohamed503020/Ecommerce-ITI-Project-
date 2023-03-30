@@ -39,7 +39,7 @@ export class ProductsComponent {
   }
   addProductToWishList(id: any) {
     if(localStorage.getItem('token')){
-    
+
     this._WishlistService.AddItemWishlist(id).subscribe({
       next: (res) => {
         console.log(res);
@@ -65,15 +65,10 @@ export class ProductsComponent {
   }
   }
 
-<<<<<<< HEAD
-  addProductTocart(){
-    // this._cartService.addProductToCart(this.product)
-
-=======
   addProductToCart(id: any) {
     if(localStorage.getItem('token')){
       this._CartService.AddItemCart(id).subscribe({
-        next: (res) => {   
+        next: (res) => {
           console.log(res);
           console.log("Done");
           Swal.fire({
@@ -99,9 +94,8 @@ export class ProductsComponent {
     }
     else{
       this._router.navigateByUrl("/auth/login")
-    }  
-   
->>>>>>> MohamedIbrahim
+    }
+
   }
   // logout() {
   //   this._authsrv.islogin.next(false);

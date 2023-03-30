@@ -49,6 +49,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     private _route: Router) { }
 
 
+
   ngAfterViewInit(): void {
     this.getProductsCategory()
   }
@@ -58,8 +59,6 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     this._ActivatedRoute.params.subscribe(params => {
       this.product_id = params['id'];
       this.getProduct();
-<<<<<<< HEAD
-      this.addProductToCart();
       this.getProductsCategory()
 
     })
@@ -68,16 +67,14 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     //   this.getProduct();
     //   this.addProductToCart();
     // })
-=======
       // this.addProductToCart();
 
-    })
+
     this._ActivatedRoute.params.subscribe(params => {
       this.product_id = params['cat'];
       this.getProduct();
       // this.addProductToCart();
     })
->>>>>>> MohamedIbrahim
 
 
   }
@@ -92,13 +89,13 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
         this.product = data;
         this.ImgUrl = data.images[1];
       },
-      error: error => alert(error.message)
+      error: error => console.log(error.message)
     })
   }
   getProductsCategory() {
     this._ProductService.getProductsByCategory(this.product.category).subscribe({
-      next: (item) => { this.productsOfCategory = item },
-      error: error => alert(error.message)
+      next: (item) => { this.productsOfCategory = item }
+
     })
   }
 
@@ -162,7 +159,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
         }
       })
     }
-   
+
 
   }
 
