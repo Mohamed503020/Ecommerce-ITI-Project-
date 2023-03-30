@@ -85,9 +85,14 @@
                   <option selected value="">All type</option>
                   <option (click)="selectcategory(cat.name)" *ngFor="let cat of categories"  [value]="cat.name">{{cat.name}}</option>
                 </select> -->
+<<<<<<< HEAD
                 <select class="form-select" name="category" [(ngModel)]="category" (change)="selectCategory(category)">
                   <option selected value="all">All type</option>
                   <option *ngFor="let cat of categories" [routerLink]="['/main/products/productcategory',cat.name]" [value]="cat.name" >{{cat.name}}</option>
+=======
+                <select class="form-select">
+                  <option selected value="">All type</option>
+>>>>>>> MohamedIbrahim
                 </select>
                 <button class="btn btn-warning" (click)="searchProduct(searchText)">
                   <i class="fa fa-search"></i>

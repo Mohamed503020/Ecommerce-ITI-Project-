@@ -1,5 +1,6 @@
 <div class="product">
   <div class="product-image">
+<<<<<<< HEAD
       <a style="height: 227px;" routerLink="/main/products/{{product.id}}">
           <img [src]="product.images[0]" alt="Product_image"
               onerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'">
@@ -12,6 +13,31 @@
 
           <i class="fa-solid fa-heart"></i>
       </button>
+=======
+    <a style="height: 227px" routerLink="/main/products/{{ product.id }}">
+      <img
+        [src]="product.images[0]"
+        alt="Product_image"
+        onerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'"
+      />
+      <img
+        [src]="product.images[1]"
+        alt="Product_image"
+        sonerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'"
+      />
+    </a>
+    <p class="product-sale" *ngIf="product.id % 3 == 0">Sale</p>
+    <!-- (click)="addProductToWishlist()" -->
+    <!-- *ngIf="isAlert" -->
+    <!-- {{alertmsg}} -->
+    <button
+      type="button"
+      class="btn-favourite btn-circle"
+      (click)="addProductToWishList(product.id)"
+    >
+      <i class="fa-solid fa-heart"></i>
+    </button>
+>>>>>>> MohamedIbrahim
   </div>
   <div class="product-content">
     <a
@@ -44,7 +70,11 @@
               </button>
           </span> -->
       <span class="product-atc rounded-circle">
-        <button type="button" class="btn btn-circle text-muted">
+        <button
+          type="button"
+          class="btn btn-circle text-muted"
+          (click)="addProductToCart(product.id)"
+        >
           <i class="fa fa-shopping-cart"></i>
         </button>
       </span>

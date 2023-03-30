@@ -10,13 +10,22 @@ import { NonNullAssert } from '@angular/compiler';
   providedIn: 'root'
 })
 export class AuthService {
-
   islogin: BehaviorSubject<boolean> = new BehaviorSubject(false)
+
+  // islogin = new BehaviorSubject<boolean>(false);
+
   constructor(
     private _httpClient: HttpClient) { }
 
   api = "http://localhost:8000/api/users"
 
+  // setIsLoggedIn(value: boolean) {
+  //   this.islogin.next(value);
+  // }
+
+  // isLoggedIn() {
+  //   return this.islogin.getValue();
+  // }
 
   forgotPassword(email: string) {
     return this._httpClient.post<string>(`http://localhost:8000/api/users/forgetPassword`, {
