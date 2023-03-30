@@ -8,7 +8,7 @@ import { ProductcategoryComponent } from './components/productcategory/productca
 const routes: Routes = [
   {path:"",component:ProductlistComponent},
   {path:"productlist",component:ProductlistComponent},
-  {path:"search",component:SearchProductsComponent},
+  {path:"search/:name",component:SearchProductsComponent},
   {path:"productcategory/:cat", component:ProductcategoryComponent},
   {path:":id",component:ProductdetailsComponent}
 ];

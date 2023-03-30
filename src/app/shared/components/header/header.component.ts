@@ -8,11 +8,13 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'
+]
 })
 export class HeaderComponent implements OnInit {
   sticky: boolean = false;
   params: any;
+  searchText:string=""
   constructor(
     private _cartService: CartService,
     private _wishlistService: WishlistService,
@@ -27,7 +29,7 @@ export class HeaderComponent implements OnInit {
   searchQuery = '';
   searchResults: any;
   categories: any;
-  category:any
+  category:string='all'
   logged: boolean = false;
   cat!: string;
   //header stiky
@@ -66,8 +68,13 @@ export class HeaderComponent implements OnInit {
 
 
 
-  selectCategory(cat:any){
-    this.router.navigate(['/main/products/productcategory',this.category])
+  selectCategory(cate: string) {
+    console.log(cate)
+    if (cate === 'all') {
+      this.router.navigateByUrl('/main/products');
+    } else {
+      this.router.navigateByUrl(`/main/products/productcategory/${cate}`);
+    }
   }
 
   getAllProductFromCart() {
@@ -86,7 +93,10 @@ export class HeaderComponent implements OnInit {
       },error:error=>{alert(error.message)}
     })
   }
+searchProduct(seerchTxt:string){
+  this.router.navigateByUrl(`/main/products/search/${seerchTxt}`);
 
+}
   logout() {
     this._authsrv.islogin.next(false);
 
