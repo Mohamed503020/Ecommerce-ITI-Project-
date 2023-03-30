@@ -58,26 +58,15 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     this._ActivatedRoute.params.subscribe(params => {
       this.product_id = params['id'];
       this.getProduct();
-<<<<<<< HEAD
       // this.addProductToCart();
 
     })
-    this._ActivatedRoute.params.subscribe(params => {
-      this.product_id = params['cat'];
-      this.getProduct();
-      // this.addProductToCart();
-    })
-=======
-      this.addProductToCart();
-      this.getProductsCategory()
-
-    })
+   
     // this._ActivatedRoute.params.subscribe(params => {
     //   this.product_id = params['cat'];
     //   this.getProduct();
     //   this.addProductToCart();
     // })
->>>>>>> 69c5d6c21fe2b3887af15cf001e6eeb8ede61860
 
 
   }

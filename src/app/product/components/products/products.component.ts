@@ -65,7 +65,6 @@ export class ProductsComponent {
   }
   }
 
-<<<<<<< HEAD
   addProductToCart(id: any) {
     if(localStorage.getItem('token')){
       this._CartService.AddItemCart(id).subscribe({
@@ -97,11 +96,6 @@ export class ProductsComponent {
       this._router.navigateByUrl("/auth/login")
     }  
    
-=======
-  addProductTocart(){
-    // this._cartService.addProductToCart(this.product)
-
->>>>>>> 69c5d6c21fe2b3887af15cf001e6eeb8ede61860
   }
   // logout() {
   //   this._authsrv.islogin.next(false);

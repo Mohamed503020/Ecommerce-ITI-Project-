@@ -17,8 +17,7 @@ export class EditProfileComponent implements OnInit {
     ){}
   registerForm!: FormGroup
   selectedImage!: File;
- 
-userdata:any={};
+  userdata:any={};;
  
 
   
@@ -42,11 +41,25 @@ userdata:any={};
       console.log(this.userdata);
     }  
   }
-  onFileSelected(event:any){
+  onFileSelected(event: any) {
     console.log(event);
-    this.registerForm.patchValue({image:event.target.files[0]});
-    
+    this.selectedImage = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedImage);
+    reader.onload = () => {
+      this.userdata.image = reader.result as string;
+      this.registerForm.patchValue({image: this.selectedImage});
+      const imagePreview = document.getElementById('user-image') as HTMLImageElement;
+      imagePreview.src = URL.createObjectURL(this.selectedImage);
+    };
   }
+  
+
+  get name() { return this.registerForm.get('name'); }
+  get email() { return this.registerForm.get('email'); }
+  get gender() { return this.registerForm.get('gender'); }
+  get image() { return this.registerForm.get('image'); }
+
   onSubmit() {
     const formData = new FormData();
   console.log(this.registerForm.value);
