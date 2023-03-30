@@ -28,7 +28,7 @@ export class CartService implements OnInit {
     return this._HttpClient.get<any>("http://localhost:8000/api/users/showUserCard", httpOptions);
   }
 
-  AddItemCart(id: any): Observable<any> {
+  AddItemCart(id:any): Observable<any> {
     const token = localStorage.getItem('token');
     const httpOptions = {
       headers: new HttpHeaders({

@@ -7,6 +7,9 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class WishlistService {
+  AddItemCart(product_id: any) {
+    throw new Error('Method not implemented.');
+  }
   
   constructor(private _HttpClient:HttpClient) {
 

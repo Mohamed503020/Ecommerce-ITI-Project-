@@ -2,11 +2,11 @@ import { Product } from './../../model/product';
 import { ProductService } from './../../services/product.service';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
 import { CartService } from 'src/app/cart/services/cart.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-productdetails',
   templateUrl: './productdetails.component.html',
@@ -39,11 +39,14 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   product_id!: number;
   subsucription!: Subscription;
   ImgUrl: string = ''
+  produtincart: any;
+  foundproduct: any;
   constructor(
     private _ProductService: ProductService,
     private _ActivatedRoute: ActivatedRoute,
     private _WishlistService: WishlistService,
-    private _CartService: CartService) { }
+    private _CartService: CartService,
+    private _route: Router) { }
 
 
   ngAfterViewInit(): void {
@@ -51,17 +54,17 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
   ngOnInit(): void {
-
+    // this.getProductfromCart()
     this._ActivatedRoute.params.subscribe(params => {
       this.product_id = params['id'];
       this.getProduct();
-      this.addProductToCart();
+      // this.addProductToCart();
 
     })
     this._ActivatedRoute.params.subscribe(params => {
       this.product_id = params['cat'];
       this.getProduct();
-      this.addProductToCart();
+      // this.addProductToCart();
     })
 
 
@@ -76,7 +79,6 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
       next: data => {
         this.product = data;
         this.ImgUrl = data.images[1];
-
       },
       error: error => alert(error.message)
     })
@@ -92,28 +94,63 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     this.ImgUrl = src
   }
   addProductToCart() {
-    this._CartService.AddItemCart(this.product_id).subscribe({
-      next: (res) => {
-        console.log(res);
-        console.log("Done");
-      },
-      error: (err) => {
-        console.log(err);
-        console.log("errrrrrrrrrror");
-      }
-    })
+    if (localStorage.getItem('token')) {
+      this._CartService.AddItemCart(this.product_id).subscribe({
+        next: (res) => {
+          console.log(res);
+          console.log("Done");
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Product Added Succefully ',
+            showConfirmButton: false,
+            timer: 2500
+          })
+        },
+        error: (err) => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'product already existed',
+            showConfirmButton: false,
+            timer: 2500
+          })
+        }
+      })
+
+    }
+    else {
+      this._route.navigateByUrl("/auth/login")
+
+    }
+
   }
   addProductToWishList(id: any) {
-    this._WishlistService.AddItemWishlist(id).subscribe({
-      next: (res) => {
-        console.log(res);
-        console.log("Done");
-      },
-      error: (err) => {
-        console.log(err);
-        console.log("errrrrrrrrrror");
-      }
-    })
+    if(localStorage.getItem('token')){
+      this._WishlistService.AddItemWishlist(id).subscribe({
+        next: (res) => {
+          console.log(res);
+          console.log("Done");
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Product Added Succefully ',
+            showConfirmButton: false,
+            timer: 2500
+          })
+        },
+        error: (err) => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'product already existed',
+            showConfirmButton: false,
+            timer: 2500
+          })
+        }
+      })
+    }
+   
 
   }
 
@@ -127,4 +164,22 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   ngOnDestroy(): void {
     this.subsucription.unsubscribe()
   }
+
+  // getProductfromCart() {
+  //   this._CartService.getAllCartPrd().subscribe({
+  //     next: (res) => {
+
+  //       this.foundproduct = this.produtincart.find((item: any) => {
+
+
+  //         return item.id = this.product_id
+  //       })
+  //       this.produtincart = res;
+  //     },
+  //     error: (error) => {
+  //       console.log(error.message);
+
+  //     }
+  //   })
+  // }
 }
