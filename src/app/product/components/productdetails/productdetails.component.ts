@@ -58,6 +58,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     this._ActivatedRoute.params.subscribe(params => {
       this.product_id = params['id'];
       this.getProduct();
+<<<<<<< HEAD
       // this.addProductToCart();
 
     })
@@ -66,6 +67,17 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
       this.getProduct();
       // this.addProductToCart();
     })
+=======
+      this.addProductToCart();
+      this.getProductsCategory()
+
+    })
+    // this._ActivatedRoute.params.subscribe(params => {
+    //   this.product_id = params['cat'];
+    //   this.getProduct();
+    //   this.addProductToCart();
+    // })
+>>>>>>> 69c5d6c21fe2b3887af15cf001e6eeb8ede61860
 
 
   }
@@ -85,7 +97,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   }
   getProductsCategory() {
     this._ProductService.getProductsByCategory(this.product.category).subscribe({
-      next: (item) => { this.productsOfCategory = item.data },
+      next: (item) => { this.productsOfCategory = item },
       error: error => alert(error.message)
     })
   }

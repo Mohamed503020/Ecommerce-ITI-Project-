@@ -10,28 +10,31 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'
+]
 })
 export class HeaderComponent implements OnInit {
   sticky: boolean = false;
   params: any;
+  searchText:string=""
   constructor(
-    private _cartService:CartService,
-    private _wishlistService:WishlistService,
-    private _productService:ProductService,
-    private router:Router,
-    private _authsrv:AuthService
-    ){}
-   cartitem:any;
-   cartLength:any;
-   wishlistItem:any;
-   allproducts:any;
-   searchQuery='';
-   searchResults:any;
-   categories:any;
-   logged:boolean=false;
-   cat!: string;
-   //header stiky
+    private _cartService: CartService,
+    private _wishlistService: WishlistService,
+    private _productService: ProductService,
+    private router: Router,
+    private _authsrv: AuthService
+  ) { }
+  cartitem: any;
+  cartLength = 0;
+  wishlistItem: any;
+  allproducts: any;
+  searchQuery = '';
+  searchResults: any;
+  categories: any;
+  category:string='all'
+  logged: boolean = false;
+  cat!: string;
+  //header stiky
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
     const windowScroll = window.pageYOffset;
@@ -42,8 +45,8 @@ export class HeaderComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.cartLength=localStorage.getItem('cartItemlength')
-    this.getAllProductFromCart();
+    // this.cartLength = localStorage.getItem('cartItemlength')
+    // this.getAllProductFromCart();
     this.getallcategory();
    this._wishlistService.getAllWishlist().subscribe({
   next:(data)=>{
@@ -58,6 +61,7 @@ if(localStorage.getItem('user')){
 }
 else{this.logged=false}
 }
+
 // selectCategory(){    if (this.searchQuery) {
 //   const query = this.searchQuery.toLowerCase();
 //   this.categories = this.categories.filter((cat) => cat.name.toLowerCase().includes(query));
@@ -68,27 +72,56 @@ else{this.logged=false}
     
 
 
-getAllProductFromCart(){
-  this._cartService.getAllCartPrd().subscribe({
-    next:(res)=>{
-      this.cartitem=res;
+// getAllProductFromCart(){
+//   this._cartService.getAllCartPrd().subscribe({
+//     next:(res)=>{
+//       this.cartitem=res;
      
+//     }
+//   })}
+  // selectCategory() {
+  //   if (this.searchQuery) {
+  //     const query = this.searchQuery.toLowerCase();
+  //     this.categories = this.categories.
+  //       filter((cat: { name: string; }) => cat.name.toLowerCase().includes(query));
+  //   }
+  // }
+
+
+
+  selectCategory(cate: string) {
+    console.log(cate)
+    if (cate === 'all') {
+      this.router.navigateByUrl('/main/products');
+    } else {
+      this.router.navigateByUrl(`/main/products/productcategory/${cate}`);
     }
-  })
-}
+  }
 
-getallcategory(){
-this._productService.getAllCategory().subscribe({
-   next:(res)=>{
-    this.categories=res;
-   }
-})
-}
+  // getAllProductFromCart() {
+  //   this._cartService.getAllCartPrd().subscribe({
+  //     next: (res) => {
+  //       this.cartitem = res;
 
-logout(){
-this._authsrv.islogin.next(false);
+  //     },error:error=>{alert(error.message)}
+  //   })
+  // }
+
+  getallcategory() {
+    this._productService.getAllCategory().subscribe({
+      next: (res) => {
+        this.categories = res;
+      },error:error=>{alert(error.message)}
+    })
+  }
+searchProduct(seerchTxt:string){
+  this.router.navigateByUrl(`/main/products/search/${seerchTxt}`);
 
 }
+  logout() {
+    this._authsrv.islogin.next(false);
+
+  }
   // searchProducts() {
   //   if (this.searchQuery.length > 0) {
   //     this._productService.getProduct().subscribe((data) => {

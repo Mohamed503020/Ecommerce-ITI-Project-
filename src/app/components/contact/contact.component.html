@@ -30,7 +30,7 @@
                   class="form-control m-2"
                   placeholder="Your First Name"
                   required
-                  ngModel
+                  [(ngModel)]="fn"
                   name="ufname"
                   #fname="ngModel"
                   pattern="[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$"
@@ -50,7 +50,7 @@
                   class="form-control m-2"
                   placeholder="Your Last Name"
                   required
-                  ngModel
+                  [(ngModel)]="ln"
                   #lname="ngModel"
                   name="LaName"
                   pattern="[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$+"
@@ -70,10 +70,10 @@
                   class="form-control m-2"
                   placeholder="Your Email"
                   required
-                  ngModel
+                  [(ngModel)]="em"
                   #email="ngModel"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                  name="EEmail"
+                  name="Email"
                 />
                 <div class="vali" *ngIf="email.touched">
                   <p *ngIf="email.errors?.['required']" style="color: red">
@@ -85,16 +85,18 @@
                 </div>
               </div>
               <div>
-                <textarea
-                  class="form-control m-2"
-                  placeholder="Type your message here..."
-                  rows="5"
-                  required
-                  minlength="1"
+                <textarea class="form-control m-2"
+                placeholder="Type your message here..."
+                rows="5"
+                required
+                minlength="1"
+                [(ngModel)]="m"
+                #message="ngModel"
+                name="message"
                 ></textarea>
               </div>
                 <button type="submit" class="btn btn-primary"
-                [disabled]="contactForm.invalid">SEND</button>
+                [disabled]="contactForm.invalid" (click)="sendData(fn,ln,em,m)" >SEND</button>
               </form>
             </div>
           </div>
