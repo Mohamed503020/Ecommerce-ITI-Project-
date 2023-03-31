@@ -45,6 +45,7 @@ export class ProductsComponent {
     
     this._WishlistService.AddItemWishlist(id).subscribe({
       next: (res) => {
+       this.getallprdfromwishlist()
         console.log(res);
         console.log("Done");
         Swal.fire({
@@ -74,13 +75,13 @@ export class ProductsComponent {
     if(localStorage.getItem('token')){
       this._CartService.AddItemCart(id).subscribe({
         next: (res) => {   
+          this.getallprdfromcart()
           console.log(res);
           console.log("Done");
           Swal.fire({
             position: 'top',
             icon: 'success',
             title: 'Product added Succefully ',
-           
             showConfirmButton: false,
             timer: 2500
           })
@@ -102,6 +103,22 @@ export class ProductsComponent {
       this._router.navigateByUrl("/auth/login")
     }  
    
+  }
+
+  getallprdfromwishlist(){
+    this._WishlistService.getAllWishlist().subscribe({
+      next:(res)=>{
+        this._WishlistService.wishlistItems.next(res)
+      }
+    })
+  }
+
+  getallprdfromcart(){
+    this._CartService.getAllCartPrd().subscribe({
+      next:(res)=>{
+        this._CartService.cartItems.next(res)
+      }
+    })
   }
   // logout() {
   //   this._authsrv.islogin.next(false);

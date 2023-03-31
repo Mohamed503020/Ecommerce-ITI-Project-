@@ -1,12 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, retry } from 'rxjs';
+import { BehaviorSubject, Observable, retry } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishlistService {
+  wishlistItems = new BehaviorSubject<any[]>([]);
+
   AddItemCart(product_id: any) {
     throw new Error('Method not implemented.');
   }

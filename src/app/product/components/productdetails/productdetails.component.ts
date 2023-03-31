@@ -98,6 +98,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     if (localStorage.getItem('token')) {
       this._CartService.AddItemCart(this.product_id).subscribe({
         next: (res) => {
+       this.getallprdfromcart()
           console.log(res);
           console.log("Done");
           Swal.fire({
@@ -130,6 +131,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     if(localStorage.getItem('token')){
       this._WishlistService.AddItemWishlist(id).subscribe({
         next: (res) => {
+      this.getallprdfromwishlist()
           console.log(res);
           console.log("Done");
           Swal.fire({
@@ -165,7 +167,20 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   ngOnDestroy(): void {
     this.subsucription.unsubscribe()
   }
-
+  getallprdfromcart(){
+    this._CartService.getAllCartPrd().subscribe({
+      next:(res)=>{
+        this._CartService.cartItems.next(res)
+      }
+    })
+  }
+  getallprdfromwishlist(){
+    this._WishlistService.getAllWishlist().subscribe({
+      next:(res)=>{
+        this._WishlistService.wishlistItems.next(res)
+      }
+    })
+  }
   // getProductfromCart() {
   //   this._CartService.getAllCartPrd().subscribe({
   //     next: (res) => {
