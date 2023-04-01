@@ -22,6 +22,7 @@ export class ProductsComponent {
 
   addProductTocart(){
     // this._cartService.addProductToCart(this.product)
+
   }
   // }
   addProductToWishlist(){

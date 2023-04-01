@@ -24,12 +24,15 @@ api='http://localhost:8000/api';
   }
 
   getProductsByCategory(category: string): Observable<any> {
-    return this._HttpClient.post<any>(`http://localhost:8000/api/searchByCatagoryName`,{"category":category})
+    return this._HttpClient.get<any>(`http://localhost:8000/api/searchByCatagoryName/${category}`)
   }
 
   getAllCategory():Observable<any>{
     return this._HttpClient.get<any>(`http://localhost:8000/api/categories`)
   }
+getproductsearch(searchTxt: string){
+  return this._HttpClient.get<any>(`http://localhost:8000/api/searchByProductName/${searchTxt}`)
 
+}
 }
 

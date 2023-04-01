@@ -10,7 +10,7 @@
             <div class="col">
               <strong>Estimated Delivery time:</strong>
               <br />
-              <p>{{ twoDaysAfter | date:'MMM d, y'}}</p>
+              <p>{{ twoDaysAfter}}</p>
             </div>
             <div class="col">
               <strong>mobile:</strong> <br />
@@ -63,7 +63,7 @@
                   {{order.product.name}} <br />
                   <span class="space"> {{order.product.description}} </span>
                 </p>
-                <span class="text-muted"> {{order.product.price |currency:'EUR' }}   </span>
+                <span class="text-muted"> {{order.product.price}}   </span>
               </figcaption>
             </figure>
           </li>

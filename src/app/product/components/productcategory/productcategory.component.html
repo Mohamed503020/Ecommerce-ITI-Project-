@@ -1,7 +1,14 @@
-<div
+<div class="container">
+  <div class="title text-md-center mb-4">
+    <h2 class="text-dark">{{cat}}  products</h2>
+  </div>
+  <div class="row">
+  <div
   class="col-6 col-sm-8 col-md-6 col-lg-2"
   style="padding: 15px 7.5px"
-  *ngFor="let item of products"
+  *ngFor="let item of productsOfCategory"
 >
   <app-products [product]="item"></app-products>
+</div>
+</div>
 </div>

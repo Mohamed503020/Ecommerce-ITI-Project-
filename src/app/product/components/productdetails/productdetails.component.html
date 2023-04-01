@@ -58,40 +58,6 @@
               </div>
               <span>{{ product.rate }}</span>
             </div>
-
-            <div class="row mb-4">
-              <div class="col-md-4 col-6 mb-2">
-                <label class="form-label">Size</label>
-                <select class="form-select">
-                  <option>Small</option>
-                  <option>Medium</option>
-                  <option>Large</option>
-                </select>
-              </div>
-              <div class="col-md-4 col-6 mb-2">
-                <label class="form-label d-block">Quantity</label>
-                <div class="input-group input-spinner">
-                  <div class="quantity-selector">
-                    <button
-                      type="button"
-                      class="btn btn-quantity"
-                      (click)="updateCartItemQuantity(quantity, product, '-')"
-                      [disabled]="quantity == 1"
-                    >
-                      <span>-</span>
-                    </button>
-                    <div class="quantity-number">{{ quantity }}</div>
-                    <button
-                      type="button"
-                      class="btn btn-quantity"
-                      (click)="updateCartItemQuantity(quantity!, product, '+')"
-                    >
-                      <span>+</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="buttons d-flex flex-row 2 gap-3">
               <button class="btn btn-warning me-2" (click)="addProductToCart()">
                 <i class="me-1 fa fa-shopping-basket"></i>

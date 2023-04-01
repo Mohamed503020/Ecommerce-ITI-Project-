@@ -63,11 +63,11 @@
           <div class="header-shop-links float-end">
             <a routerLink="/main/wishlist" class="header-wishlist">
               <i class="fa-solid fa-heart text-danger"></i>
-              <!-- <span class="number">{{ wishlistItem.length }}</span> -->
+              <span class="number"></span>
             </a>
             <a routerLink="/main/cart" class="header-cart">
               <i class="fa-solid fa-bag-shopping"></i>
-              <!-- <span class="number">{{ cartLength}}</span> -->
+              <span class="number"></span>
             </a>
           </div>
         </div>
@@ -76,7 +76,7 @@
             <form action="#" class="">
               <div class="input-group">
                 <input
-                  type="search"
+                  type="search" name="search" [(ngModel)]="searchText"
                   class="form-control"
                   style="width: 55%"
                   placeholder="Search"
@@ -85,11 +85,16 @@
                   <option selected value="">All type</option>
                   <option (click)="selectcategory(cat.name)" *ngFor="let cat of categories"  [value]="cat.name">{{cat.name}}</option>
                 </select> -->
-                <select [(ngModel)]="cat" (change)="selectCategory()">
-                  <option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</option>
+                <select class="form-select" name="category" [(ngModel)]="category" (change)="selectCategory(category)">
+                  <option selected value="all">All type</option>
+                  <option *ngFor="let cat of categories" [routerLink]="['/main/products/productcategory',cat.name]" [value]="cat.name" >{{cat.name}}</option>
                 </select>
+                <button class="btn btn-warning" (click)="searchProduct(searchText)">
+                  <i class="fa fa-search"></i>
+              </button>
               </div>
               </form>
+              
         </div>
         <div class="mobile-menu order-12 d-block d-lg-none col"></div>
       </div>
