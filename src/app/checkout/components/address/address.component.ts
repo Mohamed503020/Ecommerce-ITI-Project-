@@ -31,10 +31,10 @@ export class AddressComponent implements OnInit {
 
       city: ['', [Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
       governate: ['', [Validators.required,Validators.pattern("^[a-zA-Z]{3,15}$")]],
-      street: ['', [Validators.required, Validators.pattern("^[a-zA-Z]{3,50}$")]],
+      street: ['', [Validators.required, Validators.pattern("^(?=.{3,50}$)[a-zA-Z]+(\\s[a-zA-Z]+)*$")]],
       mobile: ['', [Validators.required, Validators.pattern("^[0-9]{11}$")]],
-      shaping_address: ['', [Validators.required,Validators.pattern("^[a-zA-Z]{5,100}$")]],
-      pinCode: ['', [Validators.required, Validators.pattern("^[0-9]{4}$")]]
+      shaping_address: ['', [Validators.required,Validators.pattern("^(?=.{1,200}$)[a-zA-Z]+(\\s[a-zA-Z]+)*$")]],
+      pinCode: ['', [Validators.required, Validators.pattern("^[0-9]{1,10}$")]]
 
 
 
