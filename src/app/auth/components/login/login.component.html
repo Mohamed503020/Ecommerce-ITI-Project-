@@ -2,7 +2,6 @@
   <div class="container-login100">
     <div class="col-11 col-md-10 col-lg-12">
       <div class="wrap-login100">
-
         <form class="login100-form validate-form"
         #loginForm="ngForm"
         (ngSubmit)="Userlogin()">
@@ -81,7 +80,9 @@
             </div>
             <br />
             <div>
-              <a href="#" class="txt1" style="color:blue"> Forgot Password? </a>
+              <a href="#" class="txt1" style="color:blue" 
+              routerLink="/auth/forgetpassword"
+              > Forgot Password? </a>
             </div>
           </div>
 

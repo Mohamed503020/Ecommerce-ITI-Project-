@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
 import { SearchProductsComponent } from './components/search-products/search-products.component';
 import { ProductsOfCategoryComponent } from './components/products-of-category/products-of-category.component';
+import { ProductcategoryComponent } from './components/productcategory/productcategory.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ProductsOfCategoryComponent } from './components/products-of-category/p
     ProductdetailsComponent,
     FilterProductPipe,
     SearchProductsComponent,
-    ProductsOfCategoryComponent
+    ProductsOfCategoryComponent,
+    ProductcategoryComponent
   ],
   imports: [
     CommonModule,
