@@ -1,6 +1,6 @@
 import { ProductService } from './../../../product/services/product.service';
 import { WishlistService } from './../../../wishlist-list/services/wishlist.service';
-import { AfterContentChecked, AfterViewChecked, Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/services/cart.service';
 import {  Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit,AfterContentChecked {
+export class HeaderComponent implements OnInit {
   sticky: boolean = false;
   constructor(
     private _cartService:CartService,
@@ -19,13 +19,9 @@ export class HeaderComponent implements OnInit,AfterContentChecked {
     private router:Router,
     private _authsrv:AuthService
     ){}
-  ngAfterContentChecked(): void {
-    this.cartLength=localStorage.getItem('cartItemlength');
-    this.wishlistItem=localStorage.getItem('wishlistPrd');
-  }
    cartitem:any;
    cartLength:any;
-   wishlistItem:any;
+   wishlistItem:any=[];
    allproducts:any;
    searchQuery='';
    searchResults:any;
@@ -42,23 +38,7 @@ export class HeaderComponent implements OnInit,AfterContentChecked {
     }
   }
   ngOnInit(): void {
-    this._cartService.getAllCartPrd().subscribe({
-      next:(res)=>{
-        localStorage.setItem('cartItemlength', res.length);
-      },
-      error:()=>{
-        localStorage.setItem('cartItemlength', '0');
-      }
-    })
-    this._wishlistService.getAllWishlist().subscribe({
-      next:(res)=>{
-        localStorage.setItem('wishlistPrd',res.length);
-      },
-      error:()=>{
-        localStorage.setItem('wishlistPrd', '0');
-      }
-    })
- 
+    this.cartLength=localStorage.getItem('cartItemlength')
     this.getAllProductFromCart();
    this._wishlistService.getAllWishlist().subscribe({
   next:(data)=>{
@@ -77,7 +57,7 @@ getAllProductFromCart(){
   this._cartService.getAllCartPrd().subscribe({
     next:(res)=>{
       this.cartitem=res;
-     
+
     }
   })
 }
@@ -86,26 +66,13 @@ logout(){
 this._authsrv.islogin.next(false);
 
 }
-  // searchProducts() {
-  //   if (this.searchQuery.length > 0) {
-  //     this._productService.getProduct().subscribe((data) => {
-  //       this.searchResults = data.filter((product:any) => {
-  //         return product.title.toLowerCase().includes(this.searchQuery.toLowerCase());
-  //       });
-  //       const state = { myData: this.searchResults };
-  //       const extras: NavigationExtras = { state };
-  //       this.router.navigate(['/main/products/search'], );
-  //     });
-  //   } else {
-  //     this.searchResults = [];
-  //   }
-  // }
 
-  // getCategires(){
-  //   this._productService.getAllCategory().subscribe({
-  //     next:data=>{this.categories=data}
-  //   })
-  // }s
+
+  getCategires(){
+    this._productService.getAllCategory().subscribe({
+      next:data=>{this.categories=data}
+    })
+  }
 
 
 }
