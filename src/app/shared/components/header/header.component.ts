@@ -1,6 +1,6 @@
 import { ProductService } from './../../../product/services/product.service';
 import { WishlistService } from './../../../wishlist-list/services/wishlist.service';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, HostListener, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -11,28 +11,30 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   styleUrls: ['./header.component.css'
 ]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,AfterContentChecked {
   sticky: boolean = false;
   params: any;
   searchText:string=""
   constructor(
-    private _cartService: CartService,
-    private _wishlistService: WishlistService,
-    private _productService: ProductService,
-    private router: Router,
-    private _authsrv: AuthService
-  ) { }
-  cartitem: any;
-  cartLength = 0;
-  wishlistItem: any;
-  allproducts: any;
-  searchQuery = '';
-  searchResults: any;
-  categories: any;
-  category:string='all'
-  logged: boolean = false;
-  cat!: string;
-  //header stiky
+    private _cartService:CartService,
+    private _wishlistService:WishlistService,
+    private _productService:ProductService,
+    private router:Router,
+    private _authsrv:AuthService
+    ){}
+  ngAfterContentChecked(): void {
+    this.cartLength=localStorage.getItem('cartItemlength');
+    this.wishlistItem=localStorage.getItem('wishlistPrd');
+  }
+   cartitem:any;
+   cartLength:any;
+   wishlistItem:any;
+   allproducts:any;
+   searchQuery='';
+   searchResults:any;
+   categories:any;
+   logged:boolean=false;
+   //header stiky
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
     const windowScroll = window.pageYOffset;
@@ -43,7 +45,23 @@ export class HeaderComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    // this.cartLength = localStorage.getItem('cartItemlength')
+    this._cartService.getAllCartPrd().subscribe({
+      next:(res)=>{
+        localStorage.setItem('cartItemlength', res.length);
+      },
+      error:()=>{
+        localStorage.setItem('cartItemlength', '0');
+      }
+    })
+    this._wishlistService.getAllWishlist().subscribe({
+      next:(res)=>{
+        localStorage.setItem('wishlistPrd',res.length);
+      },
+      error:()=>{
+        localStorage.setItem('wishlistPrd', '0');
+      }
+    })
+ 
     this.getAllProductFromCart();
     this.getallcategory();
     this._wishlistService.getAllWishlist().subscribe({

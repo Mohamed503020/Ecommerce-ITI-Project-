@@ -1,25 +1,33 @@
 import { WishlistService } from './../../services/wishlist.service';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-wishlist-list',
   templateUrl: './wishlist-list.component.html',
   styleUrls: ['./wishlist-list.component.css']
 })
-export class WishlistListComponent implements OnInit {
+export class WishlistListComponent implements OnInit,AfterContentChecked {
   
   route="Wishlist"
-  productInWhislis:any;
+  productInWhislis:any=[];
+  empty:boolean=false
   constructor(
     private _wishlisService:WishlistService,
-    private _cartService:CartService
+    private _CartService:CartService,
     ){
 
   }
+  ngAfterContentChecked(): void {
+    let wishlistItem=localStorage.getItem('wishlistPrd');
+    if(wishlistItem=='0'){
+      this.empty=true
+      this.productInWhislis=[];
+     }
+  }
 
   ngOnInit(): void {
-
     this.getProductFromWishlist();
     console.log(this.productInWhislis);
   }
@@ -39,25 +47,70 @@ export class WishlistListComponent implements OnInit {
     });
   }
 
-  addProductToCart(product:any){
-    // this._cartService.addProductToCart(product.id)
+  addProductToCart(id:any){
+    this._CartService.AddItemCart(id).subscribe({
+      next:(res)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Product added Succefully ',
+          showConfirmButton: false,
+          timer: 2500
+        })
+        console.log(res);
+        console.log("Done");
+        let cartItemlength = parseInt(localStorage.getItem('cartItemlength') || '0');
+        cartItemlength += 1;
+        localStorage.setItem('cartItemlength', cartItemlength.toString());
+      },
+      error:(err)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'product already existed',
+          showConfirmButton: false,
+          timer: 2500
+        })
+        console.log(err);
+        console.log("errrrrrrrrrror");
+      }
+    })
   }
 
   removeProductFromWishlist(productId: any){
     this._wishlisService.DeleteItemWishlist(productId).subscribe({
       next:(res)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Product deleted Succefully ',
+          showConfirmButton: false,
+          timer: 2500
+        })
         console.log(res);
         console.log("done");
         this.getProductFromWishlist();
         
       },
       error:(err)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Product deleted Succefully',
+          showConfirmButton: false,
+          timer: 2500
+        })
         console.log(err);
         console.log("errrrrrrrrrrrrrrrreoroo");
         this.getProductFromWishlist();        
       }
       
-    })
+    });
+    let wishlistPrd = parseInt(localStorage.getItem('wishlistPrd') || '0');
+    if(wishlistPrd>0){
+      wishlistPrd -= 1;
+      localStorage.setItem('wishlistPrd', wishlistPrd.toString());
+    }
   }
 
 }

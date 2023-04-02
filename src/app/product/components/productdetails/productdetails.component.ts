@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
 import { CartService } from 'src/app/cart/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productdetails',
@@ -52,21 +53,8 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
 
   ngOnInit(): void {
 
-    this._ActivatedRoute.params.subscribe(params => {
-      this.product_id = params['id'];
-      this.getProduct();
-      this.addProductToCart();
-      this.getProductsCategory()
-
-    })
-    // this._ActivatedRoute.params.subscribe(params => {
-    //   this.product_id = params['cat'];
-    //   this.getProduct();
-    //   this.addProductToCart();
-    // })
-
-
-  }
+   }
+  
   // add() {
   //   this.item.emit(this.data)
   // }
@@ -79,26 +67,43 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
         this.ImgUrl = data.images[1];
 
       },
-      error: error => alert(error.message)
+      error:error=>console.log(error.message)
     })
   }
-  getProductsCategory() {
-    this._ProductService.getProductsByCategory(this.product.category).subscribe({
-      next: (item) => { this.productsOfCategory = item },
-      error: error => alert(error.message)
-    })
+  getProductsCategory(){
+this._ProductService.getProductsByCategory(this.product.category).subscribe({
+  next:(item)=>{this.productsOfCategory=item.data},
+  error:error=>console.log(error.message)
+})
   }
 
   changeImg(src: string) {
     this.ImgUrl = src
   }
-  addProductToCart() {
-    this._CartService.AddItemCart(this.product_id).subscribe({
-      next: (res) => {
+  addProductToCart(id:any){
+    this._CartService.AddItemCart(id).subscribe({
+      next:(res)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Product added Succefully ',
+          showConfirmButton: false,
+          timer: 2500
+        })
         console.log(res);
         console.log("Done");
+        let cartItemlength = parseInt(localStorage.getItem('cartItemlength') || '0');
+        cartItemlength += 1;
+        localStorage.setItem('cartItemlength', cartItemlength.toString());
       },
-      error: (err) => {
+      error:(err)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'product already existed',
+          showConfirmButton: false,
+          timer: 2500
+        })
         console.log(err);
         console.log("errrrrrrrrrror");
       }
@@ -106,11 +111,28 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
   }
   addProductToWishList(id: any) {
     this._WishlistService.AddItemWishlist(id).subscribe({
-      next: (res) => {
+      next:(res)=>{
+        Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Product added Succefully ',
+              showConfirmButton: false,
+              timer: 2500
+            })
         console.log(res);
         console.log("Done");
+        let wishlistPrd = parseInt(localStorage.getItem('wishlistPrd') || '0');
+        wishlistPrd += 1;
+        localStorage.setItem('wishlistPrd', wishlistPrd.toString());
       },
-      error: (err) => {
+      error:(err)=>{
+        Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'product already existed',
+              showConfirmButton: false,
+              timer: 2500
+            })
         console.log(err);
         console.log("errrrrrrrrrror");
       }
