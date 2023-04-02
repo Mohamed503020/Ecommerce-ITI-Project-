@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ContactService } from './contact.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -11,7 +13,7 @@ export class ContactComponent {
  em!:string;
  m!:string;
 
-constructor(private _contactSevice:ContactService){}
+constructor(private _contactSevice:ContactService,private _route:Router){}
 
 
 
@@ -24,6 +26,14 @@ constructor(private _contactSevice:ContactService){}
     console.log(m);
     this._contactSevice.sendMessage(fn,ln,email,m).subscribe({
       next:(res)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Massege send successfully ',
+          showConfirmButton: false,
+          timer: 2500
+        })
+        this._route.navigateByUrl("/")
         console.log(res);
         console.log("send Done");
       },

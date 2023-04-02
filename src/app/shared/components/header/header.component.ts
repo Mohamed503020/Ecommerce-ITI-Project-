@@ -1,6 +1,6 @@
 import { ProductService } from './../../../product/services/product.service';
 import { WishlistService } from './../../../wishlist-list/services/wishlist.service';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, HostListener, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/services/cart.service';
 import {  Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,AfterContentChecked {
   sticky: boolean = false;
   constructor(
     private _cartService:CartService,
@@ -19,9 +19,13 @@ export class HeaderComponent implements OnInit {
     private router:Router,
     private _authsrv:AuthService
     ){}
+  ngAfterContentChecked(): void {
+    this.cartLength=localStorage.getItem('cartItemlength');
+    this.wishlistItem=localStorage.getItem('wishlistPrd');
+  }
    cartitem:any;
    cartLength:any;
-   wishlistItem:any=[];
+   wishlistItem:any;
    allproducts:any;
    searchQuery='';
    searchResults:any;
@@ -38,7 +42,23 @@ export class HeaderComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.cartLength=localStorage.getItem('cartItemlength')
+    this._cartService.getAllCartPrd().subscribe({
+      next:(res)=>{
+        localStorage.setItem('cartItemlength', res.length);
+      },
+      error:()=>{
+        localStorage.setItem('cartItemlength', '0');
+      }
+    })
+    this._wishlistService.getAllWishlist().subscribe({
+      next:(res)=>{
+        localStorage.setItem('wishlistPrd',res.length);
+      },
+      error:()=>{
+        localStorage.setItem('wishlistPrd', '0');
+      }
+    })
+ 
     this.getAllProductFromCart();
    this._wishlistService.getAllWishlist().subscribe({
   next:(data)=>{
