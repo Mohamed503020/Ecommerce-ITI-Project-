@@ -103,26 +103,13 @@ logout(){
 this._authsrv.islogin.next(false);
 
 }
-  // searchProducts() {
-  //   if (this.searchQuery.length > 0) {
-  //     this._productService.getProduct().subscribe((data) => {
-  //       this.searchResults = data.filter((product:any) => {
-  //         return product.title.toLowerCase().includes(this.searchQuery.toLowerCase());
-  //       });
-  //       const state = { myData: this.searchResults };
-  //       const extras: NavigationExtras = { state };
-  //       this.router.navigate(['/main/products/search'], );
-  //     });
-  //   } else {
-  //     this.searchResults = [];
-  //   }
-  // }
 
-  // getCategires(){
-  //   this._productService.getAllCategory().subscribe({
-  //     next:data=>{this.categories=data}
-  //   })
-  // }s
+
+  getCategires(){
+    this._productService.getAllCategory().subscribe({
+      next:data=>{this.categories=data}
+    })
+  }
 
 
 }

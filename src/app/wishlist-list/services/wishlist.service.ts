@@ -15,14 +15,14 @@ export class WishlistService {
 
   
   }
-  getAllWishlist(): Observable<any[]> {
+  getAllWishlist(): Observable<any> {
     const token = localStorage.getItem('token');
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
       })
     };
-    return this._HttpClient.get<any[]>("http://localhost:8000/api/users/showFavorite", httpOptions);
+    return this._HttpClient.get<any>("http://localhost:8000/api/users/showFavorite", httpOptions);
   }
 
   AddItemWishlist(id:any): Observable<any>{

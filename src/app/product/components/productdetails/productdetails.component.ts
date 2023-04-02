@@ -7,6 +7,10 @@ import { Subscription } from 'rxjs';
 import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
 import { CartService } from 'src/app/cart/services/cart.service';
 import Swal from 'sweetalert2';
+<<<<<<< HEAD
+=======
+
+>>>>>>> beshoy
 @Component({
   selector: 'app-productdetails',
   templateUrl: './productdetails.component.html',
@@ -69,6 +73,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     // })
       // this.addProductToCart();
 
+<<<<<<< HEAD
 
     this._ActivatedRoute.params.subscribe(params => {
       this.product_id = params['cat'];
@@ -77,6 +82,9 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     })
 
 
+=======
+   })
+>>>>>>> beshoy
   }
   // add() {
   //   this.item.emit(this.data)
@@ -89,6 +97,7 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
         this.product = data;
         this.ImgUrl = data.images[1];
       },
+<<<<<<< HEAD
       error: error => console.log(error.message)
     })
   }
@@ -97,11 +106,22 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
       next: (item) => { this.productsOfCategory = item }
 
     })
+=======
+      error:error=>console.log(error.message)
+    })
+  }
+  getProductsCategory(){
+this._ProductService.getProductsByCategory(this.product.category).subscribe({
+  next:(item)=>{this.productsOfCategory=item.data},
+  error:error=>console.log(error.message)
+})
+>>>>>>> beshoy
   }
 
   changeImg(src: string) {
     this.ImgUrl = src
   }
+<<<<<<< HEAD
   addProductToCart() {
     if (localStorage.getItem('token')) {
       this._CartService.AddItemCart(this.product_id).subscribe({
@@ -160,6 +180,65 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
       })
     }
 
+=======
+  addProductToCart(id:any){
+    this._CartService.AddItemCart(id).subscribe({
+      next:(res)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Product added Succefully ',
+          showConfirmButton: false,
+          timer: 2500
+        })
+        console.log(res);
+        console.log("Done");
+        let cartItemlength = parseInt(localStorage.getItem('cartItemlength') || '0');
+        cartItemlength += 1;
+        localStorage.setItem('cartItemlength', cartItemlength.toString());
+      },
+      error:(err)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'product already existed',
+          showConfirmButton: false,
+          timer: 2500
+        })
+        console.log(err);
+        console.log("errrrrrrrrrror");
+      }
+    })
+  }
+  addProductToWishList(id:any){
+    this._WishlistService.AddItemWishlist(id).subscribe({
+      next:(res)=>{
+        Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Product added Succefully ',
+              showConfirmButton: false,
+              timer: 2500
+            })
+        console.log(res);
+        console.log("Done");
+        let wishlistPrd = parseInt(localStorage.getItem('wishlistPrd') || '0');
+        wishlistPrd += 1;
+        localStorage.setItem('wishlistPrd', wishlistPrd.toString());
+      },
+      error:(err)=>{
+        Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'product already existed',
+              showConfirmButton: false,
+              timer: 2500
+            })
+        console.log(err);
+        console.log("errrrrrrrrrror");
+      }
+    })
+>>>>>>> beshoy
 
   }
 

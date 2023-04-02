@@ -18,6 +18,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 // import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AboutComponent } from './components/about/about.component';
 import { LocationComponent } from './components/location/location.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { LocationComponent } from './components/location/location.component';
     FormsModule,
     // ReactiveFormsModule,
     HotToastModule.forRoot(),
+    GoogleMapsModule,
     // SweetAlert2Module.forRoot()
   ],
   providers: [],

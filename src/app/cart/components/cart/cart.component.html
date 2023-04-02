@@ -13,6 +13,7 @@
             </div>
             <hr class="my-4" />
             <!-- Single item -->
+<<<<<<< HEAD
             <div class="row" *ngFor="let item of ProductsInCart">
               <div
                 class="row mb-4 d-flex justify-content-between align-items-center"
@@ -71,13 +72,98 @@
                   ></a>
                 </div> -->
               </div>
+=======
+            <ng-container *ngIf="empty">
+              <div class="container-fluid mt-50">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body cart">
+                        <div class="col-sm-12 empty-cart-cls text-center">
+                          <img
+                            src="https://www.jumia.com.eg/assets_he/images/cart.668e6453.svg"
+                            width="130"
+                            height="130"
+                            class="img-fluid mb-4 mr-3"
+                          />
+                          <h3><strong>Your Cart is Empty</strong></h3>
+                          <h4>Browse our categories and discover our best deals!</h4>
+                          <a
+                            href="#"
+                            class="btn btn-primary cart-btn-transform m-3"
+                            data-abc="true"
+                            routerLink="/"
+                            >continue shopping</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div class="row" *ngFor="let item of ProductsInCart">
+              <div
+                class="row mb-4 d-flex justify-content-between align-items-center"
+              >
+                <div class="col-4 col-md-2 col-lg-2 col-xl-2">
+                  <img
+                    [src]="item.imagePaths[1]"
+                    class="img-fluid rounded-3"
+                    alt=""
+                  />
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 col-xl-3">
+                  <h5 class="text-muted">{{ item.name }}</h5>
+                  <h5 class="text-black mb-0">{{ item.description }}</h5>
+                </div>
+                <div
+                  class="col-4 col-md-3 col-lg-3 col-xl-2 d-flex mt-2 text-center"
+                >
+                  <div class="input-group input-spinner">
+                    <div class="quantity-selector">
+                      <button
+                        type="button"
+                        class="btn btn-quantity"
+                        (click)="decreaseQuantity(item)"
+                      >
+                        <span>-</span>
+                      </button>
+                      <div class="quantity-number">{{ item.quantity }}</div>
+                      <button
+                        type="button"
+                        class="btn btn-quantity"
+                        (click)="increaseQuantity(item)"
+                      >
+                        <span>+</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                  <h5 class="mb-0">{{ item.price | currency }}</h5>
+                </div>
+                <div
+                  class="col-md-1 col-lg-1 col-xl-1 text-end"
+                  (click)="deletProductFromCart(item)"
+                >
+                  <a class="text-muted"
+                    ><i class="fa-solid fa-trash-can"></i
+                  ></a>
+                </div>
+              </div>
+>>>>>>> beshoy
               <hr class="my-4" />
             </div>
             <!-- Single item -->
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div class="col-lg-4">
+=======
+      <div class="col-lg-4" *ngIf="!empty" >
+>>>>>>> beshoy
         <div class="card mb-4">
           <div class="card-body summary p-4">
             <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
