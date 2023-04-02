@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class CartService implements OnInit {
+  cartItems = new BehaviorSubject<any[]>([]);
   /////////////////////////////
   constructor(private _HttpClient:HttpClient) {
      
@@ -63,7 +64,32 @@ return this._HttpClient.delete<any>(`http://localhost:8000/api/users/deleteFromC
 //   };
 //   return this._HttpClient.delete<any>(`http://localhost:8000/api/users/deleteFromFavorite/${id}`, httpOptions);
 // }
+increaseQuantitiy(id: any): Observable<any> {
+  const token = localStorage.getItem('token');
+  console.log(token);
 
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+  };
+  return this._HttpClient.post<any>(`http://localhost:8000/api/users/increaseQuantity`, {
+    "product_id": id
+  }, httpOptions);
+}
+
+decreaseQuantitiy(id: any): Observable<any> {
+  const token = localStorage.getItem('token');
+  console.log(token);
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+  };
+  return this._HttpClient.post<any>(`http://localhost:8000/api/users/decreaseQuantity`, {
+    "product_id": id
+  }, httpOptions);
 }
 // cartItems: any[] = [];
 // constructor(private _toast:HotToastService) {
@@ -152,4 +178,4 @@ return this._HttpClient.delete<any>(`http://localhost:8000/api/users/deleteFromC
 //     totalPrice += product.totalPrice;
 //   });
 //   return totalPrice;
-// }
+}

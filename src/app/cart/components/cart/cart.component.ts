@@ -16,7 +16,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
   TAX = 20;
   TotalPrice: number = 0;
  empty: boolean = false;
-
+ totalProductPrice: number = 0;
 
   constructor(private _CartService: CartService) {}
   ngAfterContentChecked(): void {
@@ -28,26 +28,27 @@ export class CartComponent implements OnInit, AfterContentChecked {
   }
   ngOnInit(): void {
     this.getProductFromCart();
-    console.log(this.ProductsInCart);
-
-    this.calcSubTotalPrice();
-    this.TotalPrice = this.subTotalPrice + this.TAX;
+  
   }
-  calcSubTotalPrice() {
-    // this.subTotalPrice=this._CartService.getTotalPrice()
-  }
+ 
   calcTotalPrice() {
     this.TotalPrice = this.subTotalPrice + this.TAX;
   }
+
   getProductFromCart() {
     this._CartService.getAllCartPrd().subscribe({
       next: (res) => {
         this.ProductsInCart = res;
-        console.log(this.ProductsInCart);
-        console.log('result done');
-        localStorage.setItem('cartItemlength', this.ProductsInCart.length);
-      },
-    });
+        this.subTotalPrice = 0;
+        this._CartService.cartItems.next(res)
+        this.ProductsInCart.forEach((product: any) => {
+          this.subTotalPrice += product.price * product.quantityCart;
+        });
+        this.TotalPrice = this.subTotalPrice + this.TAX;
+        console.log("result done")
+        localStorage.setItem('cartItemlength', this.ProductsInCart.length)
+      }
+    })
   }
   deletProductFromCart(product: any) {
     this._CartService.DeleteItemCart(product.id).subscribe({
@@ -83,19 +84,33 @@ export class CartComponent implements OnInit, AfterContentChecked {
       cartItemlength -= 1;
       localStorage.setItem('cartItemlength', cartItemlength.toString());
     }
-    this.calcSubTotalPrice();
     this.calcTotalPrice();
   }
-
-  increaseQuantity(product: any) {
-    // this._CartService.increaseQuantity(product)
-    this.calcSubTotalPrice();
-    this.calcTotalPrice();
+  increaseQuantitiy(id: number) {
+    this._CartService.increaseQuantitiy(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        console.log("increase done");
+        this.getProductFromCart();
+      },
+      error: (err) => {
+        console.log(err);
+        console.log("error");
+      }
+    });
   }
 
-  decreaseQuantity(product: any) {
-    // this._CartService.decreaseQuantity(product)
-    this.calcSubTotalPrice();
-    this.calcTotalPrice();
+  decreaseQuantitiy(id: number) {
+    this._CartService.decreaseQuantitiy(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        console.log("decrease done");
+        this.getProductFromCart();
+      },
+      error: (err) => {
+        console.log(err);
+        console.log("error");
+      }
+    });
   }
 }

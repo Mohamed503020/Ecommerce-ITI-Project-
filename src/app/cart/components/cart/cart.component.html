@@ -65,15 +65,15 @@
                       <button
                         type="button"
                         class="btn btn-quantity"
-                        (click)="decreaseQuantity(item)"
+                        (click)="decreaseQuantitiy(item.id)"
                       >
                         <span>-</span>
                       </button>
-                      <div class="quantity-number">{{ item.quantity }}</div>
+                      <div class="quantity-number">{{ item.quantityCart }}</div>
                       <button
                         type="button"
                         class="btn btn-quantity"
-                        (click)="increaseQuantity(item)"
+                        (click)="increaseQuantitiy(item.id)"
                       >
                         <span>+</span>
                       </button>

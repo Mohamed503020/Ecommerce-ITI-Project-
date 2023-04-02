@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class HeaderComponent implements OnInit,AfterContentChecked {
   sticky: boolean = false;
+  params: any;
+  searchText:string=""
   constructor(
     private _cartService:CartService,
     private _wishlistService:WishlistService,
@@ -30,7 +32,9 @@ export class HeaderComponent implements OnInit,AfterContentChecked {
    searchQuery='';
    searchResults:any;
    categories:any;
+   category:string='all'
    logged:boolean=false;
+   cat!: string;
    //header stiky
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
@@ -44,7 +48,11 @@ export class HeaderComponent implements OnInit,AfterContentChecked {
   ngOnInit(): void {
     this._cartService.getAllCartPrd().subscribe({
       next:(res)=>{
-        localStorage.setItem('cartItemlength', res.length);
+        if(localStorage.getItem('token')&& res.length){
+          localStorage.setItem('cartItemlength', res.length);
+        }else{
+        localStorage.setItem('cartItemlength', '0');
+        }
       },
       error:()=>{
         localStorage.setItem('cartItemlength', '0');
@@ -52,7 +60,11 @@ export class HeaderComponent implements OnInit,AfterContentChecked {
     })
     this._wishlistService.getAllWishlist().subscribe({
       next:(res)=>{
-        localStorage.setItem('wishlistPrd',res.length);
+        if(localStorage.getItem('token')&&res.length){
+          localStorage.setItem('wishlistPrd',res.length);
+        }else{
+          localStorage.setItem('wishlistPrd', '0');
+          }
       },
       error:()=>{
         localStorage.setItem('wishlistPrd', '0');
