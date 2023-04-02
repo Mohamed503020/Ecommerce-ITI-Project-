@@ -1,1 +1,84 @@
-<p>location works!</p>
+<div class="shadow p-3 m-1">
+    <h1 class="d-flex justify-content-center">Main Company Location</h1>
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-between align-items-center g-2">
+        <div class="col-lg-4 col-sm-12 border-radis">
+          <h2>Company Details</h2>
+          <div *ngIf="usa" >
+          <p>
+            Welcome to our e-commerce website located in the heart of Seattle! We're proud to offer a wide selection of high-quality products, including electronics, home goods, fashion items, and much more.
+          </p>
+          <p>
+            Our website is easy to navigate, and we offer fast and reliable shipping to customers across the country. Plus, with our secure payment options, you can shop with confidence knowing that your personal information is always protected.
+          </p>
+          <p>
+            Whether you're looking for the latest tech gadgets, stylish clothing, or everyday essentials, you'll find it all on our website. Thank you for choosing us as your go-to destination for online shopping in the USA!
+          </p>
+        </div>
+         <div *ngIf="uk">
+          <p>
+            Welcome to our e-commerce website located in the heart of London! We're proud to offer a wide selection of high-quality products, including electronics, home goods, fashion items, and much more.
+          </p>
+          <p>
+            Our website is easy to navigate, and we offer fast and reliable shipping to customers across the UK. Plus, with our secure payment options, you can shop with confidence knowing that your personal information is always protected.
+          </p>
+          <p>
+            Whether you're looking for the latest tech gadgets, stylish clothing, or everyday essentials, you'll find it all on our website. Thank you for choosing us as your go-to destination for online shopping in the UK!
+          </p>
+        </div>
+        <div *ngIf="china">
+          <p>
+            欢迎来到我们位于上海的电商网站！我们为您提供高质量的商品，包括电子产品、家居用品、时尚物品等等。
+          </p>
+          <p>
+            我们的网站易于导航，为全国客户提供快速可靠的运输服务。此外，我们提供安全的支付选项，让您放心购物，无需担心个人信息泄露。
+          </p>
+          <p>
+            无论您是寻找最新的科技产品、时尚的服装，还是日常必需品，您都可以在我们的网站上找到。感谢您选择我们作为您在中国的网购目的地！
+          </p>
+        </div>
+         <div *ngIf="russia">
+          <p>
+            Добро пожаловать на наш интернет-магазин, расположенный в Москве! Мы гордимся тем, что предлагаем широкий выбор высококачественных товаров, включая электронику, товары для дома, модные предметы одежды и многое другое.
+          </p>
+          <p>
+            Наш сайт легок в использовании, и мы предлагаем быструю и надежную доставку по всей стране. Кроме того, с нашими безопасными вариантами оплаты вы можете покупать с уверенностью, зная, что ваша личная информация всегда защищена.
+          </p>
+          <p>
+            Независимо от того, ищете ли вы новейшие гаджеты, стильную одежду или повседневные необходимости, вы найдете все это на нашем сайте. Спасибо, что выбрали нас в качестве вашего основного места для онлайн-шопинга в России!
+          </p>
+        </div>
+        <div *ngIf="egypt" dir="rtl">
+          <p dir="rtl" >
+            موقعنا الإلكتروني سهل التصفح ، ونحن نقدم خدمة الشحن السريعة والموثوقة للعملاء في جميع أنحاء البلاد. بالإضافة إلى ذلك ، مع خيارات الدفع الآمنة لدينا ، يمكنك التسوق بثقة على موقعنا ، مع الاطمئنان إلى حماية معلوماتك الشخصية في جميع الأوقات.
+          </p>
+          <p dir="rtl">
+            واء كنت تبحث عن أحدث الأدوات التكنولوجية ، أو الملابس العصرية ، أو الضروريات اليومية ، فستجد كل ذلك على موقعنا الإلكتروني. نحن ملتزمون بتوفير تجربة تسوق عبر الإنترنت سلسة لعملائنا وخدمة عملاء استثنائية. </p> 
+            <p dir="rtl"> شكرا لاختيارك لنا كوجهة للتسوق عبر الإنترنت في مصر. يرجى تصفح موقعنا لمعرفة المزيد عن ما لدينا لتقديمه. </p>
+        </div>
+        </div>
+        <div class="col-lg-8 col-sm-12">
+            <div m-5>
+          <google-map height="450px" width="800px" [center]="center" [zoom]="zoom">
+            <div *ngFor="let site of sites">
+              <map-ground-overlay
+                [url]="site.imageUrl"
+                [bounds]="site.imageBounds"
+                m-1 *ngIf="site.visible"
+              ></map-ground-overlay>
+            </div>
+          </google-map>
+        </div>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-primary m-2" (click)="zoomIn(sites[0])">Zoom In to USA</button>
+            <button class="btn btn-primary m-2" (click)="zoomIn(sites[1])">Zoom In to UK</button>
+            <button class="btn btn-primary m-2" (click)="zoomIn(sites[2])">Zoom In to China</button>
+            <button class="btn btn-primary m-2" (click)="zoomIn(sites[3])">Zoom In to Russia</button>
+            <button class="btn btn-primary m-2" (click)="zoomIn(sites[4])">Zoom In to Egypt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
