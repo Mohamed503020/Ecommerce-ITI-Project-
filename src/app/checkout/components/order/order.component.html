@@ -1,4 +1,3 @@
-
 <div class="container rounded">
   <div class="order rounded">
     <article class="card">
@@ -10,7 +9,7 @@
             <div class="col">
               <strong>Estimated Delivery time:</strong>
               <br />
-              <p>{{ twoDaysAfter}}</p>
+              <p>{{ twoDaysAfter | date:'MMM d, y'}}</p>
             </div>
             <div class="col">
               <strong>mobile:</strong> <br />
@@ -63,7 +62,7 @@
                   {{order.product.name}} <br />
                   <span class="space"> {{order.product.description}} </span>
                 </p>
-                <span class="text-muted"> {{order.product.price}}   </span>
+                <span class="text-muted"> {{order.product.price |currency:'EUR' }}   </span>
               </figcaption>
             </figure>
           </li>
@@ -77,32 +76,3 @@
     </article>
   </div>
 </div>
-
-<!-- <div class="m-5">
-    <h1>Orders</h1>
-<table class="table text-center">
-  <thead>
-    <tr>
-      <th>Order ID</th>
-      <th>Customer Name</th>
-      <th>Product Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>productName</th>
-      <th>image</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let order of orders ;let i = index">
-      <td>{{ order.id }}</td>
-      <td>{{ order.name }}</td>
-
-      <td>{{ order.order_products[i].product.name }}</td>
-      <td>{{ order.order_products[0].product.price }}</td>
-      <td>{{ order.order_products[0].quantity }}</td>
-      <td><img src="{{order.order_products[0].product.images[0].imgPath}}" width="50" alt=""></td>
-  
-    </tr>
-  </tbody>
-</table>
-</div> -->

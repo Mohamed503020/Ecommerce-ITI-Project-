@@ -14,6 +14,8 @@ import { SharedModule } from './../shared/shared.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrderComponent } from './components/order/order.component';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     MyOrderSidebarComponent,
     PaymentComponent,
     DoneOrderComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderComponent
     
   ],
   imports: [
@@ -38,7 +41,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     MatAutocompleteModule,
     MatInputModule,
     SharedModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+
   ]
 })
 export class CheckoutModule { }
