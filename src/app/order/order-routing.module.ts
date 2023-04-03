@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AllOrdersComponent } from 'dashboard-ecommerce--ItI-Project-/src/app/order/components/all-orders/all-orders.component';
+import { AllordersComponent } from './component/Allorders/Allorders.component';
+import { OrderDetailsComponent } from './component/orderDetails/orderDetails.component';
+
 
 
 const routes: Routes = [
-  {path:'',component:AllOrdersComponent}
+  {path:'',component:AllordersComponent},
+  {path:':id',component:OrderDetailsComponent}
 ];
 
 @NgModule({
