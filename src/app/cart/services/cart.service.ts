@@ -10,6 +10,7 @@ import { Product } from 'src/app/product/model/product';
 })
 export class CartService implements OnInit {
   /////////////////////////////
+  cartItems = new BehaviorSubject<any[]>([]);
   constructor(private _HttpClient: HttpClient) {
 
   }

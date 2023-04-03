@@ -67,7 +67,7 @@
             </a>
             <a routerLink="/main/cart" class="header-cart">
               <i class="fa-solid fa-bag-shopping"></i>
-              <span class="number"></span>
+              <span class="number">{{cartLength}}</span>
             </a>
           </div>
         </div>
@@ -87,14 +87,13 @@
                 </select> -->
                 <select class="form-select" name="category" [(ngModel)]="category" (change)="selectCategory(category)">
                   <option selected value="all">All type</option>
-                  <option *ngFor="let cat of categories" [routerLink]="['/main/products/productcategory',cat.name]" [value]="cat.name" >{{cat.name}}</option>
+                  <option *ngFor="let cat of categories" [value]="cat.name" >{{cat.name}}</option>
                 </select>
                 <button class="btn btn-warning" (click)="searchProduct(searchText)">
                   <i class="fa fa-search"></i>
               </button>
               </div>
               </form>
-              
         </div>
         <div class="mobile-menu order-12 d-block d-lg-none col"></div>
       </div>

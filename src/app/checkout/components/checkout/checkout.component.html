@@ -11,23 +11,25 @@
     <mat-step>
       <ng-template matStepLabel>Review and Confirm Order</ng-template>
       <app-done-order [shoppingAdress]="shoppingAdress"></app-done-order>
-      <input type="number" [value]="totalPrice" readonly  form>
+      <!-- <input type="number" [value]="totalPrice" readonly  form> -->
       <div>
-        <button mat-button matStepperPrevious class="btn back">Back</button>
         <button mat-button (click)="createUserOrder()" class="btn next">Done</button>
+        <button mat-button matStepperPrevious class="btn back">Back</button>
       </div>
     </mat-step>
   </mat-stepper>
 
 
-<h1>{{totalPrice}}</h1>
+<!-- <h1>{{totalPrice}}</h1>
 
   <div class="diagnostics">
     {{this.formService.mainForm.value | json}}
-    {{this.formService.mainForm.value.shaping_address}}
+    {{this.formService.mainForm.value.shaping_address}} -->
+
+
     <!-- <div *ngFor="let key of keys()">
       <span *ngIf="myForm[key]">
         <b>{{key}}</b>: {{myForm[key]}}
       </span>
     </div> -->
-  </div>
+  <!-- </div> -->

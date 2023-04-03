@@ -40,6 +40,10 @@ const routes: Routes = [
       path: "user",
       loadChildren: () => import("../app/user/user.module").then(m => m.UserModule),canActivate:[AuthGuard]
     },
+    {
+      path: "allOrders",
+      loadChildren: () => import("../app/order/order.module").then(m => m.OrderModule),canActivate:[AuthGuard]
+    },
     {path:"contact",component:ContactComponent,canActivate:[AuthGuard]},
     {path:"about",component:AboutComponent},
      {path:"location",component:LocationComponent},

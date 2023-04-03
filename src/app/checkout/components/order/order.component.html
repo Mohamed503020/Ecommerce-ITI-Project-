@@ -60,7 +60,7 @@
               <figcaption class="info align-self-center">
                 <p class="t title">
                   {{order.product.name}} <br />
-                  <span class="space"> {{order.product.description}} </span>
+                  <span class="space">{{ order.product.description.slice(0,30) }}{{ order.product.description.length > 30 ? '...' : '' }}</span>
                 </p>
                 <span class="text-muted"> {{order.product.price |currency:'EUR' }}   </span>
               </figcaption>
