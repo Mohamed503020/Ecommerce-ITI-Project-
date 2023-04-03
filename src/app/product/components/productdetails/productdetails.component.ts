@@ -7,10 +7,7 @@ import { Subscription } from 'rxjs';
 import { WishlistService } from 'src/app/wishlist-list/services/wishlist.service';
 import { CartService } from 'src/app/cart/services/cart.service';
 import Swal from 'sweetalert2';
-<<<<<<< HEAD
-=======
 
->>>>>>> beshoy
 @Component({
   selector: 'app-productdetails',
   templateUrl: './productdetails.component.html',
@@ -73,7 +70,6 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     // })
       // this.addProductToCart();
 
-<<<<<<< HEAD
 
     this._ActivatedRoute.params.subscribe(params => {
       this.product_id = params['cat'];
@@ -82,9 +78,6 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
     })
 
 
-=======
-   })
->>>>>>> beshoy
   }
   // add() {
   //   this.item.emit(this.data)
@@ -97,7 +90,6 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
         this.product = data;
         this.ImgUrl = data.images[1];
       },
-<<<<<<< HEAD
       error: error => console.log(error.message)
     })
   }
@@ -106,81 +98,11 @@ export class ProductdetailsComponent implements OnInit, OnDestroy, AfterViewInit
       next: (item) => { this.productsOfCategory = item }
 
     })
-=======
-      error:error=>console.log(error.message)
-    })
-  }
-  getProductsCategory(){
-this._ProductService.getProductsByCategory(this.product.category).subscribe({
-  next:(item)=>{this.productsOfCategory=item.data},
-  error:error=>console.log(error.message)
-})
->>>>>>> beshoy
   }
 
   changeImg(src: string) {
     this.ImgUrl = src
   }
-<<<<<<< HEAD
-  addProductToCart() {
-    if (localStorage.getItem('token')) {
-      this._CartService.AddItemCart(this.product_id).subscribe({
-        next: (res) => {
-          console.log(res);
-          console.log("Done");
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Product Added Succefully ',
-            showConfirmButton: false,
-            timer: 2500
-          })
-        },
-        error: (err) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'product already existed',
-            showConfirmButton: false,
-            timer: 2500
-          })
-        }
-      })
-
-    }
-    else {
-      this._route.navigateByUrl("/auth/login")
-
-    }
-
-  }
-  addProductToWishList(id: any) {
-    if(localStorage.getItem('token')){
-      this._WishlistService.AddItemWishlist(id).subscribe({
-        next: (res) => {
-          console.log(res);
-          console.log("Done");
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Product Added Succefully ',
-            showConfirmButton: false,
-            timer: 2500
-          })
-        },
-        error: (err) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'product already existed',
-            showConfirmButton: false,
-            timer: 2500
-          })
-        }
-      })
-    }
-
-=======
   addProductToCart(id:any){
     this._CartService.AddItemCart(id).subscribe({
       next:(res)=>{
@@ -238,7 +160,6 @@ this._ProductService.getProductsByCategory(this.product.category).subscribe({
         console.log("errrrrrrrrrror");
       }
     })
->>>>>>> beshoy
 
   }
 
