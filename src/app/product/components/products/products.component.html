@@ -1,53 +1,24 @@
 <div class="product">
   <div class="product-image">
-<<<<<<< HEAD
-    <a style="height: 227px" routerLink="/main/products/{{ product.id }}">
-      <img
-        [src]="product.images[0]"
-        alt="Product_image"
-        onerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'"
-      />
-      <img
-        [src]="product.images[1]"
-        alt="Product_image"
-        sonerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'"
-      />
+    <a style="height: 227px;" routerLink="/main/products/{{product.id}}">
+      <img [src]="product.images[0]" alt="Product_image"
+        onerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'">
+      <img [src]="product.images[1]" alt="Product_image"
+        sonerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'">
     </a>
-    <p class="product-sale" *ngIf="product.id % 3 == 0">Sale</p>
+    <p class="product-sale">15%</p>
     <!-- (click)="addProductToWishlist()" -->
-    <!-- *ngIf="isAlert" -->
-    <!-- {{alertmsg}} -->
-    <button
-      type="button"
-      class="btn-favourite btn-circle"
-      (click)="addProductToWishList(product.id)"
-    >
-      <i class="fa-solid fa-heart"></i>
-    </button>
-=======
-      <a style="height: 227px;" routerLink="/main/products/{{product.id}}">
-          <img [src]="product.images[0]" alt="Product_image"
-              onerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'">
-          <img [src]="product.images[1]" alt="Product_image"
-              sonerror="this.onerror = null;this.src='assets/images/ImageNotFound.png'">
-      </a>
-      <p class="product-sale" *ngIf="(product.id)%3==0">Sale</p>
-      <!-- (click)="addProductToWishlist()" -->
-      <button type="button" class="btn-favourite btn-circle" >
+    <button type="button" class="btn-favourite btn-circle">
 
-          <i class="fa-solid fa-heart" (click)="addProductToWishList(product.id)" ></i>
-      </button>
->>>>>>> beshoy
+      <i class="fa-solid fa-heart" (click)="addProductToWishList(product.id)"></i>
+    </button>
   </div>
   <div class="product-content">
-    <a
-      class="product-name d-flex justify-content-between align-items-center"
-      routerLink="/products/{{ product.id }}"
-    >
+    <a class="product-name d-flex justify-content-between align-items-center" routerLink="/products/{{ product.id }}">
       <span class="item-title">{{ product.name }}</span>
       <span class="badge badge-pill bg-warning p-1">{{
         product.category
-      }}</span>
+        }}</span>
     </a>
 
     <ul class="rating-stars">
@@ -59,35 +30,23 @@
       </li>
     </ul>
 
-<<<<<<< HEAD
+
     <div class="product-content__footer">
       <div class="product-content__footer-price">
-        <h5 class="product-price">${{ product.price }}</h5>
+        <h5 class="product-price">${{product.price}}</h5>
+        <span *ngIf="(product.id)%3==0">$59.99</span>
       </div>
-      <!-- <span class="product-atc rounded-circle">
-              <button type="button" class="btn btn-circle text-muted "(click)="addProductTocart()"
-=======
-      <div class="product-content__footer">
-          <div class="product-content__footer-price">
-              <h5 class="product-price">${{product.price}}</h5>
-              <span *ngIf="(product.id)%3==0">$59.99</span>
-          </div>
-          <span class="product-atc rounded-circle">
+      <span class="product-atc rounded-circle">
               <button type="button" class="btn btn-circle text-muted "(click)="addProductToCart(product.id)"
->>>>>>> beshoy
                   >
                   <i class="fa fa-shopping-cart"></i>
               </button>
-          </span> -->
-      <span class="product-atc rounded-circle">
-        <button
-          type="button"
-          class="btn btn-circle text-muted"
-          (click)="addProductToCart(product.id)"
-        >
+          </span>
+      <!-- <span class="product-atc rounded-circle">
+        <button type="button" class="btn btn-circle text-muted">
           <i class="fa fa-shopping-cart"></i>
         </button>
-      </span>
+      </span> -->
     </div>
   </div>
 </div>

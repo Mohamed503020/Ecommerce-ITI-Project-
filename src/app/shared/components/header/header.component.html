@@ -7,7 +7,7 @@
           <div class="row align-items-center justify-content-between">
               <div class="col mt-10 mb-10">
                   <div class="header-links">
-                      <a href="#">
+                      <a routerLink="/main/checkout/trackOrder">
                           <i class="fa-solid fa-truck-moving"></i>
                           <span>Track your order</span>
                       </a>
@@ -64,14 +64,18 @@
             <a routerLink="/main/wishlist" class="header-wishlist">
               <i class="fa-solid fa-heart text-danger"></i>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <span class="number"></span>
 =======
               <span class="number">{{ wishlistItem }}</span>
 >>>>>>> beshoy
+=======
+              <span class="number">{{ wishlistItem }}</span>
+>>>>>>> maryamm
             </a>
             <a routerLink="/main/cart" class="header-cart">
               <i class="fa-solid fa-bag-shopping"></i>
-              <span class="number"></span>
+              <span class="number">{{cartLength}}</span>
             </a>
           </div>
         </div>
@@ -91,14 +95,13 @@
                 </select> -->
                 <select class="form-select" name="category" [(ngModel)]="category" (change)="selectCategory(category)">
                   <option selected value="all">All type</option>
-                  <option *ngFor="let cat of categories" [routerLink]="['/main/products/productcategory',cat.name]" [value]="cat.name" >{{cat.name}}</option>
+                  <option *ngFor="let cat of categories" [value]="cat.name" >{{cat.name}}</option>
                 </select>
                 <button class="btn btn-warning" (click)="searchProduct(searchText)">
                   <i class="fa fa-search"></i>
               </button>
               </div>
               </form>
-              
         </div>
         <div class="mobile-menu order-12 d-block d-lg-none col"></div>
       </div>

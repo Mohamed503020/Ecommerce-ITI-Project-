@@ -1,47 +1,35 @@
-<!-- <p>checkout works!</p>
-<h1>checkout2</h1> -->
-<app-sub-header [route]="route"></app-sub-header>
-<div class="container-fluid g-0 mt-5 px-5">
-    <div class="row ">
-        <div class="col-12 col-lg-8">
-            <mat-stepper [linear]="isLinear" #stepper>
-                <mat-step [stepControl]="firstFormGroup">
+<mat-stepper [linear]="isLinear">
+    <mat-step [stepControl]="stepOne">
+      <ng-template matStepLabel>Enter Address Information</ng-template>
+      <app-address></app-address>
+    </mat-step>
+  <mat-step [stepControl]="stepTwo">
+  <ng-template matStepLabel>Provide Payment Information</ng-template>
+  <app-payment [totalPrice]="totalPrice"></app-payment>
+  </mat-step>
+  
+    <mat-step>
+      <ng-template matStepLabel>Review and Confirm Order</ng-template>
+      <app-done-order [shoppingAdress]="shoppingAdress"></app-done-order>
+      <!-- <input type="number" [value]="totalPrice" readonly  form> -->
+      <div>
+        <button mat-button (click)="createUserOrder()" class="btn next">Done</button>
+        <button mat-button matStepperPrevious class="btn back">Back</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
 
-                    <ng-template matStepLabel>Fill address information</ng-template>
 
-                    <app-address></app-address>
-                    <div>
-                        <button mat-button matStepperNext class="btn next">Next</button>
-                    </div>
-                    <!-- </form> -->
-                </mat-step>
-                <!-- #docregion label -->
-                <mat-step [stepControl]="firstFormGroup">
-                    <ng-template matStepLabel>Confirm the payment method</ng-template>
-                    <app-payment></app-payment>
-                    <div>
-                        <button mat-button matStepperPrevious class="btn back">Back</button>
-                        <button mat-button matStepperNext class="btn next">Next</button>
+<!-- <h1>{{totalPrice}}</h1>
 
-                    </div>
-                    <!-- </form> -->
-                </mat-step>
-                <mat-step [stepControl]="firstFormGroup">
-                    <ng-template matStepLabel>Confirm order</ng-template>
-                    <app-done-order></app-done-order>
-                    <div>
-                        <button mat-button matStepperPrevious class="btn back">Back</button>
-                        <button mat-button class="btn next" [routerLink]="['']">Done</button>
-                        <!-- <button mat-button (click)="stepper.reset()" class="btn next">Reset</button> -->
-                    </div>
-                    <!-- </form> -->
+  <div class="diagnostics">
+    {{this.formService.mainForm.value | json}}
+    {{this.formService.mainForm.value.shaping_address}} -->
 
-                </mat-step>
 
-            </mat-stepper>
-        </div>
-        <div class="col-12 col-lg-4 ">
-            <app-myOrderSidebar></app-myOrderSidebar>
-        </div>
-    </div>
-</div>
+    <!-- <div *ngFor="let key of keys()">
+      <span *ngIf="myForm[key]">
+        <b>{{key}}</b>: {{myForm[key]}}
+      </span>
+    </div> -->
+  <!-- </div> -->

@@ -219,6 +219,7 @@ required
             <input
               type="file"
               class="form-control"
+              formControlName="image"
               (change)="onFileSelected($event)"
               name="image"
               required
@@ -231,9 +232,7 @@ required
               type="submit"
               [disabled]="!registerForm.valid"
               class="login100-form-btn btn btn-info mx-auto p-3"
-              style="font-size: 20px; border-radius: 20px"
-              routerLink="/main/products"
-            >
+              style="font-size: 20px; border-radius: 20px">
               Register
             </button>
           </div>

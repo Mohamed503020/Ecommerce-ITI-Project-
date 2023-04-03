@@ -23,80 +23,49 @@
             <div class="white p-5">
               <h1 class="text-bluegreen mb-4">Get in Touch</h1>
               <p class="mb-4">Feel free to drop us a line below</p>
-              <form #contactForm="ngForm" (ngSubmit)="(contactForm.value)">
+              <form #contactForm="ngForm">
                 <div>
-                <input
-                  type="text"
-                  class="form-control m-2"
-                  placeholder="Your First Name"
-                  required
-                  [(ngModel)]="fn"
-                  name="ufname"
-                  #fname="ngModel"
-                  pattern="[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$"
-                />
-                <div class="vali"  *ngIf="fname.touched">
-                  <p *ngIf="fname.errors?.['required']" style="color: red">
-                    First Name is a required field!
-                  </p>
-                  <p *ngIf="fname.errors?.['pattern']" style="color: red">
-                    Enter a name with at least three letters !
-                  </p>
+                  <input type="text" class="form-control m-2" placeholder="Your First Name" required [(ngModel)]="fn"
+                    name="ufname" #fname="ngModel" pattern="[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$" />
+                  <div class="vali" *ngIf="fname.touched">
+                    <p *ngIf="fname.errors?.['required']" style="color: red">
+                      First Name is a required field!
+                    </p>
+                    <p *ngIf="fname.errors?.['pattern']" style="color: red">
+                      Enter a name with at least three letters !
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  class="form-control m-2"
-                  placeholder="Your Last Name"
-                  required
-                  [(ngModel)]="ln"
-                  #lname="ngModel"
-                  name="LaName"
-                  pattern="[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$+"
-                />
-                <div class="vali"  *ngIf="lname.touched">
-                  <p *ngIf="lname.errors?.['required']" style="color: red">
-                    Last Name is a required field!
-                  </p>
-                  <p *ngIf="lname.errors?.['pattern']" style="color: red">
-                    Enter a name with at least three letters !
-                  </p>
+                <div>
+                  <input type="text" class="form-control m-2" placeholder="Your Last Name" required [(ngModel)]="ln"
+                    #lname="ngModel" name="LaName" pattern="[a-zA-Z]{3,}( {1,2}[a-zA-Z]{3,}){0,}$+" />
+                  <div class="vali" *ngIf="lname.touched">
+                    <p *ngIf="lname.errors?.['required']" style="color: red">
+                      Last Name is a required field!
+                    </p>
+                    <p *ngIf="lname.errors?.['pattern']" style="color: red">
+                      Enter a name with at least three letters !
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <input
-                  type="email"
-                  class="form-control m-2"
-                  placeholder="Your Email"
-                  required
-                  [(ngModel)]="em"
-                  #email="ngModel"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                  name="Email"
-                />
-                <div class="vali" *ngIf="email.touched">
-                  <p *ngIf="email.errors?.['required']" style="color: red">
-                    Email is a required field!
-                  </p>
-                  <p *ngIf="email.errors?.['pattern']" style="color: red">
-                    This is not a valid Email !
-                  </p>
+                <div>
+                  <input type="email" class="form-control m-2" placeholder="Your Email" required [(ngModel)]="em"
+                    #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="Email" />
+                  <div class="vali" *ngIf="email.touched">
+                    <p *ngIf="email.errors?.['required']" style="color: red">
+                      Email is a required field!
+                    </p>
+                    <p *ngIf="email.errors?.['pattern']" style="color: red">
+                      This is not a valid Email !
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <textarea class="form-control m-2"
-                placeholder="Type your message here..."
-                rows="5"
-                required
-                minlength="1"
-                [(ngModel)]="m"
-                #message="ngModel"
-                name="message"
-                ></textarea>
-              </div>
-                <button type="submit" class="btn btn-primary"
-                [disabled]="contactForm.invalid" (click)="sendData(fn,ln,em,m)" >SEND</button>
+                <div>
+                  <textarea class="form-control m-2" placeholder="Type your message here..." rows="5" required
+                    minlength="1" [(ngModel)]="m" #message="ngModel" name="message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid"
+                  (click)="sendData(fn,ln,em,m)">SEND</button>
               </form>
             </div>
           </div>

@@ -21,8 +21,6 @@
                   </div>
                   <hr class="my-4" />
                   <!-- ///////////// -->
-<<<<<<< HEAD
-=======
                   <ng-container *ngIf="empty">
                     <div class="container-fluid mt-50">
                       <div class="row">
@@ -61,7 +59,6 @@
                       </div>
                     </div>
                   </ng-container>
->>>>>>> beshoy
                   <div
                     class="row mb-4 d-flex justify-content-between align-items-center"
                     *ngFor="let item of productInWhislis"
@@ -75,7 +72,7 @@
                     </div>
                     <div class="col-6 col-md-2 col-lg-2 col-xl-2">
                       <h4 class="text-muted">{{ item.name }}</h4>
-                      <h4 class="text-black mb-0">{{ item.description }}</h4>
+                      <h4 class="text-black mb-0">{{ item.description.slice(0,30) }}{{ item.description.length > 30 ? '...' : '' }}</h4>
                     </div>
                     <div
                       class="col-6 col-md-2 col-lg-2 col-xl-2 offset-lg-1 pt-2"
@@ -90,11 +87,7 @@
                         type="button"
                         class="btn checkout"
                         data-mdb-ripple-color="dark"
-<<<<<<< HEAD
-                        (click)=" addProductToCart(item.id)"
-=======
                         (click)="addProductToCart(item.id)"
->>>>>>> beshoy
                       >
                         Add To Cart
                       </button>
@@ -110,11 +103,7 @@
                     <hr class="my-4" />
                   </div>
                   <!-- //////////// -->
-<<<<<<< HEAD
-                  <div class="pt-5">
-=======
                   <div class="pt-5" *ngIf="!empty">
->>>>>>> beshoy
                     <h4 class="mb-0">
                       <a routerLink="/" class="btn btn-warning text-weight"
                         ><i class="fas fa-long-arrow-alt-left me-2"></i>Back to
@@ -126,67 +115,6 @@
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-          <hr class="my-4" />
-          <!-- ///////////// -->
-          <div
-            class="row mb-4 d-flex justify-content-between align-items-center"
-            *ngFor="let item of productInWhislis"
-          >
-            <div class="col-4 col-md-3 col-lg-2 col-xl-2">
-              <img
-                [src]="item.images[1]"
-                class="img-fluid rounded-3"
-                alt="Cotton T-shirt"
-              />
-            </div>
-            <div class="col-6 col-md-2 col-lg-2 col-xl-2">
-              <h4 class="text-muted">{{ item.category }}</h4>
-              <h4 class="text-black mb-0">{{ item.title }}</h4>
-            </div>
-            <div class="col-6 col-md-2 col-lg-2 col-xl-2 offset-lg-1 pt-2">
-              <h4 class="mb-0">{{ item.price }}</h4>
-            </div>
-            <div class="col-6 col-md-2 col-lg-2 col-xl-2 d-flex">
-              <h4 class="mb-0">In Stock</h4>
-            </div>
-            <!-- <div class="col-6 col-md-6 col-lg-6 col-xl-2 d-flex pt-3">
-                      <button
-                        type="button"
-                        class="btn checkout"
-                        (click)="addProductToCart(item)"
-                        data-mdb-ripple-color="dark"
-                      >
-                        Add To Cart
-                      </button>
-                    </div> -->
-            <div class="col-6 col-md-6 col-lg-6 col-xl-2 d-flex pt-3">
-              <button
-                type="button"
-                class="btn checkout"
-                data-mdb-ripple-color="dark"
-              >
-              <!-- (click)="addProductToCart()" -->
-                Add To Cart
-              </button>
-            </div>
-            <div class="col-6 col-md-1 col-lg-1 col-xl-1 text-end">
-              <a class="text-muted" (click)="removeProductFromWishlist(item)"
-                ><i class="fa-solid fa-trash-can"></i
-              ></a>
-            </div>
-            <hr class="my-4" />
-          </div>
-          <!-- //////////// -->
-          <div class="pt-5">
-            <h4 class="mb-0">
-              <a routerLink="/" class="btn btn-warning text-weight"
-                ><i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a
-              >
-            </h4>
-          </div>
-=======
->>>>>>> beshoy
         </div>
       </div>
     </div>

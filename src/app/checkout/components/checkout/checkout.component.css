@@ -1,47 +1,52 @@
-
-.card{
-    border:none;
+.card {
+  border: none;
 }
 
 .form-control {
-    border-bottom: 2px solid #eee !important;
-    border: none;
-    font-weight: 600
+  border-bottom: 2px solid #eee !important;
+  border: none;
+  font-weight: 600;
 }
 
 .mat-stepper-horizontal {
-    margin-top: 8px;
-  }
+  margin-top: 8px;
+}
 
-  .mat-mdc-form-field {
-    margin-top: 16px;
-  }
-  .next{
-    color: #fff;
-    background-color: #ff8100;
-    border-radius: 999px;
-    border-color:#ff8100;
-    margin: 10px;
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+.next {
+  color: #fff;
+  background-color: #ff8100;
+  border-radius: 999px;
+  border-color: #ff8100;
+  margin: 10px;
+  float: right;
+  margin-right: 200px;
+  /* margin-top: -50px; */
 }
 
 .next:hover {
-    color: black;
-    background-color:#ff8100;
-    border-radius: 999px;
-    border-color: #ff8100;
+  color: black;
+  background-color: #ff8100;
+  border-radius: 999px;
+  border-color: #ff8100;
 }
 
-.back{
+.back {
   color: black;
-  background-color:  #d7d7d7;
+  background-color: #d7d7d7;
   border-radius: 999px;
   border-color: #d7d7d7;
   margin: 10px;
+  float: right;
+  /* margin-right:210px; */
+  /* margin-top: -50px; */
 }
 
 .back:hover {
   color: #ff8100;
   background-color: #d7d7d7;
   border-radius: 999px;
-  border-color:  #d7d7d7;
+  border-color: #d7d7d7;
 }

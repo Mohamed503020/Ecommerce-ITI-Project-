@@ -278,3 +278,13 @@ body {
   background-color: #ff8100;
 
 }
+
+:host ::ng-deep .ngx-image-zoom-container {
+  width: 100px !important;
+  height: 100px !important; 
+}
+
+:host ::ng-deep .ngx-image-zoom-img {
+  width: 100px; 
+  height: 100px;
+}
