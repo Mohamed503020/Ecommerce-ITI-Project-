@@ -53,11 +53,7 @@ export class ProductdetailsComponent
   productsOfCategory!: any;
   product_id!: number;
   subsucription!: Subscription;
-<<<<<<< HEAD
-  ImgUrl: string = ''
-=======
   ImgUrl: string = '';
->>>>>>> maryamm
   produtincart: any;
   foundproduct: any;
   constructor(
@@ -65,14 +61,8 @@ export class ProductdetailsComponent
     private _ActivatedRoute: ActivatedRoute,
     private _WishlistService: WishlistService,
     private _CartService: CartService,
-<<<<<<< HEAD
-    private _route: Router) { }
-
-
-=======
     private _route: Router
   ) {}
->>>>>>> maryamm
 
   ngAfterViewInit(): void {
     this.getProductsCategory();
@@ -80,37 +70,16 @@ export class ProductdetailsComponent
 
   ngOnInit(): void {
     // this.getProductfromCart()
-<<<<<<< HEAD
-    this._ActivatedRoute.params.subscribe(params => {
-      this.product_id = params['id'];
-      this.getProduct();
-      this.getProductsCategory()
-
-    })
-=======
     this._ActivatedRoute.params.subscribe((params) => {
       this.product_id = params['id'];
       this.getProduct();
       this.getProductsCategory();
     });
->>>>>>> maryamm
     // this._ActivatedRoute.params.subscribe(params => {
     //   this.product_id = params['cat'];
     //   this.getProduct();
     //   this.addProductToCart();
     // })
-<<<<<<< HEAD
-      // this.addProductToCart();
-
-
-    this._ActivatedRoute.params.subscribe(params => {
-      this.product_id = params['cat'];
-      this.getProduct();
-      // this.addProductToCart();
-    })
-
-
-=======
     // this.addProductToCart();
 
     this._ActivatedRoute.params.subscribe((params) => {
@@ -118,28 +87,12 @@ export class ProductdetailsComponent
       this.getProduct();
       // this.addProductToCart();
     });
->>>>>>> maryamm
   }
   // add() {
   //   this.item.emit(this.data)
   // }
 
   getProduct() {
-<<<<<<< HEAD
-    this.subsucription = this._ProductService.getSingleProduct(this.product_id).subscribe({
-      next: data => {
-        this.product = data;
-        this.ImgUrl = data.images[1];
-      },
-      error: error => console.log(error.message)
-    })
-  }
-  getProductsCategory() {
-    this._ProductService.getProductsByCategory(this.product.category).subscribe({
-      next: (item) => { this.productsOfCategory = item }
-
-    })
-=======
     this.subsucription = this._ProductService
       .getSingleProduct(this.product_id)
       .subscribe({
@@ -158,72 +111,11 @@ export class ProductdetailsComponent
           this.productsOfCategory = item;
         },
       });
->>>>>>> maryamm
   }
 
   changeImg(src: string) {
     this.ImgUrl = src;
   }
-<<<<<<< HEAD
-  addProductToCart(id:any){
-    this._CartService.AddItemCart(id).subscribe({
-      next:(res)=>{
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Product added Succefully ',
-          showConfirmButton: false,
-          timer: 2500
-        })
-        console.log(res);
-        console.log("Done");
-        let cartItemlength = parseInt(localStorage.getItem('cartItemlength') || '0');
-        cartItemlength += 1;
-        localStorage.setItem('cartItemlength', cartItemlength.toString());
-      },
-      error:(err)=>{
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'product already existed',
-          showConfirmButton: false,
-          timer: 2500
-        })
-        console.log(err);
-        console.log("errrrrrrrrrror");
-      }
-    })
-  }
-  addProductToWishList(id:any){
-    this._WishlistService.AddItemWishlist(id).subscribe({
-      next:(res)=>{
-        Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Product added Succefully ',
-              showConfirmButton: false,
-              timer: 2500
-            })
-        console.log(res);
-        console.log("Done");
-        let wishlistPrd = parseInt(localStorage.getItem('wishlistPrd') || '0');
-        wishlistPrd += 1;
-        localStorage.setItem('wishlistPrd', wishlistPrd.toString());
-      },
-      error:(err)=>{
-        Swal.fire({
-              position: 'top-end',
-              icon: 'error',
-              title: 'product already existed',
-              showConfirmButton: false,
-              timer: 2500
-            })
-        console.log(err);
-        console.log("errrrrrrrrrror");
-      }
-    })
-
-=======
   addProductToCart(id: any) {
     if (localStorage.getItem('token')) {
       this._CartService.AddItemCart(id).subscribe({
@@ -293,7 +185,6 @@ export class ProductdetailsComponent
     } else {
       this._route.navigateByUrl('/auth/login');
     }
->>>>>>> maryamm
   }
 
   updateCartItemQuantity(value: number, product: any, operation: string) {
@@ -313,10 +204,6 @@ export class ProductdetailsComponent
 
   //       this.foundproduct = this.produtincart.find((item: any) => {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> maryamm
   //         return item.id = this.product_id
   //       })
   //       this.produtincart = res;
