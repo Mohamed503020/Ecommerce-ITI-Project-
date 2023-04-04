@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { FormServiceService } from '../../service/formService.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -27,7 +28,8 @@ export class CheckoutComponent {
   constructor(
     public formService: FormServiceService,
     private fb: FormBuilder,
-    private _CartService: CartService
+    private _CartService: CartService,
+    private router: Router
   ) {
     this.myForm = this.formService.mainForm.value;
   }
@@ -59,14 +61,16 @@ export class CheckoutComponent {
     this.formService.crearteOrder(this.formService.mainForm.value).subscribe({
       next: (res) => {
         console.log(res);
+        localStorage.setItem('cartItemlength', '0');
         // localStorage.removeItem('shoppingAdress')
         Swal.fire({
-          position: 'top-end',
+          // position: 'top-end',
           icon: 'success',
           title: 'Your Order Success ',
           showConfirmButton: false,
           timer: 1500
         })
+        this.router.navigateByUrl('/main/checkout/trackOrder')
       },
       error: (error) => {
         console.log(error);

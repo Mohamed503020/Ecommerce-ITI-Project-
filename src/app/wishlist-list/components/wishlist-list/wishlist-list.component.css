@@ -79,7 +79,9 @@ body {
     background-color: #ff8100!important;
     border-color:#ff8100!important;
 }
-
+.custom-popup-class {
+    height: 30px;
+  }
 
 
 

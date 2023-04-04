@@ -33,15 +33,15 @@
             <span class="st icon"> <i class="fa fa-check"></i> </span>
             <span class="te text">Order confirmed</span>
           </div>
-          <div class="step active" [class.active]="orders.payment_status >='2'" >
+          <div class="step active" [class.active]="orders.payment_status >='2'">
             <span class="st icon"> <i class="fa fa-user"></i> </span>
             <span class="te text"> Picked in progress</span>
           </div>
-          <div class="step"  [class.active]="orders.payment_status >='3'">
+          <div class="step" [class.active]="orders.payment_status >='3'">
             <span class="st icon"> <i class="fa fa-truck"></i> </span>
             <span class="te text"> On the way </span>
           </div>
-          <div class="step"  [class.active]="orders.payment_status >='4'">
+          <div class="step" [class.active]="orders.payment_status >='4'">
             <span class="st icon"> <i class="fa fa-box"></i> </span>
             <span class="te text">Ready for deliverd</span>
           </div>
@@ -50,28 +50,26 @@
         <ul class="row">
           <!-- *ngFor="let image of order.product" -->
           <li class="col-md-4" *ngFor="let order of orders.order_products">
-            <figure class="itemside mb-3" >
+            <figure class="itemside mb-3">
               <div class="aside">
-                <img
-                width="100"
-                  src="{{order.product.images[0].imgPath}}"
-                />
+                <img width="100" src="{{order.product.images[0].imgPath}}" />
               </div>
               <figcaption class="info align-self-center">
                 <p class="t title">
                   {{order.product.name}} <br />
-                  <span class="space">{{ order.product.description.slice(0,30) }}{{ order.product.description.length > 30 ? '...' : '' }}</span>
+                  <span class="space">{{ order.product.description.slice(0,30) }}{{ order.product.description.length >
+                    30 ? '...' : '' }}</span>
                 </p>
-                <span class="text-muted"> {{order.product.price |currency:'EUR' }}   </span>
+                <span class="text-muted"> {{order.product.price |currency:'EUR' }} </span>
               </figcaption>
             </figure>
           </li>
 
         </ul>
         <hr />
-        <a href="#" class="btn rounded" data-abc="true">
-          <i class="fa fa-chevron-left"></i> Back to orders</a
-        >
+        <button class="btn btn-danger" data-abc="true" [routerLink]="['/main/allOrders']"
+          style="background-color:rgb(255, 129, 0) ;">
+          <i class="fa fa-chevron-left"></i> Back to orders</button>
       </div>
     </article>
   </div>

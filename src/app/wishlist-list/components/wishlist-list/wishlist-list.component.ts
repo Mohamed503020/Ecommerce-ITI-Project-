@@ -51,17 +51,19 @@ export class WishlistListComponent implements OnInit,AfterContentChecked {
     this._CartService.AddItemCart(id).subscribe({
       next:(res)=>{
         Swal.fire({
-          position: 'top-end',
+          position: 'top-start',
           icon: 'success',
-          title: 'Product added Succefully ',
+          title: 'Product added Successfully',
           showConfirmButton: false,
-          timer: 2500
-        })
-        console.log(res);
-        console.log("Done");
+          timer: 2500,
+          customClass: {
+            popup: 'custom-popup-class'
+          }
+        });
         let cartItemlength = parseInt(localStorage.getItem('cartItemlength') || '0');
         cartItemlength += 1;
         localStorage.setItem('cartItemlength', cartItemlength.toString());
+        // this.removeProductFromWishlist(id)
       },
       error:(err)=>{
         Swal.fire({
@@ -71,8 +73,6 @@ export class WishlistListComponent implements OnInit,AfterContentChecked {
           showConfirmButton: false,
           timer: 2500
         })
-        console.log(err);
-        console.log("errrrrrrrrrror");
       }
     })
   }
@@ -87,8 +87,6 @@ export class WishlistListComponent implements OnInit,AfterContentChecked {
           showConfirmButton: false,
           timer: 2500
         })
-        console.log(res);
-        console.log("done");
         this.getProductFromWishlist();
         
       },
@@ -100,8 +98,6 @@ export class WishlistListComponent implements OnInit,AfterContentChecked {
           showConfirmButton: false,
           timer: 2500
         })
-        console.log(err);
-        console.log("errrrrrrrrrrrrrrrreoroo");
         this.getProductFromWishlist();        
       }
       

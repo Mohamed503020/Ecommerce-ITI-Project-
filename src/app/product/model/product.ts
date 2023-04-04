@@ -5,5 +5,7 @@ export interface Product {
   description:string,
   rate:number,
   category:string,
+  quantity:any,
+  discount:number,
   images:string[]
 }

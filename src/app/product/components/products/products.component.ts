@@ -1,5 +1,4 @@
 import { Product } from './../../model/product';
-import { HotToastService } from '@ngneat/hot-toast';
 import { WishlistService } from './../../../wishlist-list/services/wishlist.service';
 import { Component, Input } from '@angular/core';
 import { CartService } from 'src/app/cart/services/cart.service';
@@ -17,7 +16,6 @@ export class ProductsComponent {
   constructor(
     private _CartService: CartService,
     private _WishlistService: WishlistService,
-    private _toast: HotToastService,
     private router: Router
   ) {}
 

@@ -463,8 +463,8 @@ h6{
     font-size: 17px;
 }
 
-.btn{
-background-color: #FFCA2C;
+article button{
+background-color:rgb(255, 129, 0) !important ;
 }
 .icon{
     size: 30px;

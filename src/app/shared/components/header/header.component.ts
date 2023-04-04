@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
   category: string = 'all';
   logged: boolean = false;
   cat!: string;
+  userImage:any;
   //header stiky
   ngAfterContentChecked(): void {
     this.cartLength = localStorage.getItem('cartItemlength');
@@ -87,23 +88,15 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
         this.wishlistItem = data;
       },
     });
-    //  this.cartitem= this._cartService.getCartItems()
-    //  this.getCategires()
+
     if (localStorage.getItem('user')) {
       this.logged = true;
+      this.userImage = JSON.parse(localStorage.getItem('user')!).image
     } else {
       this.logged = false;
     }
     this.getallcategory();
   }
-  // selectCategory() {
-  //   if (this.searchQuery) {
-  //     const query = this.searchQuery.toLowerCase();
-  //     this.categories = this.categories.
-  //       filter((cat: { name: string; }) => cat.name.toLowerCase().includes(query));
-  //   }
-  // }
-
   selectCategory(cate: string) {
     console.log(cate);
     if (cate === 'all') {
@@ -138,24 +131,4 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
   logout() {
     this._authsrv.islogin.next(false);
   }
-  // searchProducts() {
-  //   if (this.searchQuery.length > 0) {
-  //     this._productService.getProduct().subscribe((data) => {
-  //       this.searchResults = data.filter((product:any) => {
-  //         return product.title.toLowerCase().includes(this.searchQuery.toLowerCase());
-  //       });
-  //       const state = { myData: this.searchResults };
-  //       const extras: NavigationExtras = { state };
-  //       this.router.navigate(['/main/products/search'], );
-  //     });
-  //   } else {
-  //     this.searchResults = [];
-  //   }
-  // }
-
-  // getCategires(){
-  //   this._productService.getAllCategory().subscribe({
-  //     next:data=>{this.categories=data}
-  //   })
-  // }s
 }
