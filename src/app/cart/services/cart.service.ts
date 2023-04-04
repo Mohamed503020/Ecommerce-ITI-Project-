@@ -26,7 +26,7 @@ export class CartService implements OnInit {
     );
   }
 
-  AddItemCart(id: any): Observable<any> {
+  AddItemCart(id:any): Observable<any> {
     const token = localStorage.getItem('token');
     const httpOptions = {
       headers: new HttpHeaders({

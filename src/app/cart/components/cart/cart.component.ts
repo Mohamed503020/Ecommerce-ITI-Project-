@@ -15,7 +15,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
   TotalPrice: number = 0;
  empty: boolean = false;
  totalProductPrice: number = 0;
- 
+
 
   constructor(private _CartService: CartService,) {}
   ngAfterContentChecked(): void {
@@ -27,9 +27,9 @@ export class CartComponent implements OnInit, AfterContentChecked {
   }
   ngOnInit(): void {
     this.getProductFromCart();
-  
+
   }
- 
+
   calcTotalPrice() {
     this.TotalPrice = this.subTotalPrice + this.TAX;
   }

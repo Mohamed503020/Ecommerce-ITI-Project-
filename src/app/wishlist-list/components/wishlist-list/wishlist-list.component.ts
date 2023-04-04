@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./wishlist-list.component.css']
 })
 export class WishlistListComponent implements OnInit,AfterContentChecked {
-  
+
   route="Wishlist"
   productInWhislis:any=[];
   empty:boolean=false
@@ -88,7 +88,7 @@ export class WishlistListComponent implements OnInit,AfterContentChecked {
           timer: 2500
         })
         this.getProductFromWishlist();
-        
+
       },
       error:(err)=>{
         Swal.fire({
@@ -98,9 +98,11 @@ export class WishlistListComponent implements OnInit,AfterContentChecked {
           showConfirmButton: false,
           timer: 2500
         })
-        this.getProductFromWishlist();        
+        console.log(err);
+        console.log("errrrrrrrrrrrrrrrreoroo");
+        this.getProductFromWishlist();
       }
-      
+
     });
     let wishlistPrd = parseInt(localStorage.getItem('wishlistPrd') || '0');
     if(wishlistPrd>0){

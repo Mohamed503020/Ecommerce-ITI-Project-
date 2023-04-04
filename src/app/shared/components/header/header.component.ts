@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
     this.wishlistItem = localStorage.getItem('wishlistPrd');
   }
 
-  
+
 
   //header stiky
   @HostListener('window:scroll', ['$event'])
@@ -110,7 +110,7 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
     this._cartService.getAllCartPrd().subscribe({
       next:(res)=>{
         this.cartitem=res;
-       
+
       }
     })
   }
