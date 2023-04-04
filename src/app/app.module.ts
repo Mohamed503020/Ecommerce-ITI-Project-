@@ -18,6 +18,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { LocationComponent } from './components/location/location.component';
 
+import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,7 @@ import { LocationComponent } from './components/location/location.component';
     NgxImageZoomModule,
     FormsModule,
     // ReactiveFormsModule,
+    GoogleMapsModule,
     // SweetAlert2Module.forRoot()
   ],
   providers: [],
