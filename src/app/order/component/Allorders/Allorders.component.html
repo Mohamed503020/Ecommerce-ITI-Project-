@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="!empty">
         <div class="">
             <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
                 <div class="tab-content" id="myTabContent">
@@ -12,13 +12,13 @@
                                     <div class="media-body" >
                                         <div class="container  h-100">
                                             <div class="d-flex justify-content-between align-items-center py-3">
-                                               
+
                                                     <a href="#">
                                                         <a href="#" class="text-black h6">Order Number#{{order.id}}</a>
                                                     </a>
-                                                
+
                                                 <a href="#">
-                                                    <span style="color: #ff8100;" class="h6">   
+                                                    <span style="color: #ff8100;" class="h6">
                                                            <td *ngIf="order.payment_status==1">deliverd</td>
                                                         <td *ngIf="order.payment_status==2">in progress </td>
                                                         <td *ngIf="order.payment_status==3">out of deliverd</td>
@@ -31,7 +31,7 @@
                                                 address,{{order.street}}, {{order.city}}, {{order.governate}}
                                             </p>
                                             <p class="text-gray mb-3"><i class="fa-solid fa-calendar-days"></i> {{order.created_at|date:'MMM d, y'}}</p>
-                                           
+
                                             <hr>
                                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                                 <a class="btn btn-sm btn-track" [routerLink]="['/main/allOrders/',order.id]"> Order Details</a>
@@ -48,4 +48,33 @@
             </div>
         </div>
     </div>
+    <ng-container *ngIf="empty">
+      <div class="container-fluid mt-50">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body cart">
+                <div class="col-sm-12 empty-cart-cls text-center">
+                  <img
+                    src="https://www.jumia.com.eg/assets_he/images/orders.669c73dc.svg"
+                    width="130"
+                    height="130"
+                    class="img-fluid mb-4 mr-3"
+                  />
+                  <h3><strong>Your orders is Empty</strong></h3>
+                  <h4>Browse our categories and discover our best deals!</h4>
+                  <a
+                    href="#"
+                    class="btn order-btn-transform m-3"
+                    data-abc="true"
+                    routerLink="/"
+                    >continue shopping</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
 </div>

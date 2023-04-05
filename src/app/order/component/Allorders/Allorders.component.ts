@@ -10,14 +10,15 @@ import { Order } from '../../Order';
 })
 export class AllordersComponent implements OnInit {
   orders: Order[] = [];
+  empty!:boolean;
   constructor(private orderServ:AllOrdersService) { }
   getOrders(){
     this.orderServ.getAllOrders().subscribe({
       next:(res)=>{
         this.orders=res;
         // console.log(this.orders);
-        
-  
+        this.empty=false
+
       }
     })
    }

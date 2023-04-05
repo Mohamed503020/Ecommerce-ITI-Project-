@@ -435,3 +435,51 @@ a:focus, a:active, .btn.active.focus,
     color: #fff;
     right: 0.71em;
 }
+.small-banner .single-banner {
+    overflow: hidden;
+    position: relative;
+    background-color: #ccc;
+}
+.small-banner .single-banner img {
+  height: 200px;
+  width: 100%;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  transition: all .4s ease;
+}
+.small-banner .single-banner h3 {
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: #333;
+}
+.small-banner .single-banner p {
+  font-size: 14px;
+  color: #f7941d;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+.small-banner .single-banner a {
+  color: #333;
+  margin-top: 22px;
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+  text-transform: uppercase;
+  border-bottom: 2px solid #333;
+}
+.small-banner .single-banner .content {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 35px;
+}
+
+
+.shop-services.home {
+  padding: 60px 0;
+  background: #f6f7fb;
+}
