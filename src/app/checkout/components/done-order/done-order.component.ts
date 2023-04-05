@@ -45,9 +45,9 @@ export class DoneOrderComponent implements OnInit, OnChanges {
             this.totalPriceCart - this.totalPriceCartDiscount;
           console.log(this.totalPriceCart);
           this.twoDaysAfter = new Date(
-            this.now.setDate(this.now.getDate() + 3)
+            this.now.setDate(this.now.getDate()+2)
           );
-          // console.log(twoDaysAfter);
+          console.log(this.twoDaysAfter);
         });
       },
     });

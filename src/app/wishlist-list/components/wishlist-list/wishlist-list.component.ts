@@ -51,14 +51,11 @@ export class WishlistListComponent implements OnInit,AfterContentChecked {
     this._CartService.AddItemCart(id).subscribe({
       next:(res)=>{
         Swal.fire({
-          position: 'top-start',
+          position: 'top-end',
           icon: 'success',
-          title: 'Product added Successfully',
+          title: 'Product added Successfully ',
           showConfirmButton: false,
           timer: 2500,
-          customClass: {
-            popup: 'custom-popup-class'
-          }
         });
         let cartItemlength = parseInt(localStorage.getItem('cartItemlength') || '0');
         cartItemlength += 1;

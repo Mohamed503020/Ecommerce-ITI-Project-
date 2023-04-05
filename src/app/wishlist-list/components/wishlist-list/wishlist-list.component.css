@@ -80,7 +80,8 @@ body {
     border-color:#ff8100!important;
 }
 .custom-popup-class {
-    height: 30px;
+    height: 30px !important;
+    width: 200px !important;
   }
 
 

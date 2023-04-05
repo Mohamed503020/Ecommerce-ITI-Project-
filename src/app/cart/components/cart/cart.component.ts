@@ -53,7 +53,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
     this._CartService.DeleteItemCart(product.id).subscribe({
       next: (res) => {
         Swal.fire({
-          // position: 'top-end',
+          position: 'top-end',
           icon: 'success',
           title: 'Product deleted Succefully ',
           showConfirmButton: false,
@@ -65,7 +65,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
       },
       error: (err) => {
         Swal.fire({
-          // position: 'top-end',
+          position: 'top-end',
           icon: 'success',
           title: 'Product deleted Succefully ',
           showConfirmButton: false,

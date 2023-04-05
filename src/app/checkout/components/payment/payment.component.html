@@ -130,7 +130,7 @@
             <span>Card Number</span>
             <div *ngIf="number?.invalid && (number?.dirty || number?.touched)" class=" text-danger" role="alert">
               <p *ngIf="number?.errors?.['required']">Number is required.</p>
-              <p *ngIf="number?.errors?.['pattern']">Please enter a valid card number (14 digits).</p>
+              <p *ngIf="number?.errors?.['pattern']">Please enter a valid card number (16 digits).</p>
             </div>
           </div>
           <div class="row">
@@ -181,7 +181,7 @@
           </div>
           <div class="row">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
-                <button class="btn  total col-6 h3">Total Pay: {{totalPrice}}</button>
+                <button class="btn  total col-6 h3">Total Pay: {{totalPrice|currency}}</button>
               </div>
           </div>
         </div>
